@@ -14,10 +14,10 @@ function apiCall(url, headers = {}) {
     }
   } else if (config.token ) {
     options.auth = {
-      username: config.token 
+      username: config.token
     }
   };
-  
+
   return axios.get(url, options);
 }
 
@@ -25,30 +25,30 @@ function getPullRequests(repos) {
   const config = configManager.getConfig();
 
   let pullRequests = [];
-  const promises = repos.map(repo => apiCall(`${config.apiBaseUrl}/repos/${repo}/pulls`));
+  const promises = repos.map(repo => apiCall(`${config.apiBaseUrl}/${repo}`));
   return Promise.all(promises).then(results => {
     results.forEach(result => {
       pullRequests = pullRequests.concat(result.data);
     });
-
-    return pullRequests.map(pr => ({
-      url: pr.html_url,
-      id: pr.id,
-      number: pr.number,
-      title: pr.title,
-      repo: pr.base.repo.full_name,
-      repoUrl: pr.base.repo.html_url,
-      repoId: pr.base.repo.id,
-      user: {
-        username: pr.user.login,
-        profileUrl: pr.user.html_url,
-        avatarUrl: pr.user.avatar_url
-      },
-      created: pr.created_at,
-      updated: pr.updated_at,
-      comments_url: pr.comments_url,
-      statuses_url: pr.statuses_url
-    }));
+    return [{ 'id': 1704 }];
+    // return pullRequests.map(pr => ({
+    //   url: pr.html_url,
+    //   id: pr.id,
+    //   number: pr.number,
+    //   title: pr.title,
+    //   repo: pr.base.repo.full_name,
+    //   repoUrl: pr.base.repo.html_url,
+    //   repoId: pr.base.repo.id,
+    //   user: {
+    //     username: pr.user.login,
+    //     profileUrl: pr.user.html_url,
+    //     avatarUrl: pr.user.avatar_url
+    //   },
+    //   created: pr.created_at,
+    //   updated: pr.updated_at,
+    //   comments_url: pr.comments_url,
+    //   statuses_url: pr.statuses_url
+    // }));
   });
 }
 
@@ -124,6 +124,9 @@ exports.loadPullRequests = function loadPullRequests() {
   const repos = config.repos;
 
   return getPullRequests(repos).then(prs => {
+
+    console.log(prs);
+
     const commentsPromises = prs.map(pr => getPullRequestComments(pr));
     return Promise.all(commentsPromises).then(() => prs);
   })
