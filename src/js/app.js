@@ -7,7 +7,7 @@ import Dashboard from "./components/Dashboard";
 import EditDashboard from "./components/EditDashboard";
 import { loadPullRequests } from "./actions";
 import configureStore from "./store";
-import "../assets/scss/main.scss"
+import "../assets/scss/main.scss";
 // import "../assets/scss/main.scss";
 // import '../images/favicon.ico';
 

@@ -6,75 +6,66 @@ import ErrorMessage from "./ErrorMessage";
 import Toolbar from "./Toolbar";
 import Footer from "./Footer";
 
-class Main extends React.Component {
-  renderLoading() {
-    if (this.props.loading) {
-      return <LoadingOverlay />;
-    }
-    return <div>asdasd</div>;
-  }
+const Main = ({ title, length, failedRepos }) => {
+  // renderLoading() {
+  //   if (loading) {
+  //     return <LoadingOverlay />;
+  //   }
+  //   return <div>asdasd</div>;
+  // }
+  //
+  //
+  // renderFailedRepos() {
+  //   return (
+  //     <div>
+  //       {this.props.failedRepos.map(failedRepo => (
+  //         <ErrorMessage
+  //           key={failedRepo}
+  //           message={`Failed to load pull request data for ${failedRepo}.`}
+  //         />
+  //       ))}
+  //     </div>
+  //   );
+  // }
 
-  renderFailedRepos() {
-    return (
-      <div>
-        {this.props.failedRepos.map(failedRepo => (
-          <ErrorMessage
-            key={failedRepo}
-            message={`Failed to load pull request data for ${failedRepo}.`}
-          />
-        ))}
-      </div>
-    );
-  }
+  // renderBody() {
+  //   if (this.props.error) {
+  //     return <ErrorMessage message={this.props.error} />;
+  //   }
+  //
+  //   return (
+  //     <div>
+  //       {this.renderFailedRepos()}
+  //       {this.renderLoading()}
+  //       {this.props.pullRequests.map(pr => (
+  //         <div key={pr.id}>
+  //           <PullRequest key={pr.id} pullRequest={pr} />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // }
 
-  renderBody() {
-    if (this.props.error) {
-      return <ErrorMessage message={this.props.error} />;
-    }
-
-    return (
-      <div>
-        {this.renderFailedRepos()}
-        {this.renderLoading()}
-        {this.props.pullRequests.map(pr => (
-          <div key={pr.id}>
-            <PullRequest key={pr.id} pullRequest={pr} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="container-header">
-          <h1>{this.props.title}</h1>
-          <div
-            id="pr-count"
-            title={`${this.props.pullRequests.length} pull requests`}
-          >
-            {/*<img role="presentation" src="images/git-pull-request.svg" />*/}
-            &nbsp;
-            {this.props.pullRequests.length}
-          </div>
-
-          <div
-            id="repo-count"
-            title={`${this.props.repos.length} repositories`}
-          >
-            {/*<img role="presentation" src="images/repo.svg" />*/}
-            &nbsp;
-            {this.props.repos.length}
-          </div>
+  return (
+    <div className="container">
+      <div className="container-header">
+        <h1>{title}</h1>
+        <div id="pr-count" title={`${length} pull requests`}>
+          <img role="presentation" src="../../images/git-pull-request.svg" />
+          {length}
         </div>
-        <Toolbar failedRepos={this.props.failedRepos} />
-        {this.renderBody()}
-        <Footer />
+
+        <div id="repo-count" title={`${length} repositories`}>
+          <img role="presentation" src="../../images/repo.svg" />
+          {length}
+        </div>
       </div>
-    );
-  }
-}
+      <Toolbar failedRepos={failedRepos} />
+      {/*{this.renderBody()}*/}
+      <Footer />
+    </div>
+  );
+};
 
 Main.propTypes = {
   // loading: React.PropTypes.bool.isRequired,

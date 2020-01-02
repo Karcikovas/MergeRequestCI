@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "description": "See open PRs across repos in Gitlab",
   "main": "app.js",
-  "repository": "karcikovas/MergeRequestCI",
+  "repository": "https://github.com/Karcikovas/MergeRequestCI",
   "scripts": {
     "start": "webpack-dev-server",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
