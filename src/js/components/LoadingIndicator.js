@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/loadingIndicator.css";
+// import "../../assets/scss/loadingIndicator.scss";
 
 export default function LoadingIndicator(props) {
   const style = {
