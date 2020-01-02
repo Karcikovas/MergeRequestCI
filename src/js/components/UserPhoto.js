@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function UserPhoto(props) {
   const url = props.user.avatarUrl;
@@ -11,7 +11,13 @@ export default function UserPhoto(props) {
   return (
     <div className="user-photo">
       <a target="_blank" href={profileUrl} style={linkStyle}>
-        <img width={size} height={size} src={url} alt={username} title={username} />
+        <img
+          width={size}
+          height={size}
+          src={url}
+          alt={username}
+          title={username}
+        />
       </a>
     </div>
   );

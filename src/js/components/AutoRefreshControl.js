@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const AUTO_REFRESH_ENABLED = 'autoRefreshEnabled';
-const AUTO_REFRESH_TIME = 'autoRefreshTime';
+const AUTO_REFRESH_ENABLED = "autoRefreshEnabled";
+const AUTO_REFRESH_TIME = "autoRefreshTime";
 
 export default class AutoRefreshControl extends React.Component {
   constructor(props) {
@@ -16,9 +16,12 @@ export default class AutoRefreshControl extends React.Component {
   }
 
   componentDidMount() {
-    const autoRefreshEnabled = JSON.parse(localStorage.getItem(AUTO_REFRESH_ENABLED));
-    const autoRefreshInterval = JSON.parse(localStorage.getItem(AUTO_REFRESH_TIME));
-
+    const autoRefreshEnabled = JSON.parse(
+      localStorage.getItem(AUTO_REFRESH_ENABLED)
+    );
+    const autoRefreshInterval = JSON.parse(
+      localStorage.getItem(AUTO_REFRESH_TIME)
+    );
 
     if (autoRefreshInterval) {
       this.refs.autoRefreshTime.value = autoRefreshInterval;
@@ -72,7 +75,9 @@ export default class AutoRefreshControl extends React.Component {
           id="auto-refresh"
           onClick={this.toggleAutoRefresh}
         />
-        <label htmlFor="auto-refresh"><strong>Auto-refresh every</strong></label>
+        <label htmlFor="auto-refresh">
+          <strong>Auto-refresh every</strong>
+        </label>
         <select
           onChange={this.setAutoRefreshTime}
           id="auto-refresh-time"

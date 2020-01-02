@@ -1,4 +1,4 @@
-import { ActionTypes } from '../actions';
+import { ActionTypes } from "../actions";
 
 export function loadingReducer(state = false, action) {
   switch (action.type) {
@@ -12,7 +12,7 @@ export function loadingReducer(state = false, action) {
   }
 }
 
-export function titleReducer(state = '', action) {
+export function titleReducer(state = "", action) {
   switch (action.type) {
     case ActionTypes.SET_TITLE:
       return action.title;
@@ -30,7 +30,7 @@ export function reposReducer(state = [], action) {
   }
 }
 
-function sortPullRequests(pullRequests, sortByRepo, orderBy = 'updated') {
+function sortPullRequests(pullRequests, sortByRepo, orderBy = "updated") {
   return [...pullRequests].sort((a, b) => {
     if (sortByRepo) {
       if (a.repoUrl < b.repoUrl) {
@@ -55,19 +55,22 @@ function sortPullRequests(pullRequests, sortByRepo, orderBy = 'updated') {
 export function pullRequestsReducer(state = [], action) {
   switch (action.type) {
     case ActionTypes.ADD_PULL_REQUESTS:
-      return sortPullRequests(action.pullRequests, action.sortOptions.sortByRepo);
+      return sortPullRequests(
+        action.pullRequests,
+        action.sortOptions.sortByRepo
+      );
 
     case ActionTypes.SORT:
-      return sortPullRequests(state, action.sortOptions.sortByRepo, action.sortOptions.orderBy);
+      return sortPullRequests(
+        state,
+        action.sortOptions.sortByRepo,
+        action.sortOptions.orderBy
+      );
 
     case ActionTypes.UPDATE_PULL_REQUEST:
       return state.map(pullRequest => {
         if (pullRequest.id === action.pullRequest.id) {
-          return Object.assign(
-            {},
-            pullRequest,
-            action.pullRequest
-          );
+          return Object.assign({}, pullRequest, action.pullRequest);
         }
 
         return pullRequest;
@@ -86,7 +89,7 @@ export function failedReposReducer(state = [], action) {
   }
 }
 
-export function errorReducer(state = '', action) {
+export function errorReducer(state = "", action) {
   switch (action.type) {
     case ActionTypes.SET_ERROR:
       return action.error;
@@ -95,7 +98,10 @@ export function errorReducer(state = '', action) {
   }
 }
 
-export function sortOptionsReducer(state = { sortByRepo: false, orderBy: 'updated' }, action) {
+export function sortOptionsReducer(
+  state = { sortByRepo: false, orderBy: "updated" },
+  action
+) {
   switch (action.type) {
     case ActionTypes.SORT:
       return action.sortOptions;

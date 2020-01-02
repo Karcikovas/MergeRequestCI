@@ -1,5 +1,5 @@
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 import {
   loadingReducer,
@@ -9,7 +9,7 @@ import {
   failedReposReducer,
   errorReducer,
   sortOptionsReducer
-} from '../reducers';
+} from "../reducers";
 
 export default function configureStore() {
   const reducer = combineReducers({
@@ -22,8 +22,12 @@ export default function configureStore() {
     sortOptions: sortOptionsReducer
   });
 
-  return createStore(reducer, {}, compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  ));
+  return createStore(
+    reducer,
+    {},
+    compose(
+      applyMiddleware(thunk),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
+  );
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
 function SettingsButton({ history }) {
   return (
@@ -8,7 +8,7 @@ function SettingsButton({ history }) {
       type="button"
       className="btn btn-default"
       title="Settings"
-      onClick={() => history.push('/settings')}
+      onClick={() => history.push("/settings")}
     >
       <i className="fa fa-lg fa-gear"></i>
     </button>

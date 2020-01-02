@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const ICONS = {
-  success: 'check-circle',
-  pending: 'question-circle',
-  failure: 'times-circle',
-  error: 'times-circle'
+  success: "check-circle",
+  pending: "question-circle",
+  failure: "times-circle",
+  error: "times-circle"
 };
 
 export function Status(props) {
