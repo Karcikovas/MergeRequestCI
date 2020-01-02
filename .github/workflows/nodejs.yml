@@ -1,4 +1,4 @@
-name: Node CI
+name: Test Javascript Lint and Format it
 
 on:
   - push
@@ -21,7 +21,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: yarn install, build, and test
       run: |
-        yarn ci
         yarn format
         yarn lint
         yarn test
