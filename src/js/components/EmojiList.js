@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 export default class EmojiList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      newEmoji: '',
-      error: ''
+      newEmoji: "",
+      error: ""
     };
 
     this.addEmoji = this.addEmoji.bind(this);
@@ -17,12 +17,12 @@ export default class EmojiList extends React.Component {
   addEmoji() {
     if (this.props.emojis.indexOf(this.state.newEmoji) >= 0) {
       this.setState({
-        error: 'That emoji has already been added.',
-        newEmoji: ''
+        error: "That emoji has already been added.",
+        newEmoji: ""
       });
     } else {
       this.props.onAdd(this.state.newEmoji);
-      this.setState({ newEmoji: '' });
+      this.setState({ newEmoji: "" });
     }
   }
 
@@ -33,17 +33,13 @@ export default class EmojiList extends React.Component {
   handleChangeNewEmoji(event) {
     this.setState({
       newEmoji: event.target.value,
-      error: ''
+      error: ""
     });
   }
 
   renderError() {
     if (this.state.error) {
-      return (
-        <div className="edit-error">
-          {this.state.error}
-        </div>
-      );
+      return <div className="edit-error">{this.state.error}</div>;
     }
 
     return <div />;
@@ -54,20 +50,29 @@ export default class EmojiList extends React.Component {
       <div>
         {this.renderError()}
         <div>
-          {this.props.emojis.map(emoji =>
+          {this.props.emojis.map(emoji => (
             <div className="item" key={emoji}>
               <code>{emoji}</code>
               &nbsp;
-              <i className="fa fa-times" data-name={emoji} onClick={this.removeEmoji} />
+              <i
+                className="fa fa-times"
+                data-name={emoji}
+                onClick={this.removeEmoji}
+              />
             </div>
-          )}
+          ))}
         </div>
 
         <form>
-          <input type="text" value={this.state.newEmoji} onChange={this.handleChangeNewEmoji} />
-          <button disabled={this.state.newEmoji === ''} onClick={this.addEmoji}>Add</button>
+          <input
+            type="text"
+            value={this.state.newEmoji}
+            onChange={this.handleChangeNewEmoji}
+          />
+          <button disabled={this.state.newEmoji === ""} onClick={this.addEmoji}>
+            Add
+          </button>
         </form>
-
       </div>
     );
   }

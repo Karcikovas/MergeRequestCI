@@ -1,13 +1,13 @@
-import React from 'react';
-import emoji from 'emojione';
-import _ from 'lodash';
+import React from "react";
+import emoji from "emojione";
+import _ from "lodash";
 
 function translateReaction(reaction) {
   const translationMap = {
-    '+1': 'thumbsup',
-    '-1': 'thumbsdown',
-    laugh: 'laughing',
-    hooray: 'tada'
+    "+1": "thumbsup",
+    "-1": "thumbsdown",
+    laugh: "laughing",
+    hooray: "tada"
   };
   return translationMap[reaction] || reaction;
 }
@@ -22,7 +22,10 @@ function renderCommentCount(comments) {
 
 function renderPositiveComments(comments) {
   return (
-    <div className="pr-comment-positive" title={`${comments} positive comments`}>
+    <div
+      className="pr-comment-positive"
+      title={`${comments} positive comments`}
+    >
       <i className="fa fa-thumbs-o-up"></i> {comments}
     </div>
   );
@@ -30,7 +33,10 @@ function renderPositiveComments(comments) {
 
 function renderNegativeComments(comments) {
   return (
-    <div className="pr-comment-negative" title={`${comments} negative comments`}>
+    <div
+      className="pr-comment-negative"
+      title={`${comments} negative comments`}
+    >
       <i className="fa fa-thumbs-o-down"></i> {comments}
     </div>
   );
@@ -46,11 +52,14 @@ function renderOtherReactions(reactions) {
   });
 
   return _.map(reactionCounts, (count, reaction) => (
-    <div className="pr-reaction" title={`${count} ${reaction} reactions`} key={reaction}>
+    <div
+      className="pr-reaction"
+      title={`${count} ${reaction} reactions`}
+      key={reaction}
+    >
       {emoji.shortnameToUnicode(`:${translateReaction(reaction)}:`)} {count}
     </div>
-    )
-  );
+  ));
 }
 
 export function Comments(props) {
@@ -59,12 +68,12 @@ export function Comments(props) {
   const reactions = props.reactions;
 
   // If the comment count wasn't provided, don't render anything
-  if (typeof count === 'undefined') {
+  if (typeof count === "undefined") {
     return <div></div>;
   }
 
   // If the comment config wasn't provided, only render the total count
-  if (typeof comments === 'undefined') {
+  if (typeof comments === "undefined") {
     // Set a default value so reactions process ok
     return (
       <div className="pr-comments">

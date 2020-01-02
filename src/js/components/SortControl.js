@@ -1,7 +1,7 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as actionCreators from '../actions';
+import React from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as actionCreators from "../actions";
 
 class SortControl extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class SortControl extends React.Component {
   render() {
     return (
       <div id="sort-container">
-        <span style={{ marginRight: '1em' }}>
+        <span style={{ marginRight: "1em" }}>
           <input
             type="checkbox"
             ref="sortByRepoCheckbox"
@@ -28,12 +28,20 @@ class SortControl extends React.Component {
             onChange={this.changeSortOptions}
             checked={this.props.sortOptions.sortByRepo}
           />
-          <label htmlFor="sort-by-repo"><strong>Sort by repo</strong></label>
+          <label htmlFor="sort-by-repo">
+            <strong>Sort by repo</strong>
+          </label>
         </span>
         <span>
-          <label htmlFor="order-by"><strong>Order by</strong></label>
+          <label htmlFor="order-by">
+            <strong>Order by</strong>
+          </label>
           &nbsp;
-          <select id="order-by" ref="orderBySelect" onChange={this.changeSortOptions}>
+          <select
+            id="order-by"
+            ref="orderBySelect"
+            onChange={this.changeSortOptions}
+          >
             <option value="updated">last updated</option>
             <option value="created">created</option>
           </select>
@@ -45,7 +53,7 @@ class SortControl extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    sortOptions: state.sortOptions,
+    sortOptions: state.sortOptions
   };
 }
 

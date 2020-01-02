@@ -1,17 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Dashboard from './components/Dashboard';
-import EditDashboard from './components/EditDashboard';
-import { loadPullRequests } from './actions';
-import configureStore from './store';
+import Dashboard from "./components/Dashboard";
+import EditDashboard from "./components/EditDashboard";
+import { loadPullRequests } from "./actions";
+import configureStore from "./store";
 
-import '../css/main.scss';
+import "../css/main.scss";
 // import '../images/favicon.ico';
 
 const store = configureStore();
@@ -27,5 +24,5 @@ ReactDOM.render(
       </div>
     </Router>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById("app")
 );

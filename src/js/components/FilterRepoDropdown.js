@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default class FilterRepoDropdown extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: 'All' };
+    this.state = { value: "All" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -13,7 +13,7 @@ export default class FilterRepoDropdown extends React.Component {
   }
 
   handleSubmit(event) {
-    if (this.state.value === 'All') {
+    if (this.state.value === "All") {
       this.props.onRefresh(undefined);
     } else {
       const repo = [this.state.value];
@@ -28,10 +28,14 @@ export default class FilterRepoDropdown extends React.Component {
         <label>
           <strong>Search By Repository:</strong>
           <select value={this.state.value} onChange={this.handleChange}>
-            <option key={0} value="All">All</option>
-            {this.props.allRepos
-              .map(repo => <option key={repo} value={repo}>{repo}</option>)
-            }
+            <option key={0} value="All">
+              All
+            </option>
+            {this.props.allRepos.map(repo => (
+              <option key={repo} value={repo}>
+                {repo}
+              </option>
+            ))}
           </select>
         </label>
         <button

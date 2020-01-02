@@ -1,15 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { refresh, loadPullRequests } from '../actions';
-import RefreshButton from './RefreshButton';
-import SettingsButton from './SettingsButton';
-import AutoRefreshControl from './AutoRefreshControl';
-import FilterRepoDropdown from './FilterRepoDropdown';
-import SortControl from './SortControl';
+import { refresh, loadPullRequests } from "../actions";
+import RefreshButton from "./RefreshButton";
+import SettingsButton from "./SettingsButton";
+import AutoRefreshControl from "./AutoRefreshControl";
+import FilterRepoDropdown from "./FilterRepoDropdown";
+import SortControl from "./SortControl";
 
 class Toolbar extends React.Component {
-
   renderFilterRepoDropdown() {
     return (
       <FilterRepoDropdown
@@ -37,7 +36,9 @@ Toolbar.propTypes = {
   // repos: React.PropTypes.array.isRequired
 };
 
-function mapStateToProps(state) { return state; }
+function mapStateToProps(state) {
+  return state;
+}
 
 function mapDispatchToProps(dispatch) {
   return {

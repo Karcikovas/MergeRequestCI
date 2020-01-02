@@ -1,15 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const ActionTypes = {
-  ADD_PULL_REQUESTS: 'ADD_PULL_REQUESTS',
-  UPDATE_PULL_REQUEST: 'UPDATE_PULL_REQUEST',
-  SET_FAILED_REPOS: 'SET_FAILED_REPOS',
-  REFRESH: 'REFRESH',
-  START_LOADING: 'START_LOADING',
-  SET_ERROR: 'SET_ERROR',
-  SET_REPOS: 'SET_REPOS',
-  SET_TITLE: 'SET_TITLE',
-  SORT: 'SORT'
+  ADD_PULL_REQUESTS: "ADD_PULL_REQUESTS",
+  UPDATE_PULL_REQUEST: "UPDATE_PULL_REQUEST",
+  SET_FAILED_REPOS: "SET_FAILED_REPOS",
+  REFRESH: "REFRESH",
+  START_LOADING: "START_LOADING",
+  SET_ERROR: "SET_ERROR",
+  SET_REPOS: "SET_REPOS",
+  SET_TITLE: "SET_TITLE",
+  SORT: "SORT"
 };
 
 export function setError(error) {
@@ -66,13 +66,20 @@ export function loadPullRequests() {
   return (dispatch, getState) => {
     const { sortOptions } = getState();
     dispatch({ type: ActionTypes.START_LOADING });
-    return axios.get('/pulls').then(response => {
-      dispatch(addPullRequests(response.data.pullRequests, sortOptions));
-      dispatch(setRepos(response.data.repos));
-      dispatch(setTitle(response.data.title || 'Pull Requests'));
-    }).catch(() => {
-      dispatch(setError('Failed to load pull requests. Double check that all your repos exist!'));
-    });
+    return axios
+      .get("/pulls")
+      .then(response => {
+        dispatch(addPullRequests(response.data.pullRequests, sortOptions));
+        dispatch(setRepos(response.data.repos));
+        dispatch(setTitle(response.data.title || "Pull Requests"));
+      })
+      .catch(() => {
+        dispatch(
+          setError(
+            "Failed to load pull requests. Double check that all your repos exist!"
+          )
+        );
+      });
   };
 }
 

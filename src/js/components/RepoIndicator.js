@@ -1,14 +1,13 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 
 export default class RepoIndicator extends React.Component {
-
   formatRelativeTime(date) {
     return moment(date).fromNow();
   }
 
   formatTime(header, date) {
-    return `${header} ${moment(date).format('MMMM Do YYYY, h:mm:ss a')}`;
+    return `${header} ${moment(date).format("MMMM Do YYYY, h:mm:ss a")}`;
   }
 
   render() {
@@ -16,10 +15,10 @@ export default class RepoIndicator extends React.Component {
     const isToHide = !this.props.show;
 
     const styleHidden = {
-      display: 'none'
+      display: "none"
     };
     const styleShow = {
-      display: 'block'
+      display: "block"
     };
 
     function getStyles() {
@@ -31,7 +30,7 @@ export default class RepoIndicator extends React.Component {
 
     return (
       <div className="repo-indicator" style={getStyles()}>
-        <div className="repo-indicator-description" >
+        <div className="repo-indicator-description">
           <div className="repo-symbol">
             <i className="fa fa-2x fa-th"></i>
           </div>

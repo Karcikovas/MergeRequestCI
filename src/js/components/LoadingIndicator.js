@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../css/loadingIndicator.css';
+import React from "react";
+import "../../css/loadingIndicator.css";
 
 export default function LoadingIndicator(props) {
   const style = {
