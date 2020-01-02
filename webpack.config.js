@@ -1,8 +1,9 @@
 /* webpack.config.js */
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   // Tell Webpack which file kicks off our app.
@@ -43,7 +44,25 @@ module.exports = {
         // If you see a file that ends in .js, just send it to the babel-loader.
         test: /\.js$/,
         use: 'babel-loader'
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "sass-loader" // compiles Sass to CSS
+          }
+        ],
+      },
     ]
   },
   // Enable the Webpack dev server which will build, serve, and reload our
