@@ -74,7 +74,7 @@ export default class EmojiList extends React.Component {
 }
 
 EmojiList.propTypes = {
-  emojis: React.PropTypes.array.isRequired,
-  onAdd: React.PropTypes.func.isRequired,
-  onRemove: React.PropTypes.func.isRequired
+  // emojis: React.PropTypes.array.isRequired,
+  // onAdd: React.PropTypes.func.isRequired,
+  // onRemove: React.PropTypes.func.isRequired
 };

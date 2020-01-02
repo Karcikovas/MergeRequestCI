@@ -92,5 +92,5 @@ export default class AutoRefreshControl extends React.Component {
 }
 
 AutoRefreshControl.propTypes = {
-  onRefresh: React.PropTypes.func.isRequired
+  // onRefresh: React.PropTypes.func.isRequired
 };

@@ -228,8 +228,8 @@ class EditDashboard extends React.Component {
 }
 
 EditDashboard.propTypes = {
-  history: React.PropTypes.object.isRequired,
-  refresh: React.PropTypes.func.isRequired
+  // history: React.PropTypes.object.isRequired,
+  // refresh: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) { return state; }

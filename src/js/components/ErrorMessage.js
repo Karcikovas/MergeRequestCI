@@ -12,6 +12,6 @@ export default function ErrorMessage({ message }) {
 }
 
 ErrorMessage.propTypes = {
-  message: React.PropTypes.string.isRequired,
-  details: React.PropTypes.string
+  // message: React.PropTypes.string.isRequired,
+  // details: React.PropTypes.string
 };

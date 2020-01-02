@@ -12,11 +12,11 @@ import { loadPullRequests } from './actions';
 import configureStore from './store';
 
 import '../css/main.scss';
-import '../images/favicon.ico';
+// import '../images/favicon.ico';
 
 const store = configureStore();
 
-store.dispatch(loadPullRequests(undefined));
+store.dispatch(loadPullRequests());
 
 ReactDOM.render(
   <Provider store={store}>

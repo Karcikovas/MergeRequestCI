@@ -32,9 +32,9 @@ class Toolbar extends React.Component {
 }
 
 Toolbar.propTypes = {
-  refresh: React.PropTypes.func.isRequired,
-  failedRepos: React.PropTypes.array.isRequired,
-  repos: React.PropTypes.array.isRequired
+  // refresh: React.PropTypes.func.isRequired,
+  // failedRepos: React.PropTypes.array.isRequired,
+  // repos: React.PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) { return state; }

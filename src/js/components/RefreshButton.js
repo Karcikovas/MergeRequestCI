@@ -15,5 +15,5 @@ export default function RefreshButton(props) {
 }
 
 RefreshButton.propTypes = {
-  onRefresh: React.PropTypes.func.isRequired
+  // onRefresh: React.PropTypes.func.isRequired
 };

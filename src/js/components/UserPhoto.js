@@ -17,11 +17,11 @@ export default function UserPhoto(props) {
   );
 }
 
-UserPhoto.propTypes = {
-  user: React.PropTypes.object,
-  size: React.PropTypes.number
-};
-
-UserPhoto.defaultProps = {
-  size: 40
-};
+// UserPhoto.propTypes = {
+//   user: React.PropTypes.object,
+//   size: React.PropTypes.number
+// };
+//
+// UserPhoto.defaultProps = {
+//   size: 40
+// };

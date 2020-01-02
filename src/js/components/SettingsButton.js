@@ -16,9 +16,9 @@ function SettingsButton({ history }) {
 }
 
 SettingsButton.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
-  }).isRequired,
+  // history: React.PropTypes.shape({
+  //   push: React.PropTypes.func.isRequired,
+  // }).isRequired,
 };
 
 export default withRouter(SettingsButton);

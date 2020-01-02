@@ -86,8 +86,12 @@ export function Comments(props) {
 }
 
 Comments.propTypes = {
-  positiveCommentCount: React.PropTypes.number,
-  negativeCommentCount: React.PropTypes.number,
-  comments: React.PropTypes.array,
-  reactions: React.PropTypes.array
+  // positiveCommentCount: React.PropTypes.string,
+  // negativeCommentCount: React.PropTypes.,
+  // comments: React.PropTypes.array,
+  // reactions: React.PropTypes.array
 };
+//
+// Comments.defaultProps = {
+//   positiveCommentCount: 0
+// };

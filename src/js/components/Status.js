@@ -20,5 +20,5 @@ export function Status(props) {
 }
 
 Status.propTypes = {
-  status: React.PropTypes.object,
+  // status: React.PropTypes.object,
 };

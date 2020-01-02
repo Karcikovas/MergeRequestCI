@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 
 import '../../images/repo.svg';
 import '../../images/git-pull-request.svg';
@@ -44,13 +44,13 @@ export default class PullRequest extends React.Component {
         <UserPhoto size={50} user={pr.user} />
         <div className="pull-request-info">
           <div className="pull-request-title">
-            <img src="images/git-pull-request.svg" alt="Pull request" />
+            {/*<img src="images/git-pull-request.svg" alt="Pull request" />*/}
             &nbsp;
             <a target="_blank" href={pr.url}>{pr.title}</a>
           </div>
           <div>
             <a target="_blank" href={pr.repoUrl}>
-              <img src="images/repo.svg" alt="Repository" /> {pr.repo}
+              {/*<img src="images/repo.svg" alt="Repository" /> {pr.repo}*/}
             </a>
             <span className="pull-request-number">#{pr.number}</span>
             <Status
@@ -79,5 +79,5 @@ export default class PullRequest extends React.Component {
 }
 
 PullRequest.propTypes = {
-  pullRequest: React.PropTypes.object.isRequired
+  // pullRequest: React.PropTypes.object.isRequired
 };

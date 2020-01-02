@@ -55,6 +55,6 @@ export default class RepoIndicator extends React.Component {
 }
 
 RepoIndicator.propTypes = {
-  pullRequest: React.PropTypes.object.isRequired,
-  show: React.PropTypes.bool.isRequired
+  // pullRequest: React.PropTypes.object.isRequired,
+  // show: React.PropTypes.bool.isRequired
 };

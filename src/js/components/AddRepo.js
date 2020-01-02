@@ -100,6 +100,6 @@ export default class AddRepo extends React.Component {
 }
 
 AddRepo.propTypes = {
-  repos: React.PropTypes.array.isRequired,
-  onAddRepo: React.PropTypes.func.isRequired
+  // repos: React.PropTypes.array.isRequired,
+  // onAddRepo: React.PropTypes.func.isRequired
 };

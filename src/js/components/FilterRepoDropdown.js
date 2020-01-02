@@ -48,7 +48,7 @@ export default class FilterRepoDropdown extends React.Component {
 }
 
 FilterRepoDropdown.propTypes = {
-  failedRepos: React.PropTypes.array,
-  onRefresh: React.PropTypes.func.isRequired,
-  allRepos: React.PropTypes.array
+  // failedRepos: React.PropTypes.array,
+  // onRefresh: React.PropTypes.func.isRequired,
+  // allRepos: React.PropTypes.array
 };

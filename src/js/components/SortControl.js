@@ -56,8 +56,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 SortControl.propTypes = {
-  sortOptions: React.PropTypes.any,
-  actions: React.PropTypes.object
+  // sortOptions: React.PropTypes.any,
+  // actions: React.PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortControl);
