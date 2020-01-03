@@ -43,7 +43,7 @@ module.exports = {
       {
         // If you see a file that ends in .js, just send it to the babel-loader.
         test: /\.js$/,
-        use: 'babel-loader'
+        use: ["babel-loader", "eslint-loader"]
       },
       {
         test: /\.css$/,
