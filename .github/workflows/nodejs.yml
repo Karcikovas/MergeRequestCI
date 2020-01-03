@@ -21,6 +21,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: yarn format
       run: |
+        yarn install
         yarn format
       env:
         CI: true
