@@ -23,7 +23,7 @@ jobs:
       run: |
         yarn install
         yarn format
-        yarn lint
-        yarn test
+        yarn predeploy
+        yarn deploy
       env:
         CI: true
