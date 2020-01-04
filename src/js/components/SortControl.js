@@ -1,32 +1,32 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
 
-class SortControl extends React.Component {
-  constructor(props) {
-    super(props);
+const SortControl = () => {
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.changeSortOptions = this.changeSortOptions.bind(this);
+  // }
 
-    this.changeSortOptions = this.changeSortOptions.bind(this);
-  }
+  // const changeSortOptions = () => {
+  //   const sortByRepo = this.refs.sortByRepoCheckbox.checked;
+  //   const orderBy = this.refs.orderBySelect.value;
+  //
+  //   this.props.actions.sort({ sortByRepo, orderBy });
+  // }
 
-  changeSortOptions() {
-    const sortByRepo = this.refs.sortByRepoCheckbox.checked;
-    const orderBy = this.refs.orderBySelect.value;
-
-    this.props.actions.sort({ sortByRepo, orderBy });
-  }
-
-  render() {
     return (
       <div id="sort-container">
         <span style={{ marginRight: "1em" }}>
           <input
             type="checkbox"
-            ref="sortByRepoCheckbox"
+            // ref="sortByRepoCheckbox"
             id="sort-by-repo"
-            onChange={this.changeSortOptions}
-            checked={this.props.sortOptions.sortByRepo}
+            // onChange={changeSortOptions()}
+            // checked={sortOptions.sortByRepo}
           />
           <label htmlFor="sort-by-repo">
             <strong>Sort by repo</strong>
@@ -39,8 +39,8 @@ class SortControl extends React.Component {
           &nbsp;
           <select
             id="order-by"
-            ref="orderBySelect"
-            onChange={this.changeSortOptions}
+            // ref="orderBySelect"
+            // onChange={changeSortOptions()}
           >
             <option value="updated">last updated</option>
             <option value="created">created</option>
@@ -48,7 +48,6 @@ class SortControl extends React.Component {
         </span>
       </div>
     );
-  }
 }
 
 function mapStateToProps(state) {
@@ -64,8 +63,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 SortControl.propTypes = {
-  // sortOptions: React.PropTypes.any,
-  // actions: React.PropTypes.object
+  sortOptions: PropTypes.any,
+  actions: PropTypes.object
 };
+
+SortControl.defaultProps = {
+    sortOptions: null,
+    actions: {}
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortControl);

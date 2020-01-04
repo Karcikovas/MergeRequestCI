@@ -1,79 +1,92 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import PullRequest from "./PullRequest";
 import LoadingOverlay from "./LoadingOverlay";
 import ErrorMessage from "./ErrorMessage";
 import Toolbar from "./Toolbar";
 import Footer from "./Footer";
+import PullRequestImage from '../../images/git-pull-request.svg';
+import RepoSvg from '../../images/repo.svg';
 
-const Main = ({ title, length, failedRepos }) => {
-  // renderLoading() {
-  //   if (loading) {
-  //     return <LoadingOverlay />;
-  //   }
-  //   return <div>asdasd</div>;
-  // }
-  //
-  //
-  // renderFailedRepos() {
-  //   return (
-  //     <div>
-  //       {this.props.failedRepos.map(failedRepo => (
-  //         <ErrorMessage
-  //           key={failedRepo}
-  //           message={`Failed to load pull request data for ${failedRepo}.`}
-  //         />
-  //       ))}
-  //     </div>
-  //   );
-  // }
+const Main = ({ title, length, failedRepos, error, loading, pullRequests }) => {
 
-  // renderBody() {
-  //   if (this.props.error) {
-  //     return <ErrorMessage message={this.props.error} />;
-  //   }
-  //
-  //   return (
-  //     <div>
-  //       {this.renderFailedRepos()}
-  //       {this.renderLoading()}
-  //       {this.props.pullRequests.map(pr => (
-  //         <div key={pr.id}>
-  //           <PullRequest key={pr.id} pullRequest={pr} />
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // }
+  const renderLoading = () => {
+    if (loading) {
+      return <LoadingOverlay />;
+    }
+    return null;
+  }
+
+
+  const renderFailedRepos = () => {
+    return (
+      <div>
+        {failedRepos.map(failedRepo => (
+          <ErrorMessage
+            key={failedRepo}
+            message={`Failed to load pull request data for ${failedRepo}.`}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  const renderBody = () => {
+    if (error) {
+      return <ErrorMessage message={error} />;
+    }
+
+    return (
+      <div>
+        {renderFailedRepos()}
+        {renderLoading()}
+        {pullRequests.map(pr => (
+          <div key={pr.id}>
+            <PullRequest key={pr.id} pullRequest={pr} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="container">
       <div className="container-header">
         <h1>{title}</h1>
         <div id="pr-count" title={`${length} pull requests`}>
-          <img role="presentation" src="../../images/git-pull-request.svg" />
+          <img alt="" src={PullRequestImage} />
           {length}
         </div>
 
         <div id="repo-count" title={`${length} repositories`}>
-          <img role="presentation" src="../../images/repo.svg" />
+          <img alt="" src={RepoSvg} />
           {length}
         </div>
       </div>
       <Toolbar failedRepos={failedRepos} />
-      {/*{this.renderBody()}*/}
+      {renderBody()}
       <Footer />
     </div>
   );
 };
 
 Main.propTypes = {
-  // loading: React.PropTypes.bool.isRequired,
-  // pullRequests: React.PropTypes.array.isRequired,
-  // repos: React.PropTypes.array.isRequired,
-  // title: React.PropTypes.string.isRequired,
-  // failedRepos: React.PropTypes.array.isRequired,
-  // error: React.PropTypes.string.isRequired
+  loading: PropTypes.bool.isRequired,
+  pullRequests: PropTypes.array.isRequired,
+  repos: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  failedRepos: PropTypes.array.isRequired,
+  error: PropTypes.string.isRequired
+};
+
+Main.defaultProps = {
+    loading: false,
+    pullRequests: [],
+    repos: [],
+    title: '',
+    failedRepos: [],
+    error: '',
 };
 
 export default connect(state => state)(Main);

@@ -1,37 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
+import PropTypes from 'prop-types';
 
-export default class FilterRepoDropdown extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "All" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+const FilterRepoDropdown = ({ onRefresh, allRepos }) => {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { value: "All" };
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
+
+  const [value, setValue] = useState({ value: "All" })
+
+  const handleChange = (event) => {
+    setValue({ value: event.target.value });
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    if (this.state.value === "All") {
-      this.props.onRefresh(undefined);
+  const handleSubmit = (event) => {
+    if (value === "All") {
+      onRefresh(undefined);
     } else {
-      const repo = [this.state.value];
-      this.props.onRefresh(repo);
+      onRefresh(value)
     }
     event.preventDefault();
   }
 
-  render() {
     return (
       <div className="filter-repo-container">
         <label>
           <strong>Search By Repository:</strong>
-          <select value={this.state.value} onChange={this.handleChange}>
+          {/* eslint-disable-next-line jsx-a11y/no-onchange */}
+          <select value={value} onChange={handleChange()}>
             <option key={0} value="All">
               All
             </option>
-            {this.props.allRepos.map(repo => (
+            {allRepos.map(repo => (
               <option key={repo} value={repo}>
                 {repo}
               </option>
@@ -42,17 +44,23 @@ export default class FilterRepoDropdown extends React.Component {
           id="search-button"
           className="btn btn-default btn-filter"
           type="button"
-          onClick={this.handleSubmit}
+          onClick={handleSubmit()}
         >
-          <i className="fa fa-search"></i> Search
+          Search
         </button>
       </div>
     );
-  }
 }
 
 FilterRepoDropdown.propTypes = {
-  // failedRepos: React.PropTypes.array,
-  // onRefresh: React.PropTypes.func.isRequired,
-  // allRepos: React.PropTypes.array
+  failedRepos: PropTypes.array,
+  onRefresh: PropTypes.func.isRequired,
+  allRepos: PropTypes.array
 };
+
+FilterRepoDropdown.defaultProps = {
+  failedRepos: [],
+  allRepos: []
+}
+
+export default FilterRepoDropdown;

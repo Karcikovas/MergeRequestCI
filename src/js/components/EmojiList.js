@@ -1,63 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from 'prop-types';
 
-export default class EmojiList extends React.Component {
-  constructor(props) {
-    super(props);
+const EmojiList = ({emojis, onAdd, onRemove}) => {
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.addEmoji = this.addEmoji.bind(this);
+  //   this.removeEmoji = this.removeEmoji.bind(this);
+  //   this.handleChangeNewEmoji = this.handleChangeNewEmoji.bind(this);
+  // }
+const [emoji, setEmoji] = useState('');
+const [error, setError] = useState('');
 
-    this.state = {
-      newEmoji: "",
-      error: ""
-    };
-
-    this.addEmoji = this.addEmoji.bind(this);
-    this.removeEmoji = this.removeEmoji.bind(this);
-    this.handleChangeNewEmoji = this.handleChangeNewEmoji.bind(this);
-  }
-
-  addEmoji() {
-    if (this.props.emojis.indexOf(this.state.newEmoji) >= 0) {
-      this.setState({
-        error: "That emoji has already been added.",
-        newEmoji: ""
-      });
+  const addEmoji = () => {
+    if (emojis.indexOf(emoji) >= 0) {
+      setError('That emoji has already been added.')
     } else {
-      this.props.onAdd(this.state.newEmoji);
-      this.setState({ newEmoji: "" });
+      onAdd(emoji);
+      setEmoji('');
     }
   }
 
-  removeEmoji(event) {
-    this.props.onRemove(event.target.dataset.name);
+  const removeEmoji = (event) => {
+    onRemove(event.target.dataset.name);
   }
 
-  handleChangeNewEmoji(event) {
-    this.setState({
-      newEmoji: event.target.value,
-      error: ""
-    });
+  const handleChangeNewEmoji = (event) => {
+    setEmoji(event.target.value)
   }
 
-  renderError() {
-    if (this.state.error) {
-      return <div className="edit-error">{this.state.error}</div>;
+  const renderError = () => {
+    if (error) {
+      return <div className="edit-error">{error}</div>;
     }
-
     return <div />;
   }
 
-  render() {
     return (
       <div>
-        {this.renderError()}
+        {renderError()}
         <div>
-          {this.props.emojis.map(emoji => (
-            <div className="item" key={emoji}>
-              <code>{emoji}</code>
+          {emojis.map(emo => (
+            <div className="item" key={emo}>
+              <code>{emo}</code>
               &nbsp;
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
               <i
                 className="fa fa-times"
-                data-name={emoji}
-                onClick={this.removeEmoji}
+                data-name={emo}
+                onClick={removeEmoji()}
               />
             </div>
           ))}
@@ -66,20 +57,25 @@ export default class EmojiList extends React.Component {
         <form>
           <input
             type="text"
-            value={this.state.newEmoji}
-            onChange={this.handleChangeNewEmoji}
+            value={emoji}
+            onChange={handleChangeNewEmoji()}
           />
-          <button disabled={this.state.newEmoji === ""} onClick={this.addEmoji}>
+          <button disabled={emoji === ""} onClick={addEmoji()}>
             Add
           </button>
         </form>
       </div>
     );
-  }
 }
 
 EmojiList.propTypes = {
-  // emojis: React.PropTypes.array.isRequired,
-  // onAdd: React.PropTypes.func.isRequired,
-  // onRemove: React.PropTypes.func.isRequired
+  emojis: PropTypes.array.isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired
 };
+
+EmojiList.defaultProps = {
+  emojis: []
+}
+
+export default EmojiList;

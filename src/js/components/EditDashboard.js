@@ -1,144 +1,160 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 import { refresh, loadPullRequests } from "../actions";
 
 import AddRepo from "./AddRepo";
 import EmojiList from "./EmojiList";
 
-class EditDashboard extends React.Component {
-  constructor(props) {
-    super(props);
+const EditDashboard = () => {
+  // const [config, setConfig] = useState(
+  //     {
+  //       title: "",
+  //       repos: [],
+  //       comments: {
+  //         positive: [],
+  //         negative: []
+  //       },
+  //       mergeRule: {
+  //         positive: 0,
+  //         negative: 0,
+  //         staleHours: 0,
+  //         neverRegexp: ""
+  //       }
+  //     }
+  // )
 
-    this.state = {
-      config: {
-        title: "",
-        repos: [],
-        comments: {
-          positive: [],
-          negative: []
-        },
-        mergeRule: {
-          positive: 0,
-          negative: 0,
-          staleHours: 0,
-          neverRegexp: ""
-        }
-      }
-    };
+  // constructor(props) {
+  //   super(props);
+  //
+  // //   this.state = {
+  //     config: {
+  //       title: "",
+  //       repos: [],
+  //       comments: {
+  //         positive: [],
+  //         negative: []
+  //       },
+  //       mergeRule: {
+  //         positive: 0,
+  //         negative: 0,
+  //         staleHours: 0,
+  //         neverRegexp: ""
+  //       }
+  //     }
+  // //   };
+  //
+  //   this.handleChangeTitle = this.handleChangeTitle.bind(this);
+  //   this.addRepo = this.addRepo.bind(this);
+  //   this.removeRepo = this.removeRepo.bind(this);
+  //   this.saveConfig = this.saveConfig.bind(this);
+  //   this.cancel = this.cancel.bind(this);
+  //   this.addPositive = this.addPositive.bind(this);
+  //   this.removePositive = this.removePositive.bind(this);
+  //   this.addNegative = this.addNegative.bind(this);
+  //   this.removeNegative = this.removeNegative.bind(this);
+  //   this.handleChangePositiveMergeRule = this.handleChangePositiveMergeRule.bind(
+  //     this
+  //   );
+  //   this.handleChangeNegativeMergeRule = this.handleChangeNegativeMergeRule.bind(
+  //     this
+  //   );
+  //   this.handleChangeStaleHours = this.handleChangeStaleHours.bind(this);
+  //   this.handleChangeNeverRegexp = this.handleChangeNeverRegexp.bind(this);
+  // }
+  //
+  // componentDidMount() {
+  //   axios.get("/config").then(response => {
+  //     this.setState({ config: response.data });
+  //   });
+  // }
+  //
+  // handleChangePositiveMergeRule(event) {
+  //   this.state.config.mergeRule.positive = parseInt(event.target.value, 10);
+  //   this.setState({ config: this.state.config });
+  // }
+  //
+  // handleChangeNegativeMergeRule(event) {
+  //   this.state.config.mergeRule.negative = parseInt(event.target.value, 10);
+  //   this.setState({ config: this.state.config });
+  // }
+  //
+  // handleChangeStaleHours(event) {
+  //   this.state.config.mergeRule.staleHours = parseInt(event.target.value, 10);
+  //   this.setState({ config: this.state.config });
+  // }
+  //
+  // handleChangeNeverRegexp(event) {
+  //   this.state.config.mergeRule.neverRegexp = event.target.value;
+  //   this.setState({ config: this.state.config });
+  // }
+  //
+  // handleChangeTitle(event) {
+  //   this.state.config.title = event.target.value;
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // addRepo(owner, repo) {
+  //   this.state.config.repos.push(`${owner}/${repo}`);
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // removeRepo(event) {
+  //   const repo = event.target.dataset.name;
+  //   this.state.config.repos = this.state.config.repos.filter(r => r !== repo);
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // addPositive(emoji) {
+  //   this.state.config.comments.positive.push(emoji);
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // removePositive(emoji) {
+  //   this.state.config.comments.positive = this.state.config.comments.positive.filter(
+  //     e => e !== emoji
+  //   );
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // addNegative(emoji) {
+  //   this.state.config.comments.negative.push(emoji);
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // removeNegative(emoji) {
+  //   this.state.config.comments.negative = this.state.config.comments.negative.filter(
+  //     e => e !== emoji
+  //   );
+  //   this.setState({
+  //     config: this.state.config
+  //   });
+  // }
+  //
+  // saveConfig() {
+  //   axios.put("/config", this.state.config).then(() => {
+  //     this.props.history.push("/");
+  //     this.props.refresh();
+  //   });
+  // }
+  //
+  // cancel() {
+  //   this.props.history.push("/");
+  // }
 
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.addRepo = this.addRepo.bind(this);
-    this.removeRepo = this.removeRepo.bind(this);
-    this.saveConfig = this.saveConfig.bind(this);
-    this.cancel = this.cancel.bind(this);
-    this.addPositive = this.addPositive.bind(this);
-    this.removePositive = this.removePositive.bind(this);
-    this.addNegative = this.addNegative.bind(this);
-    this.removeNegative = this.removeNegative.bind(this);
-    this.handleChangePositiveMergeRule = this.handleChangePositiveMergeRule.bind(
-      this
-    );
-    this.handleChangeNegativeMergeRule = this.handleChangeNegativeMergeRule.bind(
-      this
-    );
-    this.handleChangeStaleHours = this.handleChangeStaleHours.bind(this);
-    this.handleChangeNeverRegexp = this.handleChangeNeverRegexp.bind(this);
-  }
-
-  componentDidMount() {
-    axios.get("/config").then(response => {
-      this.setState({ config: response.data });
-    });
-  }
-
-  handleChangePositiveMergeRule(event) {
-    this.state.config.mergeRule.positive = parseInt(event.target.value, 10);
-    this.setState({ config: this.state.config });
-  }
-
-  handleChangeNegativeMergeRule(event) {
-    this.state.config.mergeRule.negative = parseInt(event.target.value, 10);
-    this.setState({ config: this.state.config });
-  }
-
-  handleChangeStaleHours(event) {
-    this.state.config.mergeRule.staleHours = parseInt(event.target.value, 10);
-    this.setState({ config: this.state.config });
-  }
-
-  handleChangeNeverRegexp(event) {
-    this.state.config.mergeRule.neverRegexp = event.target.value;
-    this.setState({ config: this.state.config });
-  }
-
-  handleChangeTitle(event) {
-    this.state.config.title = event.target.value;
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  addRepo(owner, repo) {
-    this.state.config.repos.push(`${owner}/${repo}`);
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  removeRepo(event) {
-    const repo = event.target.dataset.name;
-    this.state.config.repos = this.state.config.repos.filter(r => r !== repo);
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  addPositive(emoji) {
-    this.state.config.comments.positive.push(emoji);
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  removePositive(emoji) {
-    this.state.config.comments.positive = this.state.config.comments.positive.filter(
-      e => e !== emoji
-    );
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  addNegative(emoji) {
-    this.state.config.comments.negative.push(emoji);
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  removeNegative(emoji) {
-    this.state.config.comments.negative = this.state.config.comments.negative.filter(
-      e => e !== emoji
-    );
-    this.setState({
-      config: this.state.config
-    });
-  }
-
-  saveConfig() {
-    axios.put("/config", this.state.config).then(() => {
-      this.props.history.push("/");
-      this.props.refresh();
-    });
-  }
-
-  cancel() {
-    this.props.history.push("/");
-  }
-
-  render() {
     return (
       <div id="edit-dashboard" className="container">
         <div className="container-header">
@@ -163,6 +179,7 @@ class EditDashboard extends React.Component {
 
             {this.state.config.repos.map(repo => (
               <div className="item" key={repo}>
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <img role="presentation" src="images/repo.svg" />
                 &nbsp;
                 {repo}
@@ -170,7 +187,7 @@ class EditDashboard extends React.Component {
                 <i
                   className="fa fa-times"
                   data-name={repo}
-                  onClick={this.removeRepo}
+                  // onClick={this.removeRepo}
                 />
               </div>
             ))}
@@ -187,7 +204,6 @@ class EditDashboard extends React.Component {
             </p>
             For a full list, see{" "}
             <a
-              target="_blank"
               href="https://www.webpagefx.com/tools/emoji-cheat-sheet/"
             >
               this page
@@ -258,7 +274,6 @@ class EditDashboard extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 EditDashboard.propTypes = {

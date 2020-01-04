@@ -1,13 +1,9 @@
 import React from "react";
-// import moment from 'moment';
-
 import "../../images/repo.svg";
 import "../../images/git-pull-request.svg";
-
 import UserPhoto from "./UserPhoto";
 import { Comments } from "./Comments";
 import { Status } from "./Status";
-
 const CLASS_BASE = "pull-request";
 const CLASS_UNMERGEABLE = `${CLASS_BASE} ${CLASS_BASE}--unmergeable`;
 const CLASS_MERGEABLE = `${CLASS_BASE} ${CLASS_BASE}--mergeable`;
@@ -25,18 +21,17 @@ function getPrClassName(pr) {
   return CLASS_BASE;
 }
 
-export default class PullRequest extends React.Component {
-  formatRelativeTime(date) {
-    return moment(date).fromNow();
+const PullRequest = ({pullRequest}) => {
+  const formatRelativeTime = (date) => {
+    return console.log(date);
   }
 
-  formatTime(header, date) {
-    return `${header} ${moment(date).format("MMMM Do YYYY, h:mm:ss a")}`;
+  const formatTime = (header, date) => {
+    // return `${header} ${moment(date).format("MMMM Do YYYY, h:mm:ss a")}`;
+    return console.log([header,date ])
   }
-
-  render() {
-    const pr = this.props.pullRequest;
-    const className = getPrClassName(pr);
+  const pr = pullRequest;
+  const className = getPrClassName(pr);
 
     return (
       <div className={className}>
@@ -45,12 +40,12 @@ export default class PullRequest extends React.Component {
           <div className="pull-request-title">
             {/*<img src="images/git-pull-request.svg" alt="Pull request" />*/}
             &nbsp;
-            <a target="_blank" href={pr.url}>
+            <a href={pr.url}>
               {pr.title}
             </a>
           </div>
           <div>
-            <a target="_blank" href={pr.repoUrl}>
+            <a href={pr.repoUrl}>
               {/*<img src="images/repo.svg" alt="Repository" /> {pr.repo}*/}
             </a>
             <span className="pull-request-number">#{pr.number}</span>
@@ -64,22 +59,23 @@ export default class PullRequest extends React.Component {
           </div>
           <div
             className="pull-request-created"
-            title={this.formatTime("Created", pr.created)}
+            title={formatTime("Created", pr.created)}
           >
-            Opened by {pr.user.username} {this.formatRelativeTime(pr.created)}
+            Opened by {pr.user.username} {formatRelativeTime(pr.created)}
           </div>
         </div>
         <div
           className="pull-request-last-updated"
-          title={this.formatTime("Last updated", pr.updated)}
+          title={formatTime("Last updated", pr.updated)}
         >
-          {this.formatRelativeTime(pr.updated)}
+          {formatRelativeTime(pr.updated)}
         </div>
       </div>
     );
-  }
 }
 
 PullRequest.propTypes = {
   // pullRequest: React.PropTypes.object.isRequired
 };
+
+export default PullRequest;
