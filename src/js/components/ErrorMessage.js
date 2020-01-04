@@ -1,19 +1,27 @@
-import React from "react";
+import React from 'react'
+import PropTypes from 'prop-types';
 
-export default function ErrorMessage({ message }) {
-  return (
-    <div className="error-message">
-      <div className="error-message-details">
-        <div className="warning-symbol">
-          <i className="fa fa-2x fa-warning"></i>
+const ErrorMessage = ({ message }) => {
+    return (
+        <div className="error-message">
+            <div className="error-message-details">
+                <div className="warning-symbol">
+                    <i className="fa fa-2x fa-warning"></i>
+                </div>
+                <div>{message}</div>
+            </div>
         </div>
-        <div>{message}</div>
-      </div>
-    </div>
-  );
+    )
 }
 
 ErrorMessage.propTypes = {
-  // message: React.PropTypes.string.isRequired,
-  // details: React.PropTypes.string
-};
+    message: PropTypes.string.isRequired,
+    details: PropTypes.string
+}
+
+ErrorMessage.defaultProps = {
+    message: '',
+    details: ''
+}
+
+export default ErrorMessage;

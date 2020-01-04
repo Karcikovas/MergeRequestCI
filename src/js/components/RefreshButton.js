@@ -1,19 +1,22 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function RefreshButton(props) {
-  return (
-    <button
-      id="refresh-button"
-      type="button"
-      className="btn btn-default"
-      onClick={props.onRefresh}
-      title="Refresh"
-    >
-      <i className="fa fa-lg fa-refresh"></i>
-    </button>
-  );
+const RefreshButton = ({onRefresh}) => {
+    return (
+        <button
+            id="refresh-button"
+            type="button"
+            className="btn btn-default"
+            onClick={onRefresh}
+            title="Refresh"
+        >
+            <i className="fa fa-lg fa-refresh"></i>
+        </button>
+    )
 }
 
 RefreshButton.propTypes = {
-  // onRefresh: React.PropTypes.func.isRequired
-};
+    onRefresh: PropTypes.func.isRequired
+}
+
+export default RefreshButton;

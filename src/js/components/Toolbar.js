@@ -1,51 +1,51 @@
-import React from "react";
-import { connect } from "react-redux";
-import { refresh, loadPullRequests } from "../actions";
-import RefreshButton from "./RefreshButton";
-import SettingsButton from "./SettingsButton";
-import AutoRefreshControl from "./AutoRefreshControl";
-import FilterRepoDropdown from "./FilterRepoDropdown";
-import SortControl from "./SortControl";
+import React from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import { refresh, loadPullRequests } from '../actions'
+import RefreshButton from './RefreshButton'
+import SettingsButton from './SettingsButton'
+import AutoRefreshControl from './AutoRefreshControl'
+// import FilterRepoDropdown from './FilterRepoDropdown'
+import SortControl from './SortControl'
 
-class Toolbar extends React.Component {
-  renderFilterRepoDropdown() {
+const Toolbar = ({refresh}) => {
+    // const renderFilterRepoDropdown = () => {
+    //     return (
+    //         <FilterRepoDropdown
+    //             onRefresh={refresh}
+    //             failedRepos={failedRepos}
+    //             allRepos={repos}
+    //         />
+    //     )
+    // }
+
     return (
-      <FilterRepoDropdown
-        onRefresh={this.props.refresh}
-        failedRepos={this.props.failedRepos}
-        allRepos={this.props.repos}
-      />
-    );
-  }
-  render() {
-    return (
-      <div id="toolbar">
-        <SettingsButton />
-        <RefreshButton onRefresh={this.props.refresh} />
-        <AutoRefreshControl onRefresh={this.props.refresh} />
-        <SortControl />
-      </div>
-    );
-  }
+            <div id="toolbar">
+                <SettingsButton />
+                <RefreshButton onRefresh={refresh} />
+                <AutoRefreshControl onRefresh={refresh} />
+                <SortControl />
+            </div>
+    )
 }
 
 Toolbar.propTypes = {
-  // refresh: React.PropTypes.func.isRequired,
-  // failedRepos: React.PropTypes.array.isRequired,
-  // repos: React.PropTypes.array.isRequired
-};
+    refresh: PropTypes.func.isRequired,
+    // failedRepos: React.PropTypes.array.isRequired,
+    // repos: React.PropTypes.array.isRequired
+}
 
 function mapStateToProps(state) {
-  return state;
+    return state
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    refresh: () => {
-      dispatch(refresh());
-      dispatch(loadPullRequests());
+    return {
+        refresh: () => {
+            dispatch(refresh())
+            dispatch(loadPullRequests())
+        },
     }
-  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Toolbar)

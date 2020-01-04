@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react'
+import LoadingIndicator from './LoadingIndicator'
 
-import LoadingIndicator from "./LoadingIndicator";
+const LoadingOverlay = () => (
+        <div className="overlay">
+            <LoadingIndicator size={100} />
+        </div>
+);
 
-export default function LoadingOverlay() {
-  return (
-    <div className="overlay">
-      <LoadingIndicator size={100} />
-    </div>
-  );
-}
+export default LoadingOverlay;
