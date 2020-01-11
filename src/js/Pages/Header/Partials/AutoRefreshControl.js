@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './AutoRefreshControl.scss';
 // const AUTO_REFRESH_ENABLED = 'autoRefreshEnabled'
 // const AUTO_REFRESH_TIME = 'autoRefreshTime'
 
@@ -73,7 +74,7 @@ const AutoRefreshControl = () => {
     // }
 
     return (
-        <div id="auto-refresh-container">
+        <div className="auto-refresh">
             <input
                 type="checkbox"
                 // ref="autoRefreshCheckbox"

@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actionCreators from '../actions'
+import * as actionCreators from '../../../actions'
+import './SortControl.scss';
 
 const SortControl = () => {
     // constructor(props) {
@@ -19,8 +20,8 @@ const SortControl = () => {
     // }
 
     return (
-        <div id="sort-container">
-            <span style={{ marginRight: '1em' }}>
+        <div className="sort-container">
+            <span>
                 <input
                     type="checkbox"
                     // ref="sortByRepoCheckbox"

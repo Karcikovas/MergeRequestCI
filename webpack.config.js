@@ -63,6 +63,14 @@ module.exports = {
           }
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ]
   },
   // Enable the Webpack dev server which will build, serve, and reload our

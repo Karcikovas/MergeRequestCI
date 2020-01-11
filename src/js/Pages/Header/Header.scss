@@ -1,0 +1,25 @@
+@import "../../../assets/scss/main";
+
+.header {
+  background-color: $background-light-blue;
+
+  .has-margin {
+    display: flex;
+    flex-direction: row;
+    max-width: $screen-lg;
+    margin: 0 auto;
+  }
+}
+
+.header-logo {
+  height: 100px;
+  width: 100px;
+}
+
+.toolbar {
+  max-width: $screen-md;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: flex-start;
+}

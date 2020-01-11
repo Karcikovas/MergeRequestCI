@@ -1,0 +1,20 @@
+$grid-gutter-width: 30px;
+
+$width-xs: 480px;
+$width-sm: 768px;
+$width-md: 1025px;
+$width-lg: 1366px;
+
+$screen-xs: $width-xs;
+$screen-sm: $width-sm;
+$screen-md: $width-md;
+$screen-lg: $width-lg;
+
+$container-tablet: (720px + $grid-gutter-width);
+$container-sm: $container-tablet;
+
+$container-desktop: (940px + $grid-gutter-width);
+$container-md: $container-desktop;
+
+$container-large-desktop: (1170px + $grid-gutter-width);
+$container-lg: $container-large-desktop;
