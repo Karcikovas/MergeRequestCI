@@ -2,6 +2,7 @@
 
 .header {
   background-color: $background-light-blue;
+  box-shadow: $box-shadow-dark;
 
   .has-margin {
     display: flex;
@@ -9,6 +10,12 @@
     max-width: $screen-lg;
     margin: 0 auto;
   }
+}
+.header-page-name {
+  margin: auto 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: $color-black;
 }
 
 .header-logo {

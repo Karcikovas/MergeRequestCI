@@ -1,0 +1,19 @@
+@import "../../../assets/scss/main";
+
+.messages {
+  width: fit-content;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: $box-shadow-button;
+
+  &.is-error {
+    background-color: $color-danger;
+    color: $color-black;
+
+    &:hover {
+      color:$color-white;
+      text-decoration: underline;
+    }
+  }
+}

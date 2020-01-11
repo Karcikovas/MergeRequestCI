@@ -1,26 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { refresh, loadPullRequests } from '../../actions'
 import AutoRefreshControl from './Partials/AutoRefreshControl'
 import SortControl from './Partials/SortControl'
 import './Header.scss';
 import Button from '../../components/Button/Button';
 import DefaultLogo from '../../../images/ksi.png';
-import { useRouteMatch } from 'react-router-dom';
+import {refresh, loadPullRequests} from '../../../core/actions/index';
+import { useLocation } from "react-router-dom";
 
 //TODO: FIX Default prop to take default logo from props;
-const Header = ({refresh, Logo}) => {
-    let { path, url } = useRouteMatch();
+const Header = ({refresh, dispatchRefesh}) => {
+    const location = useLocation()
+
+    useEffect(() => {
+        loadPullRequests();
+    }, []);
+
     return (
     <div className="header">
         <div className='has-margin'>
             <img className="header-logo" alt='/' src={DefaultLogo}/>
-            <div>
-                {console.log({path})}
-                {console.log({url})}
-            </div>
-
+            {location.pathname !== '/'
+                ? <div className="header-page-name">{location.pathname}</div>
+                : null
+            }
 
             <div className="toolbar">
                 <Button
@@ -28,10 +32,10 @@ const Header = ({refresh, Logo}) => {
                     title="Settings"
                     to='/settings'
                 >
-                    <i className="fa fa-lg fa-refresh">Settings</i>
+                   Settings
                 </Button>
 
-                <Button title="Refresh"><i className="fa fa-lg fa-refresh"/>Refresh</Button>
+                <Button title="Refresh" onClick={dispatchRefesh} >Refresh</Button>
 
                 <AutoRefreshControl onRefresh={refresh}/>
 
@@ -43,27 +47,18 @@ const Header = ({refresh, Logo}) => {
 }
 
 Header.propTypes = {
-    refresh: PropTypes.func.isRequired,
+    refresh: PropTypes.func,
     Logo: PropTypes.string,
-    // failedRepos: React.PropTypes.array.isRequired,
-    // repos: React.PropTypes.array.isRequired
+    error: PropTypes.string,
+    dispatchRefesh: PropTypes.func,
 }
 
 Header.defaultProps = {
     logo: DefaultLogo,
 }
 
-function mapStateToProps(state) {
-    return state
-}
+const mapDispatchToProps = (dispatch) => ({
+    dispatchRefesh: () => dispatch(refresh()),
+})
 
-function mapDispatchToProps(dispatch) {
-    return {
-        refresh: () => {
-            dispatch(refresh())
-            dispatch(loadPullRequests())
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(null, mapDispatchToProps)(Header)
