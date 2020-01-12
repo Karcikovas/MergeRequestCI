@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as actionCreators from '../../../../core/actions'
+// import { bindActionCreators } from 'redux'
+// import { connect } from 'react-redux'
+// import * as actionCreators from '../../../../core/actions'
 import './SortControl.scss';
 
 const SortControl = () => {
@@ -50,18 +50,18 @@ const SortControl = () => {
         </div>
     )
 }
-
-function mapStateToProps(state) {
-    return {
-        sortOptions: state.sortOptions,
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(actionCreators, dispatch),
-    }
-}
+//
+// function mapStateToProps(state) {
+//     return {
+//         sortOptions: state.sortOptions,
+//     }
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         actions: bindActionCreators(actionCreators, dispatch),
+//     }
+// }
 
 SortControl.propTypes = {
     sortOptions: PropTypes.any,
@@ -73,4 +73,4 @@ SortControl.defaultProps = {
     actions: {},
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SortControl)
+export default SortControl

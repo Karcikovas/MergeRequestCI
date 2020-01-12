@@ -1,22 +1,10 @@
 import { combineReducers } from 'redux';
-import {
-    loadingReducer,
-    reposReducer,
-    titleReducer,
-    pullRequestsReducer,
-    failedReposReducer,
-    errorReducer,
-    sortOptionsReducer,
-} from './reducers/index.js'
+import { RequestReducer } from './Request/RequestReducer';
+import ProjectReducer from './Project/ProjectReducer';
 
 const rootReducer = combineReducers({
-    pullRequests: pullRequestsReducer,
-    repos: reposReducer,
-    failedRepos: failedReposReducer,
-    loading: loadingReducer,
-    error: errorReducer,
-    title: titleReducer,
-    sortOptions: sortOptionsReducer,
+    request: RequestReducer,
+    project: ProjectReducer,
 })
 
 export default rootReducer;

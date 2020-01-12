@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import AutoRefreshControl from './Partials/AutoRefreshControl'
 import SortControl from './Partials/SortControl'
 import './Header.scss';
 import Button from '../../components/Button/Button';
 import DefaultLogo from '../../../images/ksi.png';
-import {refresh, loadPullRequests} from '../../../core/actions/index';
+// import { refresh } from '../../../core/actions/index';
 import { useLocation } from "react-router-dom";
 
 //TODO: FIX Default prop to take default logo from props;
-const Header = ({refresh, dispatchRefesh}) => {
+const Header = () => {
     const location = useLocation()
 
     useEffect(() => {
-        loadPullRequests();
+        // dispatchRefesh();
     }, []);
 
     return (
@@ -35,9 +35,10 @@ const Header = ({refresh, dispatchRefesh}) => {
                    Settings
                 </Button>
 
-                <Button title="Refresh" onClick={dispatchRefesh} >Refresh</Button>
+                {/* eslint-disable-next-line no-console */}
+                <Button title="Refresh" onClick={() => console.log('asdasd')} >Refresh</Button>
 
-                <AutoRefreshControl onRefresh={refresh}/>
+                <AutoRefreshControl />
 
                 <SortControl/>
             </div>
@@ -50,15 +51,18 @@ Header.propTypes = {
     refresh: PropTypes.func,
     Logo: PropTypes.string,
     error: PropTypes.string,
-    dispatchRefesh: PropTypes.func,
+    // dispatchRefesh: PropTypes.func,
 }
 
 Header.defaultProps = {
     logo: DefaultLogo,
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    dispatchRefesh: () => dispatch(refresh()),
-})
+// const mapDispatchToProps = (dispatch) => ({
+    // dispatchRefesh: () => dispatch(refresh()),
+// })
 
-export default connect(null, mapDispatchToProps)(Header)
+export default
+// connect(null, mapDispatchToProps)(
+    Header
+// )

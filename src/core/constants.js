@@ -5,4 +5,8 @@ export const constants = {
         SET_ERROR: 'request.SET_ERROR',
         SET_ERRORS: 'request.SET_ERRORS',
     },
+    project: {
+        GET: 'project.GET',
+        SET: 'project.SET',
+    },
 }
