@@ -1,0 +1,32 @@
+@import "../../../assets/scss/main";
+
+.header {
+  background-color: $background-light-blue;
+  box-shadow: $box-shadow-dark;
+
+  .has-margin {
+    display: flex;
+    flex-direction: row;
+    max-width: $screen-lg;
+    margin: 0 auto;
+  }
+}
+.header-page-name {
+  margin: auto 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: $color-black;
+}
+
+.header-logo {
+  height: 100px;
+  width: 100px;
+}
+
+.toolbar {
+  max-width: $screen-md;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: flex-start;
+}

@@ -1,0 +1,23 @@
+@import "../../../assets/scss/variables";
+
+.button {
+  max-height: 36px;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: $box-shadow-button;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  line-height: normal;
+  color: $nfq-main-color;
+  background-color: transparent;
+  border:1px solid $nfq-main-color;
+  text-decoration: none;
+  font-style: normal;
+
+  &:hover {
+    color: $color-white;
+    border-color: $nfq-main-color;
+    background-color: $nfq-main-color;
+  }
+}
