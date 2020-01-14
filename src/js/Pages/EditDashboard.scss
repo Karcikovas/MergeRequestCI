@@ -1,6 +1,6 @@
 @import "../../assets/scss/main";
 
-.edit-settings {
+.edit-dashboard-page {
   margin: 100px auto;
   width: $width-xs;
   display: flex;
@@ -8,32 +8,24 @@
   border-radius: 10px;
   box-shadow: $box-shadow-dark;
   background-color: $background-light-blue;
-  padding: 10px;
+  padding: 20px;
 
   h2 {
     text-align: center;
     color: $color-black;
   }
 
-  .edit-settings-form {
-    margin: auto;
+  .settings-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
   }
 
-  .edit-settings-input-row {
-    font-size: 15px;
-    margin: 10px auto;
-
-    input {
-      margin: auto;
-      min-width: 100px;
-      left: 100px;
-    }
-  }
-
-
-  .edit-settings-actions {
+  .settings-form-input-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 10px;
   }
 }
