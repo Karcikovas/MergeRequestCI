@@ -35,8 +35,7 @@ const Header = () => {
                    Settings
                 </Button>
 
-                {/* eslint-disable-next-line no-console */}
-                <Button title="Refresh" onClick={() => console.log('asdasd')} >Refresh</Button>
+                <Button title="Refresh" >Refresh</Button>
 
                 <AutoRefreshControl />
 

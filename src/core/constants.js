@@ -9,4 +9,7 @@ export const constants = {
         GET: 'project.GET',
         SET: 'project.SET',
     },
+    form: {
+        SAVE: 'form.SAVE',
+    }
 }

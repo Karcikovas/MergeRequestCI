@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 import Message from '../components/Message/Message'
 
 const Main = ({error, dispatchProject}) => {
-
+    // console.log(projectsIDs);
     useEffect(() => {
-        dispatchProject(1);
+        // if(projectsIDs !== []) {
+            [2, 4, 1].map((id) => dispatchProject(id))
+        // }
     }, []);
 
     return (
@@ -25,6 +27,7 @@ Main.propTypes = {
     failedRepos: PropTypes.array,
     error: PropTypes.string,
     dispatchProject: PropTypes.func.isRequired,
+    projectsIDs: PropTypes.array,
 }
 
 Main.defaultProps = {
@@ -34,10 +37,11 @@ Main.defaultProps = {
     title: '',
     failedRepos: [],
     error: '',
+    // projectsIDs: []
 }
 
 const mapStateToProps = (state) => ({
-   error: state.error
+   projectsIDs: state
 });
 
 const mapDispatchToProps = (dispatch) => ({

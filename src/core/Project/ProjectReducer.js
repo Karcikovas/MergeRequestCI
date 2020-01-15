@@ -6,7 +6,7 @@ const initialState = List([]);
 const ETicketReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.project.SET:
-            return List.of(action.payload.project);
+            return List.of(...state, action.payload)
 
         default:
             return state;

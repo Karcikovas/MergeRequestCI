@@ -25,7 +25,6 @@ module.exports = {
         use: [
           { loader: 'babel-loader' },
           { loader: 'html-loader' },
-          // { loader: 'polymer-webpack-loader' }
         ]
       },
       {
