@@ -1,16 +1,15 @@
-import { List } from 'immutable';
-import { constants } from '../constants';
+import { constants } from '../constants'
 
-const initialState = List([]);
+const initialState = [];
 
 const ETicketReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.project.SET:
-            return List.of(...state, action.payload)
+            return action.payload.project;
 
         default:
             return state;
     }
-};
+}
 
-export default ETicketReducer;
+export default ETicketReducer

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 // import { bindActionCreators } from 'redux'
 // import { connect } from 'react-redux'
 // import * as actionCreators from '../../../../core/actions'
-import './SortControl.scss';
+import './SortControl.scss'
 
 const SortControl = () => {
     // constructor(props) {

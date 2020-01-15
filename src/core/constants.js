@@ -11,5 +11,5 @@ export const constants = {
     },
     form: {
         SAVE: 'form.SAVE',
-    }
+    },
 }
