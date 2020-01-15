@@ -1,18 +1,16 @@
-import React
-    // , { useEffect }
-    from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getProject } from '../../core/Project/ProjectActions'
 import PropTypes from 'prop-types'
 import Message from '../components/Message/Message'
 
-const Main = ({error, projectsIDs}) => {
-    console.log(projectsIDs);
-    // useEffect(() => {
-    //     if(projectsIDs !== []) {
-    //         projectsIDs.map((id) => dispatchProject(id))
-    //     }
-    // }, []);
+const Main = ({error, dispatchProject}) => {
+    // console.log(projectsIDs);
+    useEffect(() => {
+        // if(projectsIDs !== []) {
+            [2, 4, 1].map((id) => dispatchProject(id))
+        // }
+    }, []);
 
     return (
         <div className="container">
