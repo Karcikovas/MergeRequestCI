@@ -13,6 +13,8 @@ export function* getProject(action) {
         endpoints.GET_PROJECT.url.path(id)
     )
 
+    console.log(action);
+
     if (response) {
         yield all([put(setProject(response.data))])
     }

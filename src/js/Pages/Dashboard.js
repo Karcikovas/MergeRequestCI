@@ -8,9 +8,17 @@ const Main = ({ error, dispatchProject, settings, projects}) => {
     useEffect(() => {
         if (settings !== []) {
             settings.map(id => dispatchProject(id.projectID))
-            console.log(projects)
         }
     }, []);
+
+    console.log(projects);
+
+
+    if (projects) {
+        return projects.map((project) =>
+            // eslint-disable-next-line react/jsx-key
+            <div>{project.title}</div>
+        )}
 
     return (
         <div className="container">

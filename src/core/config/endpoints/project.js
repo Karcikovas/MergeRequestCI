@@ -3,7 +3,7 @@ export const projectEndpoint = {
         name: 'GET_PROJECT',
         url: {
             method: 'GET',
-            path: id => `/${id}/merge_requests`,
+            path: id => `/${id}/merge_requests?state=opened`
         },
     },
 }
