@@ -1,28 +1,31 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { getProject } from '../../core/Project/ProjectActions'
-import PropTypes from 'prop-types'
-import Message from '../components/Message/Message'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getProject } from '../../../core/Project/ProjectActions';
+import PropTypes from 'prop-types';
+import Message from '../../components/Message/Message';
+import Card from '../../components/Card/Card';
+import './Dashboard.scss';
 
-const Main = ({ error, dispatchProject, settings, projects}) => {
+const Main = ({ error, dispatchProject, projects}) => {
     useEffect(() => {
-        if (settings !== []) {
-            settings.map(id => dispatchProject(id.projectID))
-        }
+        // if (settings === []) {
+        //     settings.map(id => dispatchProject(id.projectID))
+        // }
+
+        dispatchProject()
     }, []);
 
-    console.log(projects);
-
-
     if (projects) {
-        return projects.map((project) =>
-            // eslint-disable-next-line react/jsx-key
-            <div>{project.title}</div>
-        )}
-
-    return (
+        return (
+            <ul className='dashboard-merge-request-list'>
+                {
+                    projects.map((project) => <Card key={project.id} project={project}/>)
+                }
+            </ul>
+        )
+    } return (
         <div className="container">
-            {error && <Message text={error} variant="error" />}
+            {error && <Message text={error} variant="error"/>}
         </div>
     )
 }

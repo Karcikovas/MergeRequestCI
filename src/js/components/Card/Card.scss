@@ -1,0 +1,17 @@
+@import "../../../assets/scss/main";
+
+.merge-request-card {
+  list-style: none;
+  max-width: 800px;
+  width: 100%;
+  background-color: $nfq-main-color;
+  margin-bottom: 15px;
+
+  &.is-success {
+    background-color: $default-success-color;
+  }
+
+  &.is-danger {
+    background-color: $color-danger;
+  }
+}

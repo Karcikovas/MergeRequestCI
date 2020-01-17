@@ -2,14 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useFormik } from 'formik'
-import './EditDashboard.scss'
-import { saveSettings } from '../../core/SettingsForm/SettingsFormActions'
-import { getProject } from '../../core/Project/ProjectActions'
+import './Settings.scss'
+import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
+import { getProject } from '../../../core/Project/ProjectActions'
 
-const EditDashboard = props => {
+const Settings = props => {
     const formik = useFormik({
         initialValues: {
             projectID: '',
+            upvotes: '',
+            successColor: ''
         },
         onSubmit: values => {
             const { dispatchFormSave, dispatchGetProjects } = props
@@ -35,13 +37,42 @@ const EditDashboard = props => {
                     />
                 </div>
 
+                <h2>Merge Request Rules:</h2>
+
+                <div className="settings-form-input-row">
+                    <>How many Likes to pass:</>
+
+                    <input
+                        id="upvotes"
+                        name="upvotes"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.upvotes}
+                    />
+                </div>
+
+                <h2>Success color:</h2>
+
+                <div className="settings-form-input-row">
+                    <>How many Likes to pass:</>
+
+                    <input
+                        id="successColor"
+                        name="successColor"
+                        type="successColor"
+                        onChange={formik.handleChange}
+                        value={formik.values.successColor}
+                    />
+                </div>
+
+
                 <button type="submit">Submit</button>
             </form>
         </div>
     )
 }
 
-EditDashboard.propTypes = {
+Settings.propTypes = {
     dispatchFormSave: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
 }
@@ -51,4 +82,4 @@ const mapDispatchToProps = dispatch => ({
     dispatchGetProjects: id => dispatch(getProject(id)),
 })
 
-export default connect(null, mapDispatchToProps)(EditDashboard)
+export default connect(null, mapDispatchToProps)(Settings)
