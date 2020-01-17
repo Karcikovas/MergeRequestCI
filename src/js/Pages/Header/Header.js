@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 // import { connect } from 'react-redux'
 import AutoRefreshControl from './Partials/AutoRefreshControl'
 import SortControl from './Partials/SortControl'
-import './Header.scss';
-import Button from '../../components/Button/Button';
-import DefaultLogo from '../../../images/ksi.png';
+import './Header.scss'
+import Button from '../../components/Button/Button'
+import DefaultLogo from '../../../images/ksi.png'
 // import { refresh } from '../../../core/actions/index';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
 
 //TODO: FIX Default prop to take default logo from props;
 const Header = () => {
@@ -15,34 +15,29 @@ const Header = () => {
 
     useEffect(() => {
         // dispatchRefesh();
-    }, []);
+    }, [])
 
     return (
-    <div className="header">
-        <div className='has-margin'>
-            <img className="header-logo" alt='/' src={DefaultLogo}/>
-            {location.pathname !== '/'
-                ? <div className="header-page-name">{location.pathname}</div>
-                : null
-            }
+        <div className="header">
+            <div className="has-margin">
+                <img className="header-logo" alt="/" src={DefaultLogo} />
+                {location.pathname !== '/' ? (
+                    <div className="header-page-name">{location.pathname}</div>
+                ) : null}
 
-            <div className="toolbar">
-                <Button
-                    type="button"
-                    title="Settings"
-                    to='/settings'
-                >
-                   Settings
-                </Button>
+                <div className="toolbar">
+                    <Button type="button" title="Settings" to="/settings">
+                        Settings
+                    </Button>
 
-                <Button title="Refresh" >Refresh</Button>
+                    <Button title="Refresh">Refresh</Button>
 
-                <AutoRefreshControl />
+                    <AutoRefreshControl />
 
-                <SortControl/>
+                    <SortControl />
+                </div>
             </div>
         </div>
-    </div>
     )
 }
 
@@ -58,10 +53,9 @@ Header.defaultProps = {
 }
 
 // const mapDispatchToProps = (dispatch) => ({
-    // dispatchRefesh: () => dispatch(refresh()),
+// dispatchRefesh: () => dispatch(refresh()),
 // })
 
-export default
-// connect(null, mapDispatchToProps)(
-    Header
+export default // connect(null, mapDispatchToProps)(
+Header
 // )

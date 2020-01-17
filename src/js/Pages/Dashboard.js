@@ -4,17 +4,25 @@ import { getProject } from '../../core/Project/ProjectActions'
 import PropTypes from 'prop-types'
 import Message from '../components/Message/Message'
 
-const Main = ({error, dispatchProject}) => {
-    // console.log(projectsIDs);
+const Main = ({ error, dispatchProject, settings, projects}) => {
     useEffect(() => {
-        // if(projectsIDs !== []) {
-            [2, 4, 1].map((id) => dispatchProject(id))
-        // }
+        if (settings !== []) {
+            settings.map(id => dispatchProject(id.projectID))
+        }
     }, []);
+
+    console.log(projects);
+
+
+    if (projects) {
+        return projects.map((project) =>
+            // eslint-disable-next-line react/jsx-key
+            <div>{project.title}</div>
+        )}
 
     return (
         <div className="container">
-            {error && <Message text={error} variant='error'/>}
+            {error && <Message text={error} variant="error" />}
         </div>
     )
 }
@@ -27,7 +35,8 @@ Main.propTypes = {
     failedRepos: PropTypes.array,
     error: PropTypes.string,
     dispatchProject: PropTypes.func.isRequired,
-    projectsIDs: PropTypes.array,
+    settings: PropTypes.array,
+    // projects: PropTypes.array,
 }
 
 Main.defaultProps = {
@@ -37,15 +46,17 @@ Main.defaultProps = {
     title: '',
     failedRepos: [],
     error: '',
-    // projectsIDs: []
+    settings: [],
+    // projects: [],
 }
 
 const mapStateToProps = (state) => ({
-   projectsIDs: state
-});
+    settings: state.settings,
+    projects: state.project,
+})
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchProject: (id) => dispatch(getProject(id)),
-});
+    dispatchProject: id => dispatch(getProject(id)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

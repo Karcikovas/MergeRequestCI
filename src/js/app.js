@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime';
+import 'regenerator-runtime/runtime'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -7,7 +7,7 @@ import Dashboard from './Pages/Dashboard'
 import EditDashboard from './Pages/EditDashboard'
 import configureStore from '../core/store'
 import '../assets/scss/main.scss'
-import Footer from './Pages/Footer/Footer';
+import Footer from './Pages/Footer/Footer'
 import Toolbar from './Pages/Header/Header'
 const store = configureStore()
 

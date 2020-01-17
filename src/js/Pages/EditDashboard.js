@@ -1,20 +1,22 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { useFormik } from 'formik';
-import './EditDashboard.scss';
-import { saveSettings } from '../../core/SettingsForm/SettingsFormActions';
+import { useFormik } from 'formik'
+import './EditDashboard.scss'
+import { saveSettings } from '../../core/SettingsForm/SettingsFormActions'
+import { getProject } from '../../core/Project/ProjectActions'
 
-const EditDashboard = (props) => {
+const EditDashboard = props => {
     const formik = useFormik({
         initialValues: {
             projectID: '',
         },
         onSubmit: values => {
-            const { dispatchFormSave } = props;
-            dispatchFormSave(values);
+            const { dispatchFormSave, dispatchGetProjects } = props
+            dispatchFormSave(values)
+            dispatchGetProjects(values.projectID);
         },
-    });
+    })
 
     return (
         <div className="edit-dashboard-page">
@@ -32,19 +34,21 @@ const EditDashboard = (props) => {
                         value={formik.values.projectID}
                     />
                 </div>
+
                 <button type="submit">Submit</button>
             </form>
         </div>
-    );
-};
+    )
+}
 
 EditDashboard.propTypes = {
     dispatchFormSave: PropTypes.func.isRequired,
+    dispatchGetProjects: PropTypes.func.isRequired,
 }
 
+const mapDispatchToProps = dispatch => ({
+    dispatchFormSave: data => dispatch(saveSettings(data)),
+    dispatchGetProjects: id => dispatch(getProject(id)),
+})
 
-const mapDispatchToProps = (dispatch) => ({
-    dispatchFormSave: (data) => dispatch(saveSettings(data))
-});
-
-export default connect(null, mapDispatchToProps) (EditDashboard);
+export default connect(null, mapDispatchToProps)(EditDashboard)

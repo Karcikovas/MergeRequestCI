@@ -1,16 +1,15 @@
-import { List } from 'immutable';
-import { constants } from '../constants';
+import { constants } from '../constants'
 
-const initialState = List([]);
+const initialState = [];
 
 const SettingsFormReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.form.SAVE:
-            return List.of(...state, action.payload.data);
+            return [...state, action.payload.data]
 
         default:
-            return state;
+            return state
     }
-};
+}
 
-export default SettingsFormReducer;
+export default SettingsFormReducer

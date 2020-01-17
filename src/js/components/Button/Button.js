@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import './Button.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import './Button.scss'
 
-
-const Button = ({value, onClick, title, children, to}) => (
+const Button = ({ value, onClick, title, children, to }) => (
     <Link
         className="button"
         type={value}
@@ -14,22 +13,22 @@ const Button = ({value, onClick, title, children, to}) => (
     >
         {children}
     </Link>
-);
+)
 
 Button.propTypes = {
     value: PropTypes.string,
     onClick: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
-    to: PropTypes.string
-};
+    to: PropTypes.string,
+}
 
 Button.defaultProps = {
     value: '',
     onClick: () => null,
     title: '',
     text: '',
-    to: ''
+    to: '',
 }
 
-export default Button;
+export default Button
