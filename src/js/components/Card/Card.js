@@ -2,44 +2,55 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import './Card.scss';
+import DefaultLogo from '../../../images/ksi.png';
 
-const Card = ({ project, successUpVotes, successColor }) => {
-    const { title, upvotes , downvotes, state, author} = project;
+const Card = ({ project, successUpVotes, failureDownVotes }) => {
+    const { title, upvotes , downvotes, author, created_at, web_url } = project;
 
-    console.log(successColor);
-
-    // const customStyle = {
-    //     backgroundColor: successColor
-    // }
+    console.log(project);
 
     return (
        <li className={`merge-request-card  
            ${upvotes >= successUpVotes ? 'is-success': ''}
-           ${upvotes < 0 ? 'is-danger': ''}
+           ${upvotes < failureDownVotes ? 'is-danger': ''}
            `}
-        // style={successColor !== '' && `${customStyle}`}
        >
-           <h1>{title}</h1>
-           <div>Upvotes:{upvotes} Downvotes: {downvotes}</div>
-           <div>{author.name}</div>
-           <div>{state}</div>
+           <div className="merge-request-card-container">
+               <>
+                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                   <a target="_blank" href={author.web_url}>
+                        <img className="header-logo" alt="/" src={DefaultLogo} />
+                   </a>
+               </>
+               <div className="has-flex">
+                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                   <a target="_blank" href={web_url}>{title}</a>
+
+                   <div>Upvotes:{upvotes} Downvotes: {downvotes}</div>
+                   <div className="merge-request-author">Opened by {author.name}</div>
+               </div>
+           </div>
+
+           <div className="merge-request-card-created-at">
+               {created_at}
+           </div>
        </li>
 )};
 
 
 Card.propTypes = {
     successUpVotes: PropTypes.number,
-    successColor: PropTypes.string
+    failureDownVotes: PropTypes.number,
 }
 
 Card.defaultProps = {
     successUpVotes: 0,
-    successColor: ''
+    failureDownVotes: 0,
 }
 
 const mapStateToProps = (state) => ({
-    successUpVotes: state.settings.upvotes,
-    successColor: state.settings.successColor
+    successUpVotes: state.settings.upvotesToPass,
+    failureDownVotes: state.settings.downvotesToFail
 })
 
 export default connect(mapStateToProps, null)(Card);

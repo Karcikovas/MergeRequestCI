@@ -10,8 +10,8 @@ const Settings = props => {
     const formik = useFormik({
         initialValues: {
             projectID: '',
-            upvotes: '',
-            successColor: ''
+            upvotesToPass: '',
+            downvotesToFail: '',
         },
         onSubmit: values => {
             const { dispatchFormSave, dispatchGetProjects } = props
@@ -43,28 +43,25 @@ const Settings = props => {
                     <>How many Likes to pass:</>
 
                     <input
-                        id="upvotes"
-                        name="upvotes"
+                        id="upvotesToPass"
+                        name="upvotesToPass"
                         type="number"
                         onChange={formik.handleChange}
-                        value={formik.values.upvotes}
+                        value={formik.values.upvotesToPass}
                     />
                 </div>
-
-                <h2>Success color:</h2>
 
                 <div className="settings-form-input-row">
-                    <>How many Likes to pass:</>
+                    <>How many Dislikes to fail:</>
 
                     <input
-                        id="successColor"
-                        name="successColor"
-                        type="successColor"
+                        id="downvotesToFail"
+                        name="downvotesToFail"
+                        type="number"
                         onChange={formik.handleChange}
-                        value={formik.values.successColor}
+                        value={formik.values.downvotesToFail}
                     />
                 </div>
-
 
                 <button type="submit">Submit</button>
             </form>

@@ -1,21 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-// import { connect } from 'react-redux'
 import AutoRefreshControl from './Partials/AutoRefreshControl'
 import SortControl from './Partials/SortControl'
 import './Header.scss'
 import Button from '../../components/Button/Button'
 import DefaultLogo from '../../../images/ksi.png'
-// import { refresh } from '../../../core/actions/index';
 import { useLocation } from 'react-router-dom'
 
 //TODO: FIX Default prop to take default logo from props;
 const Header = () => {
     const location = useLocation()
-
-    useEffect(() => {
-        // dispatchRefesh();
-    }, [])
 
     return (
         <div className="header">
