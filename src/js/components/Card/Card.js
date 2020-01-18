@@ -4,10 +4,8 @@ import PropTypes from 'prop-types'
 import './Card.scss';
 import DefaultLogo from '../../../images/ksi.png';
 
-const Card = ({ project, successUpVotes, failureDownVotes }) => {
-    const { title, upvotes , downvotes, author, created_at, web_url } = project;
-
-    console.log(project);
+const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
+    const { title, upvotes , downvotes, author, created_at, web_url } = mergeRequest;
 
     return (
        <li className={`merge-request-card  
@@ -41,11 +39,15 @@ const Card = ({ project, successUpVotes, failureDownVotes }) => {
 Card.propTypes = {
     successUpVotes: PropTypes.number,
     failureDownVotes: PropTypes.number,
+    mergeRequest: PropTypes.objectOf(
+        PropTypes.number, PropTypes.string,
+    )
 }
 
 Card.defaultProps = {
     successUpVotes: 0,
     failureDownVotes: 0,
+    mergeRequest: {},
 }
 
 const mapStateToProps = (state) => ({

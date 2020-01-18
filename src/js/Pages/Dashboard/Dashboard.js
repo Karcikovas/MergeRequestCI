@@ -1,25 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getProject } from '../../../core/Project/ProjectActions';
+import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions';
 import PropTypes from 'prop-types';
 import Message from '../../components/Message/Message';
 import Card from '../../components/Card/Card';
 import './Dashboard.scss';
 
-const Main = ({ error, dispatchProject, projects}) => {
+const Main = ({ error, dispatchGetMergeRequest, mergeRequests}) => {
     useEffect(() => {
-        // if (settings === []) {
-        //     settings.map(id => dispatchProject(id.projectID))
-        // }
-
-        dispatchProject()
+        dispatchGetMergeRequest()
     }, []);
 
-    if (projects) {
+    if (mergeRequests) {
         return (
             <ul className='dashboard-merge-request-list'>
                 {
-                    projects.map((project) => <Card key={project.id} project={project}/>)
+                    mergeRequests.map((mergeRequest) => <Card key={mergeRequest.id} mergeRequest={mergeRequest}/>)
                 }
             </ul>
         )
@@ -37,9 +33,9 @@ Main.propTypes = {
     title: PropTypes.string,
     failedRepos: PropTypes.array,
     error: PropTypes.string,
-    dispatchProject: PropTypes.func.isRequired,
-    settings: PropTypes.array,
-    // projects: PropTypes.array,
+    dispatchGetMergeRequest: PropTypes.func.isRequired,
+    settings: PropTypes.objectOf(PropTypes.string),
+    mergeRequests: PropTypes.array,
 }
 
 Main.defaultProps = {
@@ -49,17 +45,17 @@ Main.defaultProps = {
     title: '',
     failedRepos: [],
     error: '',
-    settings: [],
-    // projects: [],
+    settings: {},
+    mergeRequests: [],
 }
 
 const mapStateToProps = (state) => ({
     settings: state.settings,
-    projects: state.project,
+    mergeRequests: state.mergeRequest,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchProject: id => dispatch(getProject(id)),
+    dispatchGetMergeRequest: id => dispatch(getMergeRequest(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

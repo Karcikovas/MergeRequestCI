@@ -1,13 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AutoRefreshControl from './Partials/AutoRefreshControl'
-import SortControl from './Partials/SortControl'
 import './Header.scss'
 import Button from '../../components/Button/Button'
 import DefaultLogo from '../../../images/ksi.png'
 import { useLocation } from 'react-router-dom'
 
-//TODO: FIX Default prop to take default logo from props;
 const Header = () => {
     const location = useLocation()
 
@@ -24,11 +21,7 @@ const Header = () => {
                         Settings
                     </Button>
 
-                    <Button title="Refresh">Refresh</Button>
-
-                    <AutoRefreshControl />
-
-                    <SortControl />
+                    <Button title="Refresh" to="/">Refresh</Button>
                 </div>
             </div>
         </div>

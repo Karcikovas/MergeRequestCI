@@ -1,22 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useFormik } from 'formik'
 import './Settings.scss'
 import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
-import { getProject } from '../../../core/Project/ProjectActions'
+import { getProjects } from '../../../core/Project/ProjectActions'
 
-const Settings = props => {
+const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
+    useEffect(() => {
+        dispatchGetProjects()
+    }, []);
+
+
     const formik = useFormik({
         initialValues: {
             projectID: '',
             upvotesToPass: '',
             downvotesToFail: '',
         },
-        onSubmit: values => {
-            const { dispatchFormSave, dispatchGetProjects } = props
+
+        onSubmit: (values) => {
             dispatchFormSave(values)
-            dispatchGetProjects(values.projectID);
         },
     })
 
@@ -76,7 +80,7 @@ Settings.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
     dispatchFormSave: data => dispatch(saveSettings(data)),
-    dispatchGetProjects: id => dispatch(getProject(id)),
+    dispatchGetProjects: () => dispatch(getProjects()),
 })
 
 export default connect(null, mapDispatchToProps)(Settings)

@@ -2,7 +2,7 @@ import { constants } from '../constants'
 
 const initialState = [];
 
-const ETicketReducer = (state = initialState, action) => {
+const ProjectReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.project.SET:
             return action.payload.project;
@@ -12,4 +12,4 @@ const ETicketReducer = (state = initialState, action) => {
     }
 }
 
-export default ETicketReducer
+export default ProjectReducer

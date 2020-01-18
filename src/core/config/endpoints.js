@@ -1,4 +1,4 @@
-import { projectEndpoint } from './endpoints/project'
+import { mergeRequestsEndpoint } from './endpoints/mergeRequest'
 
 export const baseURL = 'https://my-json-server.typicode.com/Karcikovas/MergeRequestCI'
 // export const GITLABtoken = 'rp2Yzj4hu38kyvnyoSCW'
@@ -10,5 +10,5 @@ export const defaultHeaders = {
 export const formHeaders = { 'Content-Type': 'multipart/form-data' }
 
 export const endpoints = {
-    ...projectEndpoint,
+    ...mergeRequestsEndpoint,
 }
