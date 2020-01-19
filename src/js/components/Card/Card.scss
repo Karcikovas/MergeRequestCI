@@ -1,0 +1,60 @@
+@import "../../../assets/scss/main";
+
+.merge-request-card {
+  list-style: none;
+  width: 95%;
+  background-color: $color-white;
+  margin-bottom: 15px;
+  box-shadow: $box-shadow-dark;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  justify-content: space-between;
+
+  &.is-success {
+    background-color: $default-success-color;
+  }
+
+  &.is-danger {
+    background-color: $color-danger;
+  }
+
+  a {
+    font-size: 24px;
+    color: $link-color;
+    text-decoration: none;
+  }
+}
+
+.merge-request-card-container {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    padding: 0;
+    margin: 0;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+  }
+
+  .has-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+
+    .merge-request-author {
+      font-style: italic;
+    }
+  }
+}
+
+.merge-request-card-created-at {
+  width: auto;
+  padding: 5px;
+  margin: auto 0;
+  background-color: $color-black;
+  color: $color-white;
+  border-radius: 5px;
+}

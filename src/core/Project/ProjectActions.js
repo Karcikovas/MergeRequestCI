@@ -1,13 +1,11 @@
 import { constants } from '../constants'
 
-export const getProject = id => ({
+export const getProjects = () => ({
     type: constants.project.GET,
-    payload: {
-        id,
-    },
+    payload: { },
 })
 
-export const setProject = project => ({
+export const setProject = (projects) => ({
     type: constants.project.SET,
-    payload: { project },
+    payload: { projects },
 })

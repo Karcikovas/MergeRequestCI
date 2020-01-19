@@ -5,6 +5,10 @@ export const constants = {
         SET_ERROR: 'request.SET_ERROR',
         SET_ERRORS: 'request.SET_ERRORS',
     },
+    merge_request: {
+        GET: 'merge_request.GET',
+        SET: 'merge_request.SET',
+    },
     project: {
         GET: 'project.GET',
         SET: 'project.SET',

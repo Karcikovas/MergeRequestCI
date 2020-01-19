@@ -1,11 +1,11 @@
 import { constants } from '../constants'
 
-const initialState = [];
+const initialState = {};
 
 const SettingsFormReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.form.SAVE:
-            return [...state, action.payload.data]
+            return action.payload.data
 
         default:
             return state

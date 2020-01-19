@@ -15,7 +15,8 @@
   text-decoration: none;
   font-style: normal;
 
-  &:hover {
+  &:hover,
+  &.is-active {
     color: $color-white;
     border-color: $nfq-main-color;
     background-color: $nfq-main-color;
