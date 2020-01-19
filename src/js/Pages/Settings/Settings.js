@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { useFormik } from 'formik'
-import './Settings.scss'
-import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
-import { getProjects } from '../../../core/Project/ProjectActions'
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { useFormik } from 'formik';
+import './Settings.scss';
+import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions';
+import { getProjects, getProject } from '../../../core/Project/ProjectsActions';
+import Checkbox from '../../components/Checkbox/Checkbox';
 
-const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
+const Settings = ({dispatchFormSave, dispatchGetProjects, projects, dispatchGetProject}) => {
     useEffect(() => {
         dispatchGetProjects()
     }, []);
-
 
     const formik = useFormik({
         initialValues: {
@@ -26,6 +26,12 @@ const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
 
     return (
         <div className="edit-dashboard-page">
+
+            {
+                projects.map((project) => <Checkbox key={project.id}  onChange={ () => dispatchGetProject(project.id)} text={project.name} />)
+            }
+
+
             <form className="settings-form" onSubmit={formik.handleSubmit}>
                 <h2>Edit Your Settings here:</h2>
 
@@ -76,11 +82,22 @@ const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
 Settings.propTypes = {
     dispatchFormSave: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
+    dispatchGetProject: PropTypes.func.isRequired,
+    projects: PropTypes.array,
 }
 
-const mapDispatchToProps = dispatch => ({
-    dispatchFormSave: data => dispatch(saveSettings(data)),
+Settings.defaultProps = {
+    projects: []
+}
+
+const mapStateToProps = (state) => ({
+    projects: state.projects
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    dispatchFormSave: (data) => dispatch(saveSettings(data)),
     dispatchGetProjects: () => dispatch(getProjects()),
+    dispatchGetProject: (id) => dispatch(getProject(id))
 })
 
-export default connect(null, mapDispatchToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

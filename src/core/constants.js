@@ -9,9 +9,12 @@ export const constants = {
         GET: 'merge_request.GET',
         SET: 'merge_request.SET',
     },
+    projects: {
+        GET: 'projects.GET',
+        SET: 'projects.SET',
+    },
     project: {
-        GET: 'project.GET',
-        SET: 'project.SET',
+      GET: 'project.GET',
     },
     form: {
         SAVE: 'form.SAVE',

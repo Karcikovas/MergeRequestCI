@@ -1,10 +1,10 @@
 import { all } from 'redux-saga/effects';
-import ProjectSaga from './Project/ProjectSaga';
+import ProjectsSaga from './Project/ProjectsSaga';
 import MergeRequestSaga from './MergeRequest/MergeRequestSaga'
 
 export default function* rootSaga() {
     yield all([
-        ProjectSaga(),
+        ProjectsSaga(),
         MergeRequestSaga(),
     ]);
 }

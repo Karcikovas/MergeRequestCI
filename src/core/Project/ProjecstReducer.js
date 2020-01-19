@@ -2,9 +2,9 @@ import { constants } from '../constants'
 
 const initialState = [];
 
-const ProjectReducer = (state = initialState, action) => {
+const ProjecstReducer = (state = initialState, action) => {
     switch (action.type) {
-        case constants.project.SET:
+        case constants.projects.SET:
             return action.payload.projects;
 
         default:
@@ -12,4 +12,4 @@ const ProjectReducer = (state = initialState, action) => {
     }
 }
 
-export default ProjectReducer
+export default ProjecstReducer
