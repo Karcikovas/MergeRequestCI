@@ -21,7 +21,9 @@ const Header = () => {
                         Settings
                     </Button>
 
-                    <Button title="Refresh" to="/">Refresh</Button>
+                    <Button title="Refresh" to="/">
+                        Refresh
+                    </Button>
                 </div>
             </div>
         </div>

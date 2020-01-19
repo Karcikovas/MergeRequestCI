@@ -1,8 +1,8 @@
-import { call, takeEvery, all, put } from 'redux-saga/effects';
-import { constants } from '../constants';
-import { endpoints } from '../config/endpoints';
-import { startRequest } from '../Request/RequestSaga';
-import { setProjects } from './ProjectsActions';
+import { call, takeEvery, all, put } from 'redux-saga/effects'
+import { constants } from '../constants'
+import { endpoints } from '../config/endpoints'
+import { startRequest } from '../Request/RequestSaga'
+import { setProjects } from './ProjectsActions'
 
 export function* getProject() {
     const { response } = yield call(

@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import { RequestReducer } from './Request/RequestReducer';
-import ProjecstReducer from './Project/ProjecstReducer';
-import SettingsFormReducer from './SettingsForm/SettingsFormReducer';
-import MergeRequestReducer from './MergeRequest/MergeRequestReducer';
+import { combineReducers } from 'redux'
+import { RequestReducer } from './Request/RequestReducer'
+import ProjecstReducer from './Project/ProjecstReducer'
+import SettingsFormReducer from './SettingsForm/SettingsFormReducer'
+import MergeRequestReducer from './MergeRequest/MergeRequestReducer'
 
 const rootReducer = combineReducers({
     request: RequestReducer,

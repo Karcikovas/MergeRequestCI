@@ -1,6 +1,6 @@
 import { constants } from '../constants'
 
-const initialState = {};
+const initialState = {}
 
 const SettingsFormReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -1,27 +1,24 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions';
-import PropTypes from 'prop-types';
-import Message from '../../components/Message/Message';
-import Card from '../../components/Card/Card';
-import './Dashboard.scss';
+import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import Message from '../../components/Message/Message'
+import Card from '../../components/Card/Card'
+import './Dashboard.scss'
 
-const Main = ({ error, dispatchGetMergeRequest, mergeRequests}) => {
-    useEffect(() => {
-        dispatchGetMergeRequest()
-    }, []);
-
+const Main = ({ error, mergeRequests }) => {
     if (mergeRequests) {
         return (
-            <ul className='dashboard-merge-request-list'>
-                {
-                    mergeRequests.map((mergeRequest) => <Card key={mergeRequest.id} mergeRequest={mergeRequest}/>)
-                }
+            <ul className="dashboard-merge-request-list">
+                {mergeRequests.map(mergeRequest => (
+                    <Card key={mergeRequest.id} mergeRequest={mergeRequest} />
+                ))}
             </ul>
         )
-    } return (
+    }
+
+    return (
         <div className="container">
-            {error && <Message text={error} variant="error"/>}
+            {error && <Message text={error} variant="error" />}
         </div>
     )
 }
@@ -49,13 +46,9 @@ Main.defaultProps = {
     mergeRequests: [],
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     settings: state.settings,
     mergeRequests: state.mergeRequest,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    dispatchGetMergeRequest: id => dispatch(getMergeRequest(id)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(mapStateToProps, null)(Main)

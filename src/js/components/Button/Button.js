@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import './Button.scss'
 
 const Button = ({ value, onClick, title, children, to }) => {
-    const { pathname } = useLocation();
+    const { pathname } = useLocation()
 
     return (
         <Link

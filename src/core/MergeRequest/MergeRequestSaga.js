@@ -1,8 +1,8 @@
-import { call, takeEvery, all, put } from 'redux-saga/effects';
-import { constants } from '../constants';
-import { endpoints } from '../config/endpoints';
-import { startRequest } from '../Request/RequestSaga';
-import { setMergeRequest } from './MergeRequestActions';
+import { call, takeEvery, all, put } from 'redux-saga/effects'
+import { constants } from '../constants'
+import { endpoints } from '../config/endpoints'
+import { startRequest } from '../Request/RequestSaga'
+import { setMergeRequest } from './MergeRequestActions'
 
 export function* getMergeRequest(action) {
     const { id } = action.payload

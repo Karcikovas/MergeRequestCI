@@ -8,13 +8,14 @@ export const constants = {
     merge_request: {
         GET: 'merge_request.GET',
         SET: 'merge_request.SET',
+        DELETE: 'merge_request.DELETE',
     },
     projects: {
         GET: 'projects.GET',
         SET: 'projects.SET',
     },
     project: {
-      GET: 'project.GET',
+        GET: 'project.GET',
     },
     form: {
         SAVE: 'form.SAVE',
