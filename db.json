@@ -75,7 +75,7 @@
         "labels": "http://example.com/api/v4/projects/1/labels",
         "events": "http://example.com/api/v4/projects/1/events",
         "members": "http://example.com/api/v4/projects/1/members"
-      },
+      }
     },
     {
       "id": 6,
