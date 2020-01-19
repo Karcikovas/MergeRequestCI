@@ -5,7 +5,7 @@ const initialState = [];
 const ProjectReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.project.SET:
-            return action.payload.project;
+            return action.payload.projects;
 
         default:
             return state;

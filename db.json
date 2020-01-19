@@ -1,4 +1,181 @@
 {
-"projects":[{"id":61193,"iid":290,"project_id":1616,"title":"Kapp 714 Alert Box","description":"","state":"opened","created_at":"2020-01-17T14:16:26.134Z","updated_at":"2020-01-17T14:28:50.005Z","merged_by":null,"merged_at":null,"closed_by":null,"closed_at":null,"target_branch":"develop","source_branch":"KAPP-714","user_notes_count":4,"upvotes":0,"downvotes":0,"assignee":null,"author":{"id":310,"name":"Viktoras Karcikovas","username":"vkarcikovas","state":"active","avatar_url":"https://secure.gravatar.com/avatar/8052724cb3fb2a8573a1baa55a10db2f?s=80\u0026d=identicon","web_url":"https://gitlab.nfq.lt/vkarcikovas"},"assignees":[],"source_project_id":1616,"target_project_id":1616,"labels":[],"work_in_progress":false,"milestone":null,"merge_when_pipeline_succeeds":false,"merge_status":"can_be_merged","sha":"3d70f40dac8df643b488604c5470989becd4ae0e","merge_commit_sha":null,"discussion_locked":null,"should_remove_source_branch":null,"force_remove_source_branch":false,"reference":"!290","web_url":"https://gitlab.nfq.lt/kautra/frontend/merge_requests/290","time_stats":{"time_estimate":0,"total_time_spent":0,"human_time_estimate":null,"human_total_time_spent":null},"squash":false,"task_completion_status":{"count":0,"completed_count":0}},{"id":61188,"iid":288,"project_id":1616,"title":"KAPP-713 Circle in the middle","description":"![Screenshot_2020-01-17_at_3.34.50_PM](/uploads/17152884d9b34d87507ece0f1dbf8805/Screenshot_2020-01-17_at_3.34.50_PM.png)","state":"opened","created_at":"2020-01-17T13:36:35.670Z","updated_at":"2020-01-17T14:00:12.619Z","merged_by":null,"merged_at":null,"closed_by":null,"closed_at":null,"target_branch":"develop","source_branch":"KAPP-713","user_notes_count":5,"upvotes":0,"downvotes":0,"assignee":null,"author":{"id":310,"name":"Viktoras Karcikovas","username":"vkarcikovas","state":"active","avatar_url":"https://secure.gravatar.com/avatar/8052724cb3fb2a8573a1baa55a10db2f?s=80\u0026d=identicon","web_url":"https://gitlab.nfq.lt/vkarcikovas"},"assignees":[],"source_project_id":1616,"target_project_id":1616,"labels":[],"work_in_progress":false,"milestone":null,"merge_when_pipeline_succeeds":false,"merge_status":"can_be_merged","sha":"14e4713a4b24448c5a38bde73a3d37f0b27e25ed","merge_commit_sha":null,"discussion_locked":null,"should_remove_source_branch":null,"force_remove_source_branch":false,"reference":"!288","web_url":"https://gitlab.nfq.lt/kautra/frontend/merge_requests/288","time_stats":{"time_estimate":0,"total_time_spent":0,"human_time_estimate":null,"human_total_time_spent":null},"squash":false,"task_completion_status":{"count":0,"completed_count":0}},{"id":61117,"iid":281,"project_id":1616,"title":"Kapp 702 Checkout sidebar Numbers blur fix","description":"Added background-color fix to numbers and text in sidebar look sharper!","state":"opened","created_at":"2020-01-16T14:08:03.307Z","updated_at":"2020-01-17T13:45:22.986Z","merged_by":null,"merged_at":null,"closed_by":null,"closed_at":null,"target_branch":"develop","source_branch":"KAPP-702","user_notes_count":4,"upvotes":0,"downvotes":0,"assignee":null,"author":{"id":310,"name":"Viktoras Karcikovas","username":"vkarcikovas","state":"active","avatar_url":"https://secure.gravatar.com/avatar/8052724cb3fb2a8573a1baa55a10db2f?s=80\u0026d=identicon","web_url":"https://gitlab.nfq.lt/vkarcikovas"},"assignees":[],"source_project_id":1616,"target_project_id":1616,"labels":[],"work_in_progress":false,"milestone":null,"merge_when_pipeline_succeeds":false,"merge_status":"can_be_merged","sha":"f5bd80487e1d996ac0953aa1c7fc39df76ff5e1a","merge_commit_sha":null,"discussion_locked":null,"should_remove_source_branch":null,"force_remove_source_branch":false,"reference":"!281","web_url":"https://gitlab.nfq.lt/kautra/frontend/merge_requests/281","time_stats":{"time_estimate":0,"total_time_spent":0,"human_time_estimate":null,"human_total_time_spent":null},"squash":false,"task_completion_status":{"count":0,"completed_count":0}}],
-"merge_request":[{"id":61193,"iid":290,"project_id":1616,"title":"Kapp 714 Alert Box","description":"","state":"opened","created_at":"2020-01-17T14:16:26.134Z","updated_at":"2020-01-17T14:28:50.005Z","merged_by":null,"merged_at":null,"closed_by":null,"closed_at":null,"target_branch":"develop","source_branch":"KAPP-714","user_notes_count":4,"upvotes":0,"downvotes":0,"assignee":null,"author":{"id":310,"name":"Viktoras Karcikovas","username":"vkarcikovas","state":"active","avatar_url":"https://secure.gravatar.com/avatar/8052724cb3fb2a8573a1baa55a10db2f?s=80\u0026d=identicon","web_url":"https://gitlab.nfq.lt/vkarcikovas"},"assignees":[],"source_project_id":1616,"target_project_id":1616,"labels":[],"work_in_progress":false,"milestone":null,"merge_when_pipeline_succeeds":false,"merge_status":"can_be_merged","sha":"3d70f40dac8df643b488604c5470989becd4ae0e","merge_commit_sha":null,"discussion_locked":null,"should_remove_source_branch":null,"force_remove_source_branch":false,"reference":"!290","web_url":"https://gitlab.nfq.lt/kautra/frontend/merge_requests/290","time_stats":{"time_estimate":0,"total_time_spent":0,"human_time_estimate":null,"human_total_time_spent":null},"squash":false,"task_completion_status":{"count":0,"completed_count":0}},{"id":61189,"iid":289,"project_id":1616,"title":"KAPP-705 Different translation based on family discount conditions state","description":"","state":"merged","created_at":"2020-01-17T13:40:08.747Z","updated_at":"2020-01-17T14:18:59.304Z","merged_by":{"id":26,"name":"Justinas Bolys","username":"justinas.bolys","state":"active","avatar_url":"https://gitlab.nfq.lt/uploads/-/system/user/avatar/26/avatar.png","web_url":"https://gitlab.nfq.lt/justinas.bolys"},"merged_at":"2020-01-17T14:18:59.361Z","closed_by":null,"closed_at":null,"target_branch":"develop","source_branch":"kapp-705-family-conditions-switch-translations","user_notes_count":1,"upvotes":1,"downvotes":0,"assignee":null,"author":{"id":312,"name":"Gintaras Grazinskis","username":"ggrazinskis","state":"active","avatar_url":"https://gitlab.nfq.lt/uploads/-/system/user/avatar/312/avatar.png","web_url":"https://gitlab.nfq.lt/ggrazinskis"},"assignees":[],"source_project_id":1616,"target_project_id":1616,"labels":[],"work_in_progress":false,"milestone":null,"merge_when_pipeline_succeeds":false,"merge_status":"can_be_merged","sha":"311fef2e2cd85a59769a99180cfcf2c1ed6652c8","merge_commit_sha":"89a3576a275def429d6a202fc81c6ffa1ff52a10","discussion_locked":null,"should_remove_source_branch":null,"force_remove_source_branch":false,"reference":"!289","web_url":"https://gitlab.nfq.lt/kautra/frontend/merge_requests/289","time_stats":{"time_estimate":0,"total_time_spent":0,"human_time_estimate":null,"human_total_time_spent":null},"squash":false,"task_completion_status":{"count":0,"completed_count":0}}]
+"merge_request": [],
+  "projects":[
+    {
+      "id": 4,
+      "description": null,
+      "default_branch": "master",
+      "visibility": "private",
+      "ssh_url_to_repo": "git@example.com:diaspora/diaspora-client.git",
+      "http_url_to_repo": "http://example.com/diaspora/diaspora-client.git",
+      "web_url": "http://example.com/diaspora/diaspora-client",
+      "readme_url": "http://example.com/diaspora/diaspora-client/blob/master/README.md",
+      "tag_list": [
+        "example",
+        "disapora client"
+      ],
+      "owner": {
+        "id": 3,
+        "name": "Diaspora",
+        "created_at": "2013-09-30T13:46:02Z"
+      },
+      "name": "Diaspora Client",
+      "name_with_namespace": "Diaspora / Diaspora Client",
+      "path": "diaspora-client",
+      "path_with_namespace": "diaspora/diaspora-client",
+      "issues_enabled": true,
+      "open_issues_count": 1,
+      "merge_requests_enabled": true,
+      "jobs_enabled": true,
+      "wiki_enabled": true,
+      "snippets_enabled": false,
+      "resolve_outdated_diff_discussions": false,
+      "container_registry_enabled": false,
+      "created_at": "2013-09-30T13:46:02Z",
+      "last_activity_at": "2013-09-30T13:46:02Z",
+      "creator_id": 3,
+      "namespace": {
+        "id": 3,
+        "name": "Diaspora",
+        "path": "diaspora",
+        "kind": "group",
+        "full_path": "diaspora"
+      },
+      "import_status": "none",
+      "archived": false,
+      "avatar_url": "http://example.com/uploads/project/avatar/4/uploads/avatar.png",
+      "shared_runners_enabled": true,
+      "forks_count": 0,
+      "star_count": 0,
+      "runners_token": "b8547b1dc37721d05889db52fa2f02",
+      "ci_default_git_depth": 50,
+      "public_jobs": true,
+      "shared_with_groups": [],
+      "only_allow_merge_if_pipeline_succeeds": false,
+      "only_allow_merge_if_all_discussions_are_resolved": false,
+      "remove_source_branch_after_merge": false,
+      "request_access_enabled": false,
+      "merge_method": "merge",
+      "autoclose_referenced_issues": true,
+      "suggestion_commit_message": null,
+      "statistics": {
+        "commit_count": 37,
+        "storage_size": 1038090,
+        "repository_size": 1038090,
+        "wiki_size" : 0,
+        "lfs_objects_size": 0,
+        "job_artifacts_size": 0,
+        "packages_size": 0
+      },
+      "_links": {
+        "self": "http://example.com/api/v4/projects",
+        "issues": "http://example.com/api/v4/projects/1/issues",
+        "merge_requests": "http://example.com/api/v4/projects/1/merge_requests",
+        "repo_branches": "http://example.com/api/v4/projects/1/repository_branches",
+        "labels": "http://example.com/api/v4/projects/1/labels",
+        "events": "http://example.com/api/v4/projects/1/events",
+        "members": "http://example.com/api/v4/projects/1/members"
+      },
+    },
+    {
+      "id": 6,
+      "description": null,
+      "default_branch": "master",
+      "visibility": "private",
+      "ssh_url_to_repo": "git@example.com:brightbox/puppet.git",
+      "http_url_to_repo": "http://example.com/brightbox/puppet.git",
+      "web_url": "http://example.com/brightbox/puppet",
+      "readme_url": "http://example.com/brightbox/puppet/blob/master/README.md",
+      "tag_list": [
+        "example",
+        "puppet"
+      ],
+      "owner": {
+        "id": 4,
+        "name": "Brightbox",
+        "created_at": "2013-09-30T13:46:02Z"
+      },
+      "name": "Puppet",
+      "name_with_namespace": "Brightbox / Puppet",
+      "path": "puppet",
+      "path_with_namespace": "brightbox/puppet",
+      "issues_enabled": true,
+      "open_issues_count": 1,
+      "merge_requests_enabled": true,
+      "jobs_enabled": true,
+      "wiki_enabled": true,
+      "snippets_enabled": false,
+      "resolve_outdated_diff_discussions": false,
+      "container_registry_enabled": false,
+      "created_at": "2013-09-30T13:46:02Z",
+      "last_activity_at": "2013-09-30T13:46:02Z",
+      "creator_id": 3,
+      "namespace": {
+        "id": 4,
+        "name": "Brightbox",
+        "path": "brightbox",
+        "kind": "group",
+        "full_path": "brightbox"
+      },
+      "import_status": "none",
+      "import_error": null,
+      "permissions": {
+        "project_access": {
+          "access_level": 10,
+          "notification_level": 3
+        },
+        "group_access": {
+          "access_level": 50,
+          "notification_level": 3
+        }
+      },
+      "archived": false,
+      "avatar_url": null,
+      "shared_runners_enabled": true,
+      "forks_count": 0,
+      "star_count": 0,
+      "runners_token": "b8547b1dc37721d05889db52fa2f02",
+      "ci_default_git_depth": 0,
+      "public_jobs": true,
+      "shared_with_groups": [],
+      "only_allow_merge_if_pipeline_succeeds": false,
+      "only_allow_merge_if_all_discussions_are_resolved": false,
+      "remove_source_branch_after_merge": false,
+      "request_access_enabled": false,
+      "merge_method": "merge",
+      "auto_devops_enabled": true,
+      "auto_devops_deploy_strategy": "continuous",
+      "repository_storage": "default",
+      "approvals_before_merge": 0,
+      "mirror": false,
+      "mirror_user_id": 45,
+      "mirror_trigger_builds": false,
+      "only_mirror_protected_branches": false,
+      "mirror_overwrites_diverged_branches": false,
+      "external_authorization_classification_label": null,
+      "packages_enabled": true,
+      "service_desk_enabled": false,
+      "service_desk_address": null,
+      "autoclose_referenced_issues": true,
+      "suggestion_commit_message": null,
+      "statistics": {
+        "commit_count": 12,
+        "storage_size": 2066080,
+        "repository_size": 2066080,
+        "wiki_size" : 0,
+        "lfs_objects_size": 0,
+        "job_artifacts_size": 0,
+        "packages_size": 0
+      },
+      "_links": {
+        "self": "http://example.com/api/v4/projects",
+        "issues": "http://example.com/api/v4/projects/1/issues",
+        "merge_requests": "http://example.com/api/v4/projects/1/merge_requests",
+        "repo_branches": "http://example.com/api/v4/projects/1/repository_branches",
+        "labels": "http://example.com/api/v4/projects/1/labels",
+        "events": "http://example.com/api/v4/projects/1/events",
+        "members": "http://example.com/api/v4/projects/1/members"
+      }
+    }
+  ]
 }
