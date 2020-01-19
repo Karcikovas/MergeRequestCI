@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
-import { baseURL, defaultHeaders, endpoints } from '../config/endpoints';
+import { baseURL, defaultHeaders, endpoints } from '../config/endpoints'
 import { requestEnded, requestStarted } from './RequestAction'
 
 export const coreRequest = (method, url, data, params, customHeaders) => {

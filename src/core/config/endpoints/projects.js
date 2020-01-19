@@ -1,9 +1,9 @@
 export const projectsEndpoint = {
-    GET_PROJECT: {
-        name: 'GET_PROJECT',
+    GET_PROJECTS: {
+        name: 'GET_PROJECTS',
         url: {
             method: 'GET',
-            path: () => '/projects'
+            path: () => '?per_page=100',
         },
     },
 }

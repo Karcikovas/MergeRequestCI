@@ -4,13 +4,21 @@ import { connect } from 'react-redux'
 import { useFormik } from 'formik'
 import './Settings.scss'
 import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
-import { getProjects } from '../../../core/Project/ProjectActions'
+import { getProjects } from '../../../core/Project/ProjectsActions'
+import Checkbox from '../../components/Checkbox/Checkbox'
+import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
+import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
 
-const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
+const Settings = ({
+    dispatchFormSave,
+    dispatchGetProjects,
+    dispatchGetMergeRequest,
+    projects,
+    dispatchDeleteMergeRequest,
+}) => {
     useEffect(() => {
         dispatchGetProjects()
-    }, []);
-
+    }, [])
 
     const formik = useFormik({
         initialValues: {
@@ -19,13 +27,22 @@ const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
             downvotesToFail: '',
         },
 
-        onSubmit: (values) => {
+        onSubmit: values => {
             dispatchFormSave(values)
         },
     })
 
     return (
         <div className="edit-dashboard-page">
+            {projects.map(project => (
+                <Checkbox
+                    key={project.id}
+                    set={() => dispatchGetMergeRequest(project.id)}
+                    unSet={() => dispatchDeleteMergeRequest(project.id)}
+                    text={project.name}
+                />
+            ))}
+
             <form className="settings-form" onSubmit={formik.handleSubmit}>
                 <h2>Edit Your Settings here:</h2>
 
@@ -76,11 +93,24 @@ const Settings = ({dispatchFormSave, dispatchGetProjects}) => {
 Settings.propTypes = {
     dispatchFormSave: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
+    dispatchGetMergeRequest: PropTypes.func.isRequired,
+    dispatchDeleteMergeRequest: PropTypes.func.isRequired,
+    projects: PropTypes.array,
 }
+
+Settings.defaultProps = {
+    projects: [],
+}
+
+const mapStateToProps = state => ({
+    projects: state.projects,
+})
 
 const mapDispatchToProps = dispatch => ({
     dispatchFormSave: data => dispatch(saveSettings(data)),
     dispatchGetProjects: () => dispatch(getProjects()),
+    dispatchGetMergeRequest: id => dispatch(getMergeRequest(id)),
+    dispatchDeleteMergeRequest: id => dispatch(deleteMergeRequest(id)),
 })
 
-export default connect(null, mapDispatchToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)
