@@ -3,7 +3,7 @@ export const projectsEndpoint = {
         name: 'GET_PROJECTS',
         url: {
             method: 'GET',
-            path: () => '?per_page=100',
+            path: (perPage, page) => `?per_page=${perPage}&page=${page}`,
         },
     },
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import './Card.scss'
-import DefaultLogo from '../../../images/ksi.png'
 
 const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
     const {
@@ -14,6 +13,7 @@ const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
         web_url,
     } = mergeRequest
 
+    const { avatar_url } = author;
     return (
         <li
             className={`merge-request-card  
@@ -28,7 +28,7 @@ const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
                         <img
                             className="header-logo"
                             alt="/"
-                            src={DefaultLogo}
+                            src={avatar_url}
                         />
                     </a>
                 </>

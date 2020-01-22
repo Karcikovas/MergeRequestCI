@@ -4,11 +4,13 @@ import { endpoints } from '../config/endpoints'
 import { startRequest } from '../Request/RequestSaga'
 import { setProjects } from './ProjectsActions'
 
-export function* getProject() {
+export function* getProject(action) {
+    const { perPage, page } = action.payload
+
     const { response } = yield call(
         startRequest,
         endpoints.GET_PROJECTS.name,
-        endpoints.GET_PROJECTS.url.path()
+        endpoints.GET_PROJECTS.url.path(perPage, page)
     )
 
     if (response) {
