@@ -7,16 +7,27 @@ import './Button.scss'
 const Button = ({ value, onClick, title, children, to }) => {
     const { pathname } = useLocation()
 
+    if (to) {
+        return (
+            <Link
+                className={`button  ${pathname === to ? 'is-active' : ''}`}
+                type={value}
+                title={title}
+                onClick={onClick}
+                to={to}
+            >
+                {children}
+            </Link>
+        )
+    }
+
     return (
-        <Link
-            className={`button  ${pathname === to ? 'is-active' : ''}`}
-            type={value}
-            title={title}
+        <button
+            className='button'
             onClick={onClick}
-            to={to}
         >
             {children}
-        </Link>
+        </button>
     )
 }
 

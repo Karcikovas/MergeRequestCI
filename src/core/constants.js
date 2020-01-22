@@ -17,8 +17,16 @@ export const constants = {
     project: {
         GET: 'project.GET',
     },
-    form: {
-        GET_PER_PAGE: 'form.GET_PER_PAGE',
-        SAVE: 'form.SAVE',
+    settings: {
+        per_page: {
+            GET: 'settings.per_page.GET',
+        },
+        page: {
+            SET: 'settings.page.SET',
+        },
+        SAVE: 'settings.SAVE',
+    },
+    marked_projects: {
+        SET: 'marked_projects.SET',
     },
 }

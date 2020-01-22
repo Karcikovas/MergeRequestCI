@@ -1,14 +1,22 @@
-import { combineReducers } from 'redux'
-import { RequestReducer } from './Request/RequestReducer'
-import ProjecstReducer from './Project/ProjecstReducer'
-import SettingsFormReducer from './SettingsForm/SettingsFormReducer'
-import MergeRequestReducer from './MergeRequest/MergeRequestReducer'
+import { combineReducers } from 'redux';
+import { RequestReducer } from './Request/RequestReducer';
+import ProjecstReducer from './Project/ProjecstReducer';
+import SettingsFormReducer from './SettingsForm/SettingsFormReducer';
+import MergeRequestReducer from './MergeRequest/MergeRequestReducer';
+import PerPageReducer from './SettingsForm/PerPage/PerPageReducer';
+import MarkedProjectsReducer from './MarkedProjects/MarkedProjectsReducer';
+import PageNumberReducer from './SettingsForm/PageNumber/PageNumberReducer';
 
 const rootReducer = combineReducers({
     request: RequestReducer,
     mergeRequest: MergeRequestReducer,
     projects: ProjecstReducer,
-    settings: SettingsFormReducer,
+    settings: combineReducers({
+        per_page: PerPageReducer,
+        page: PageNumberReducer,
+        settings: SettingsFormReducer,
+        active_projects: MarkedProjectsReducer,
+    }),
 })
 
 export default rootReducer

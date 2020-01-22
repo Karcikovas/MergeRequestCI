@@ -13,7 +13,7 @@ const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
         web_url,
     } = mergeRequest
 
-    const { avatar_url } = author;
+    const { avatar_url } = author
     return (
         <li
             className={`merge-request-card  
@@ -25,11 +25,7 @@ const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
                 <>
                     {/* eslint-disable-next-line react/jsx-no-target-blank */}
                     <a target="_blank" href={author.web_url}>
-                        <img
-                            className="header-logo"
-                            alt="/"
-                            src={avatar_url}
-                        />
+                        <img className="header-logo" alt="/" src={avatar_url} />
                     </a>
                 </>
                 <div className="has-flex">
