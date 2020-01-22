@@ -1,4 +1,4 @@
-name: Test Javascript Lint and Format it
+name: Formating All files
 
 on:
   - push
@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: yarn format, lint, and test
+    - name: yarn format
       run: |
         yarn install
         yarn format

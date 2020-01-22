@@ -64,7 +64,7 @@ const Settings = ({
                     key={project.id}
                     set={() => dispatchGetMergeRequest(project.id)}
                     unSet={() => dispatchDeleteMergeRequest(project.id)}
-                    text={project.name}
+                    text={project.namespace.path + '/' + project.name}
                 />
             ))}
 
