@@ -18,6 +18,7 @@ export const constants = {
         GET: 'project.GET',
     },
     form: {
+        GET_PER_PAGE: 'form.GET_PER_PAGE',
         SAVE: 'form.SAVE',
     },
 }

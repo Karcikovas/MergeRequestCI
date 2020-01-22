@@ -1,11 +1,16 @@
 import { constants } from '../constants'
 
-export const getProjects = () => ({
+export const getProjects = (perPage, page) => ({
     type: constants.projects.GET,
-    payload: {},
+    payload: {
+        perPage,
+        page,
+    },
 })
 
 export const setProjects = projects => ({
     type: constants.projects.SET,
-    payload: { projects },
+    payload: {
+        projects,
+    },
 })
