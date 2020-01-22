@@ -18,12 +18,15 @@ export const constants = {
         GET: 'project.GET',
     },
     settings: {
-        pages_number: {
-            GET:'settings.pages_number.GET',
+        per_page: {
+            GET: 'settings.per_page.GET',
         },
-        SAVE: 'settings.SAVE'
+        page: {
+            SET: 'settings.page.SET',
+        },
+        SAVE: 'settings.SAVE',
     },
     marked_projects: {
-        SET:'marked_projects.SET',
-    }
+        SET: 'marked_projects.SET',
+    },
 }

@@ -1,8 +1,8 @@
 import { constants } from '../../constants'
 
-export const getProjectsPerPage = (perPage) => ({
-    type: constants.settings.pages_number.GET,
+export const getProjectsPerPage = (number) => ({
+    type: constants.settings.per_page.GET,
     payload: {
-        perPage,
+        number,
     },
-});
+})

@@ -1,11 +1,11 @@
-import { constants } from '../../constants';
+import { constants } from '../../constants'
 
-const initialState = {}
+const initialState = ''
 
 const PerPageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case constants.settings.pages_number.GET:
-            return action.payload
+        case constants.settings.per_page.GET:
+            return action.payload.number
 
         default:
             return state
