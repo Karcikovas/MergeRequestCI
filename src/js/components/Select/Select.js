@@ -16,7 +16,7 @@ const Select = ({options, onChange, value}) => (
 
 Select.propTypes = {
     options: PropTypes.array,
-    // onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 }
 
 Select.defaultProps = {

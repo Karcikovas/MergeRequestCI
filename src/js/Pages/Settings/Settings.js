@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 import './Settings.scss';
-import { saveSettings, getProjectsPerPage } from '../../../core/SettingsForm/SettingsFormActions';
+import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions';
+import { getProjectsPerPage } from '../../../core/SettingsForm/PerPage/PerPageActions';
 import { getProjects } from '../../../core/Project/ProjectsActions';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions';
 import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActions';
+import { setMarkedProjectID } from '../../../core/MarkedProjects/MarkedProjectsActions';
 import Select from '../../components/Select/Select';
 
 const Settings = ({
@@ -21,8 +23,9 @@ const Settings = ({
                       dispatchGetProjectsPerPage,
                       perPage,
                       page,
+                      dispatchSetMarkedProject,
+                      // markedProjects,
 }) => {
-
     useEffect(() => {
         dispatchGetProjects(perPage, page);
     }, [])
@@ -51,6 +54,11 @@ const Settings = ({
         dispatchGetProjects(event.target.value, 1)
     }
 
+    const SetActiveCheckbox = (id) => {
+        dispatchSetMarkedProject(id)
+        dispatchGetMergeRequest(id)
+    }
+
     return (
         <div className="edit-dashboard-page">
             <div className="has-flex">
@@ -62,7 +70,8 @@ const Settings = ({
             {projects.map(project => (
                 <Checkbox
                     key={project.id}
-                    set={() => dispatchGetMergeRequest(project.id)}
+                    id={project.id}
+                    set={() => SetActiveCheckbox(project.id) }
                     unSet={() => dispatchDeleteMergeRequest(project.id)}
                     text={project.namespace.path + '/' + project.name}
                 />
@@ -123,6 +132,7 @@ Settings.propTypes = {
     dispatchGetMergeRequest: PropTypes.func.isRequired,
     dispatchDeleteMergeRequest: PropTypes.func.isRequired,
     dispatchGetProjectsPerPage: PropTypes.func.isRequired,
+    dispatchSetMarkedProject: PropTypes.func.isRequired,
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
     downvotesToFail: PropTypes.number,
@@ -138,11 +148,11 @@ Settings.defaultProps = {
     page: '1',
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     projects: state.projects,
     upvotesToPass: state.settings.upvotesToPass,
     downvotesToFail: state.settings.downvotesToFail,
-    perPage:  state.settings.perPage,
+    perPage:  state.settings.pages_number.perPage,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -151,6 +161,7 @@ const mapDispatchToProps = dispatch => ({
     dispatchGetMergeRequest: (id) => dispatch(getMergeRequest(id)),
     dispatchDeleteMergeRequest: (id) => dispatch(deleteMergeRequest(id)),
     dispatchGetProjectsPerPage: (perPage) => dispatch(getProjectsPerPage(perPage)),
+    dispatchSetMarkedProject: (id) => dispatch(setMarkedProjectID(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)

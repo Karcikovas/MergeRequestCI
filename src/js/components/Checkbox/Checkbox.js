@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import './Checkbox.scss'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import './Checkbox.scss';
 
 const Checkbox = ({ text, set, unSet }) => {
     const [checked, setCheckList] = useState(false)
@@ -22,10 +23,16 @@ Checkbox.propTypes = {
     text: PropTypes.string,
     set: PropTypes.func.isRequired,
     unSet: PropTypes.func.isRequired,
+    activeProjects: PropTypes.array
 }
 
 Checkbox.defaultProps = {
     text: '',
+    activeProjects: []
 }
 
-export default Checkbox
+const mapStateToProps = (state) => ({
+    activeProjects: state.settings.active_projects,
+});
+
+export default connect(mapStateToProps, null)(Checkbox)
