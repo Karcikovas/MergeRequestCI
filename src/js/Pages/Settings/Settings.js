@@ -40,8 +40,9 @@ const Settings = ({
             downvotesToFail: downvotesToFail,
         },
 
-        onSubmit: values => {
+        onSubmit: (values) => {
             dispatchFormSave(values)
+            dispatchGetMergeRequest(values.projectID)
         },
     })
 
@@ -93,9 +94,9 @@ const Settings = ({
             ))}
 
             <div className="pagination-control-container">
-                <Button onClick={() => NextPage()}>Previous Page</Button>
+                <Button onClick={() => PrevPage()}>Previous Page</Button>
                 <div>{page}</div>
-                <Button onClick={() => PrevPage()}>Next Page</Button>
+                <Button onClick={() => NextPage()}>Next Page</Button>
             </div>
 
             <form className="settings-form" onSubmit={formik.handleSubmit}>
