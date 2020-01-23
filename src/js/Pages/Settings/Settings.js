@@ -12,7 +12,7 @@ import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActio
 import { setMarkedProjectID } from '../../../core/MarkedProjects/MarkedProjectsActions';
 import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberActions';
 import Select from '../../components/Select/Select';
-import Button from '../../components/Button/Button';
+import PaginationControll from './Partials/PaginationControl/PaginationControl';
 
 const Settings = ({
     dispatchFormSave,
@@ -27,7 +27,6 @@ const Settings = ({
     page,
     dispatchSetMarkedProject,
                       dispatchNextPage,
-    // markedProjects,
 }) => {
     useEffect(() => {
         dispatchGetProjects(perPage, page)
@@ -63,19 +62,6 @@ const Settings = ({
         dispatchGetMergeRequest(id)
     }
 
-    const NextPage = () => {
-        let pageNumber = (page +=1)
-        dispatchNextPage(pageNumber)
-        dispatchGetProjects(perPage, pageNumber)
-    }
-
-    const PrevPage = () => {
-        let pageNumber = (page > 1 ? page -=1 : 1)
-        dispatchNextPage(pageNumber)
-        dispatchGetProjects(perPage, pageNumber)
-    }
-
-
     return (
         <div className="edit-dashboard-page">
             <div className="has-flex">
@@ -93,11 +79,12 @@ const Settings = ({
                 />
             ))}
 
-            <div className="pagination-control-container">
-                <Button onClick={() => PrevPage()}>Previous Page</Button>
-                <div>{page}</div>
-                <Button onClick={() => NextPage()}>Next Page</Button>
-            </div>
+            <PaginationControll
+                page={page}
+                perPage={perPage}
+                dispatchNextPage={dispatchNextPage}
+                dispatchGetProjects={dispatchGetProjects}
+            />
 
             <form className="settings-form" onSubmit={formik.handleSubmit}>
                 <h2>Add Project Id:</h2>
