@@ -22,10 +22,7 @@ const Button = ({ value, onClick, title, children, to }) => {
     }
 
     return (
-        <button
-            className='button'
-            onClick={onClick}
-        >
+        <button className="button" onClick={onClick}>
             {children}
         </button>
     )

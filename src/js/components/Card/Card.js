@@ -61,8 +61,8 @@ Card.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-    successUpVotes: state.settings.upvotesToPass,
-    failureDownVotes: state.settings.downvotesToFail,
+    successUpVotes: state.settings.form.upvotesToPass,
+    failureDownVotes: state.settings.form.downvotesToFail,
 })
 
 export default connect(mapStateToProps, null)(Card)

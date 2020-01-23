@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
-import { RequestReducer } from './Request/RequestReducer';
-import ProjecstReducer from './Project/ProjecstReducer';
-import SettingsFormReducer from './SettingsForm/SettingsFormReducer';
-import MergeRequestReducer from './MergeRequest/MergeRequestReducer';
-import PerPageReducer from './SettingsForm/PerPage/PerPageReducer';
-import MarkedProjectsReducer from './MarkedProjects/MarkedProjectsReducer';
-import PageNumberReducer from './SettingsForm/PageNumber/PageNumberReducer';
+import { combineReducers } from 'redux'
+import { RequestReducer } from './Request/RequestReducer'
+import ProjecstReducer from './Project/ProjecstReducer'
+import SettingsFormReducer from './SettingsForm/SettingsFormReducer'
+import MergeRequestReducer from './MergeRequest/MergeRequestReducer'
+import PerPageReducer from './SettingsForm/PerPage/PerPageReducer'
+import MarkedProjectsReducer from './MarkedProjects/MarkedProjectsReducer'
+import PageNumberReducer from './SettingsForm/PageNumber/PageNumberReducer'
 
 const rootReducer = combineReducers({
     request: RequestReducer,
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     settings: combineReducers({
         per_page: PerPageReducer,
         page: PageNumberReducer,
-        settings: SettingsFormReducer,
+        form: SettingsFormReducer,
         active_projects: MarkedProjectsReducer,
     }),
 })

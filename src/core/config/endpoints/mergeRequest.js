@@ -3,7 +3,7 @@ export const mergeRequestsEndpoint = {
         name: 'GET_MERGE_REQUEST',
         url: {
             method: 'GET',
-            path: (id) => `/${id}/merge_requests?state=opened`,
+            path: id => `/${id}/merge_requests?state=opened`,
         },
     },
 }
