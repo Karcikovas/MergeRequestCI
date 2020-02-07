@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './ProjectsList.scss'
-import PerPageSelect from '../PerPageSelect/PerPageSelect'
 import Checkbox from '../../../../components/Checkbox/Checkbox'
 import PaginationControll from '../PaginationControl/PaginationControl'
 
 const ProjectsList = ({
-    onChange,
     perPage,
     projects,
     SetActiveCheckbox,
@@ -17,8 +15,6 @@ const ProjectsList = ({
 }) => {
     return (
         <div className="projects-list">
-            <PerPageSelect onChange={onChange} perPage={perPage} />
-
             {projects.map(project => (
                 <Checkbox
                     key={project.id}
@@ -43,7 +39,6 @@ const ProjectsList = ({
 }
 
 ProjectsList.propTypes = {
-    onChange: PropTypes.func.isRequired,
     perPage: PropTypes.number,
     projects: PropTypes.array,
     SetActiveCheckbox: PropTypes.func.isRequired,

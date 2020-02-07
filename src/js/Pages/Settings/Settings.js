@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Settings.scss'
@@ -12,6 +12,7 @@ import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberA
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
 import Button from '../../components/Button/Button'
 import Form from './Partials/Form/Form'
+import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
 
 const Settings = ({
     dispatchFormSave,
@@ -27,7 +28,6 @@ const Settings = ({
     dispatchSetMarkedProject,
     dispatchNextPage,
 }) => {
-    const [viewList, setviewList] = useState(false)
 
     useEffect(() => {
         dispatchGetProjects(perPage, page)
@@ -45,14 +45,15 @@ const Settings = ({
 
     return (
         <div className="settings">
-            {viewList ? (
+            <PerPageSelect onChange={onChange} perPage={perPage} />
+
                 <Form
                     dispatchFormSave={dispatchFormSave}
                     upvotesToPass={upvotesToPass}
                     downvotesToFail={downvotesToFail}
                     dispatchGetMergeRequest={dispatchGetMergeRequest}
                 />
-            ) : (
+
                 <ProjectsList
                     onChange={onChange}
                     perPage={perPage}
@@ -63,19 +64,18 @@ const Settings = ({
                     dispatchNextPage={dispatchNextPage}
                     dispatchGetProjects={dispatchGetProjects}
                 />
-            )}
 
-            <div className="has-flex">
-                {viewList ? (
-                    <Button onClick={() => setviewList(false)}>
-                        Projects List
-                    </Button>
-                ) : (
-                    <Button onClick={() => setviewList(true)}>
-                        Settings Form
-                    </Button>
-                )}
-            </div>
+            {/*<div className="has-flex">*/}
+            {/*    {viewList ? (*/}
+            {/*        <Button onClick={() => setviewList(false)}>*/}
+            {/*            Projects List*/}
+            {/*        </Button>*/}
+            {/*    ) : (*/}
+            {/*        <Button onClick={() => setviewList(true)}>*/}
+            {/*            Settings Form*/}
+            {/*        </Button>*/}
+            {/*    )}*/}
+            {/*</div>*/}
         </div>
     )
 }

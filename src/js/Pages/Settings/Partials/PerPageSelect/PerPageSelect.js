@@ -14,7 +14,6 @@ const PerPageSelect = ({ onChange, perPage }) => {
     return (
         <div className="per-page-container">
             <Select options={options} onChange={onChange} value={perPage} />
-            <h2>ALL Visiable Projects to you:</h2>
         </div>
     )
 }
