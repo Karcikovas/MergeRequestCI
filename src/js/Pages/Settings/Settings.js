@@ -33,13 +33,12 @@ const Settings = ({
         dispatchGetProjects(perPage, page)
     }, [])
 
-
-    const onChange = (event) => {
+    const onChange = event => {
         dispatchGetProjectsPerPage(event.target.value)
         dispatchGetProjects(event.target.value, page)
     }
 
-    const SetActiveCheckbox = (id) => {
+    const SetActiveCheckbox = id => {
         dispatchSetMarkedProject(id)
         dispatchGetMergeRequest(id)
     }
@@ -53,7 +52,7 @@ const Settings = ({
                     downvotesToFail={downvotesToFail}
                     dispatchGetMergeRequest={dispatchGetMergeRequest}
                 />
-                ) : (
+            ) : (
                 <ProjectsList
                     onChange={onChange}
                     perPage={perPage}
@@ -67,10 +66,15 @@ const Settings = ({
             )}
 
             <div className="has-flex">
-                {
-                    viewList ? <Button onClick={() => setviewList(false)}>Projects List</Button>
-                         : <Button onClick={() => setviewList(true)}>Settings Form</Button>
-                }
+                {viewList ? (
+                    <Button onClick={() => setviewList(false)}>
+                        Projects List
+                    </Button>
+                ) : (
+                    <Button onClick={() => setviewList(true)}>
+                        Settings Form
+                    </Button>
+                )}
             </div>
         </div>
     )

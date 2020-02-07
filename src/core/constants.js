@@ -9,10 +9,13 @@ export const constants = {
         GET: 'merge_request.GET',
         SET: 'merge_request.SET',
         DELETE: 'merge_request.DELETE',
+        STATUS: 'merge_request.STATUS',
     },
     projects: {
         GET: 'projects.GET',
         SET: 'projects.SET',
+        STATUS: 'projects.STATUS',
+        ERROR: 'projects.ERROR',
     },
     project: {
         GET: 'project.GET',

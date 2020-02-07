@@ -1,6 +1,9 @@
 @import "../../../assets/scss/main";
 
 .settings {
+  width: 60%;
+  margin: auto;
+
   .has-flex {
     display: flex;
     flex-direction: row;

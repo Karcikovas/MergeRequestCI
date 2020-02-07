@@ -16,3 +16,8 @@ export const deleteMergeRequest = id => ({
     type: constants.merge_request.DELETE,
     payload: { id },
 })
+
+export const setMergeRequestStatus = status => ({
+    type: constants.merge_request.STATUS,
+    payload: { status },
+})

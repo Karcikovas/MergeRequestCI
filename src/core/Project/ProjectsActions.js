@@ -14,3 +14,17 @@ export const setProjects = projects => ({
         projects,
     },
 })
+
+export const setStatus = status => ({
+    type: constants.projects.STATUS,
+    payload: {
+        status,
+    },
+})
+
+export const setError = error => ({
+    type: constants.projects.ERROR,
+    payload: {
+        error,
+    },
+})

@@ -1,9 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
-import './Form.scss';
+import './Form.scss'
 
-const Form = ({upvotesToPass, downvotesToFail, dispatchFormSave, dispatchGetMergeRequest}) => {
+const Form = ({
+    upvotesToPass,
+    downvotesToFail,
+    dispatchFormSave,
+    dispatchGetMergeRequest,
+}) => {
     const formik = useFormik({
         initialValues: {
             projectID: '',
@@ -11,7 +16,7 @@ const Form = ({upvotesToPass, downvotesToFail, dispatchFormSave, dispatchGetMerg
             downvotesToFail: downvotesToFail,
         },
 
-        onSubmit: (values) => {
+        onSubmit: values => {
             dispatchFormSave(values)
             dispatchGetMergeRequest(values.projectID)
         },
@@ -75,4 +80,4 @@ Form.defaultProps = {
     downvotesToFail: null,
 }
 
-export default Form;
+export default Form

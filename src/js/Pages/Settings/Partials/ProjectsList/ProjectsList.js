@@ -29,12 +29,15 @@ const ProjectsList = ({
                 />
             ))}
 
-            <PaginationControll
-                page={page}
-                perPage={perPage}
-                dispatchNextPage={dispatchNextPage}
-                dispatchGetProjects={dispatchGetProjects}
-            />
+            {projects.length >= 0 && (
+                <PaginationControll
+                    page={page}
+                    perPage={perPage}
+                    projects={projects}
+                    dispatchNextPage={dispatchNextPage}
+                    dispatchGetProjects={dispatchGetProjects}
+                />
+            )}
         </div>
     )
 }

@@ -1,4 +1,9 @@
 .projects-list {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   .checkbox {
     display: flex;
     flex-direction: row;
