@@ -2,9 +2,9 @@ import { constants } from '../constants'
 
 const initialState = []
 
-const MarkedProjectsReducer = (state = initialState, action) => {
+const ActiveProjectsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case constants.marked_projects.SET:
+        case constants.active_projects.ADD:
             return state.concat(action.payload)
 
         default:
@@ -12,4 +12,4 @@ const MarkedProjectsReducer = (state = initialState, action) => {
     }
 }
 
-export default MarkedProjectsReducer
+export default ActiveProjectsReducer

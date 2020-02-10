@@ -1,60 +1,55 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Settings.scss'
 import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
 import { getProjectsPerPage } from '../../../core/SettingsForm/PerPage/PerPageActions'
-import { getProjects } from '../../../core/Project/ProjectsActions'
+import { getProjects } from '../../../core/Project/Projects/ProjectsActions'
 import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
 import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
-import { setMarkedProjectID } from '../../../core/MarkedProjects/MarkedProjectsActions'
+import { addActiveProject } from '../../../core/ActiveProjects/ActiveProjectsActions'
 import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberActions'
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
-import Button from '../../components/Button/Button'
-import Form from './Partials/Form/Form'
+import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
+import Loader from '../../components/Loader/Loader'
 
 const Settings = ({
-    dispatchFormSave,
     dispatchGetProjects,
     dispatchGetMergeRequest,
     projects,
     dispatchDeleteMergeRequest,
-    upvotesToPass,
-    downvotesToFail,
     dispatchGetProjectsPerPage,
     perPage,
     page,
-    dispatchSetMarkedProject,
+    dispatchAddProject,
     dispatchNextPage,
+                      status,
 }) => {
-    const [viewList, setviewList] = useState(false)
 
     useEffect(() => {
         dispatchGetProjects(perPage, page)
     }, [])
 
-
-    const onChange = (event) => {
+    const onChange = event => {
         dispatchGetProjectsPerPage(event.target.value)
         dispatchGetProjects(event.target.value, page)
     }
 
-    const SetActiveCheckbox = (id) => {
-        dispatchSetMarkedProject(id)
+    const SetActiveCheckbox = id => {
+        dispatchAddProject(id)
         dispatchGetMergeRequest(id)
     }
 
     return (
         <div className="settings">
-            {viewList ? (
-                <Form
-                    dispatchFormSave={dispatchFormSave}
-                    upvotesToPass={upvotesToPass}
-                    downvotesToFail={downvotesToFail}
-                    dispatchGetMergeRequest={dispatchGetMergeRequest}
-                />
-                ) : (
-                <ProjectsList
+            <div className="settings-filter-container">
+                <PerPageSelect onChange={onChange} perPage={perPage} />
+            </div>
+
+
+            {status === 'loading' && <Loader />}
+
+            {status !== 'loading' && <ProjectsList
                     onChange={onChange}
                     perPage={perPage}
                     projects={projects}
@@ -62,16 +57,8 @@ const Settings = ({
                     dispatchDeleteMergeRequest={dispatchDeleteMergeRequest}
                     page={page}
                     dispatchNextPage={dispatchNextPage}
-                    dispatchGetProjects={dispatchGetProjects}
-                />
-            )}
-
-            <div className="has-flex">
-                {
-                    viewList ? <Button onClick={() => setviewList(false)}>Projects List</Button>
-                         : <Button onClick={() => setviewList(true)}>Settings Form</Button>
+                    dispatchGetProjects={dispatchGetProjects} />
                 }
-            </div>
         </div>
     )
 }
@@ -82,13 +69,14 @@ Settings.propTypes = {
     dispatchGetMergeRequest: PropTypes.func.isRequired,
     dispatchDeleteMergeRequest: PropTypes.func.isRequired,
     dispatchGetProjectsPerPage: PropTypes.func.isRequired,
-    dispatchSetMarkedProject: PropTypes.func.isRequired,
+    dispatchAddProject: PropTypes.func.isRequired,
     dispatchNextPage: PropTypes.func.isRequired,
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
     downvotesToFail: PropTypes.number,
     perPage: PropTypes.number,
     page: PropTypes.number,
+    status: PropTypes.string,
 }
 
 Settings.defaultProps = {
@@ -97,10 +85,12 @@ Settings.defaultProps = {
     downvotesToFail: null,
     perPage: 0,
     page: 1,
+    status: '',
 }
 
 const mapStateToProps = state => ({
-    projects: state.projects,
+    projects: state.projects.available_projects,
+    status: state.projects.status,
     upvotesToPass: state.settings.upvotesToPass,
     downvotesToFail: state.settings.downvotesToFail,
     perPage: state.settings.per_page,
@@ -114,7 +104,7 @@ const mapDispatchToProps = dispatch => ({
     dispatchGetMergeRequest: id => dispatch(getMergeRequest(id)),
     dispatchDeleteMergeRequest: id => dispatch(deleteMergeRequest(id)),
     dispatchGetProjectsPerPage: number => dispatch(getProjectsPerPage(number)),
-    dispatchSetMarkedProject: id => dispatch(setMarkedProjectID(id)),
+    dispatchAddProject: id => dispatch(addActiveProject(id)),
     dispatchNextPage: pageNumber => dispatch(setPageNumber(pageNumber)),
 })
 

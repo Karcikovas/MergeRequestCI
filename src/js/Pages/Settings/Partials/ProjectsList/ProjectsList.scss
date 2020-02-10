@@ -1,7 +1,51 @@
+@import "../../../../../assets/scss/main";
+
 .projects-list {
-  .checkbox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  min-height: 80vh;
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .projects-list-item {
+    border-bottom: $gray-border;
+    display: inline-flex;
+    min-height: 90px;
+    padding: 25px 0;
+    list-style: none;
+
+    .button {
+      margin: auto;
+      width: 80px;
+      background-color: $color-light-gray;
+      border: $dark-gray-border;
+      color: $color-black;
+
+      &:hover {
+        color: $color-black;
+        border: $black-border;
+      }
+    }
   }
+
+  .projects-list-item__info {
+    width: 80%;
+  }
+
+  h2 {
+    color: $color-blue;
+    font-size: 20px;
+    margin-bottom: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin-top: 5px;
+    color: $color-dark-gray;
+  }
+
 }

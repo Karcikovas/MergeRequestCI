@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
 import './Dashboard.scss'
+import {getMergeRequest} from '../../../core/MergeRequest/MergeRequestActions'
 
-const Main = ({ error, mergeRequests }) => {
+const Main = ({ error, mergeRequests, activeProjects, dispatchGetMergeRequest }) => {
+    useEffect(() => {
+        // getMergeRequest(perPage, page)
+
+        console.log(activeProjects.length > 0);
+        if(activeProjects.length > 0){
+            activeProjects.map((id) => dispatchGetMergeRequest(id))
+        }
+    }, [])
+
     if (mergeRequests) {
         return (
             <ul className="dashboard-merge-request-list">
@@ -33,6 +43,7 @@ Main.propTypes = {
     dispatchGetMergeRequest: PropTypes.func.isRequired,
     settings: PropTypes.objectOf(PropTypes.string),
     mergeRequests: PropTypes.array,
+    activeProjects: PropTypes.array,
 }
 
 Main.defaultProps = {
@@ -44,11 +55,17 @@ Main.defaultProps = {
     error: '',
     settings: {},
     mergeRequests: [],
+    activeProjects: [],
 }
 
 const mapStateToProps = state => ({
     settings: state.settings,
     mergeRequests: state.mergeRequest,
+    activeProjects: state.active_projects,
 })
 
-export default connect(mapStateToProps, null)(Main)
+const mapDispatchToProps = dispatch => ({
+    dispatchGetMergeRequest: (id) => dispatch(getMergeRequest(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

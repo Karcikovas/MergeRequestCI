@@ -2,19 +2,28 @@ import { call, takeEvery, all, put } from 'redux-saga/effects'
 import { constants } from '../constants'
 import { endpoints } from '../config/endpoints'
 import { startRequest } from '../Request/RequestSaga'
-import { setMergeRequest } from './MergeRequestActions'
+import { setMergeRequest, setMergeRequestStatus } from './MergeRequestActions'
 
 export function* getMergeRequest(action) {
     const { id } = action.payload
 
-    const { response } = yield call(
+    const { response, error } = yield call(
         startRequest,
         endpoints.GET_MERGE_REQUEST.name,
-        endpoints.GET_MERGE_REQUEST.url.path(id)
+        endpoints.GET_MERGE_REQUEST.url.path(id),
+        yield all(put(setMergeRequestStatus({ status: 'loading' })))
     )
 
     if (response) {
-        yield all([put(setMergeRequest(response.data))])
+        yield all([
+            put(setMergeRequest(response.data)),
+            put(setMergeRequestStatus()),
+        ])
+    }
+
+    if (error) {
+        console.log(error)
+        yield all([put(setMergeRequestStatus())])
     }
 }
 

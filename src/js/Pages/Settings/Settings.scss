@@ -1,9 +1,28 @@
 @import "../../../assets/scss/main";
 
 .settings {
+  width: 100%;
+  margin: 25px auto auto;
+  display: flex;
+  flex-direction: column;
+
+  .settings-filter-container {
+    display: inline-flex;
+    padding: 15px 0;
+    width: 50%;
+    margin: 0 auto;
+    justify-content: center;
+    border-top: $gray-border;
+    border-bottom: $gray-border;
+  }
+
   .has-flex {
     display: flex;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .loader {
+    margin: 20vh auto;
   }
 }
