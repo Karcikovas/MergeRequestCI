@@ -29,7 +29,7 @@ export const constants = {
         },
         SAVE: 'settings.SAVE',
     },
-    marked_projects: {
-        SET: 'marked_projects.SET',
+    active_projects: {
+        ADD: 'active_projects.ADD',
     },
 }

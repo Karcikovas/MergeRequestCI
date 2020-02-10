@@ -27,9 +27,7 @@ const PaginationControll = ({
         <div className="pagination-control-container">
             <Button onClick={() => PrevPage()}>Previous Page</Button>
             <div className="pagination-indicator">{page}</div>
-            <Button onClick={() => NextPage()}>
-                Next Page
-            </Button>
+            <Button onClick={() => NextPage()}>Next Page</Button>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Header.scss'
 import Button from '../../components/Button/Button'
-import DefaultLogo from '../../../images/ksi.png'
+import DefaultLogo from '../../../assets/images/ksi.png'
 import { useLocation } from 'react-router-dom'
 
 const Header = () => {

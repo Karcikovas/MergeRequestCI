@@ -1,4 +1,4 @@
-import { constants } from '../constants'
+import { constants } from '../../constants'
 
 export const getProjects = (perPage, page) => ({
     type: constants.projects.GET,
