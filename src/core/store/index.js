@@ -7,7 +7,7 @@ import rootSaga from '../saga'
 
 const persistConfig = {
     key: 'root',
-    whitelist: 'active_projects',
+    whitelist: ['active_projects', 'settings'],
     storage,
 }
 
