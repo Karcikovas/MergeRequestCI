@@ -15,10 +15,8 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Toolbar />
-            <div className="body test">
-                <Route exact path="/" component={Dashboard} />
-                <Route exact path="/settings" component={EditDashboard} />
-            </div>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/settings" component={EditDashboard} />
         </Router>
 
         <Footer />

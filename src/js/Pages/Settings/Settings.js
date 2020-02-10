@@ -10,18 +10,14 @@ import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActio
 import { addActiveProject } from '../../../core/ActiveProjects/ActiveProjectsActions'
 import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberActions'
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
-import Form from './Partials/Form/Form'
 import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
 import Loader from '../../components/Loader/Loader'
 
 const Settings = ({
-    dispatchFormSave,
     dispatchGetProjects,
     dispatchGetMergeRequest,
     projects,
     dispatchDeleteMergeRequest,
-    upvotesToPass,
-    downvotesToFail,
     dispatchGetProjectsPerPage,
     perPage,
     page,
@@ -46,18 +42,14 @@ const Settings = ({
 
     return (
         <div className="settings">
-            <PerPageSelect onChange={onChange} perPage={perPage} />
+            <div className="settings-filter-container">
+                <PerPageSelect onChange={onChange} perPage={perPage} />
+            </div>
 
-                {status === 'loading' && <Loader />}
 
-                {status !== 'loading' && <Form
-                    dispatchFormSave={dispatchFormSave}
-                    upvotesToPass={upvotesToPass}
-                    downvotesToFail={downvotesToFail}
-                    dispatchGetMergeRequest={dispatchGetMergeRequest}
-                />}
+            {status === 'loading' && <Loader />}
 
-                {status !== 'loading' && <ProjectsList
+            {status !== 'loading' && <ProjectsList
                     onChange={onChange}
                     perPage={perPage}
                     projects={projects}

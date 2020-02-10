@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './ProjectsList.scss'
-import Checkbox from '../../../../components/Checkbox/Checkbox'
+import Button from '../../../../components/Button/Button'
 import PaginationControll from '../PaginationControl/PaginationControl'
 
 const ProjectsList = ({
     perPage,
     projects,
     SetActiveCheckbox,
-    dispatchDeleteMergeRequest,
     page,
     dispatchNextPage,
     dispatchGetProjects,
@@ -16,13 +15,19 @@ const ProjectsList = ({
     return (
         <div className="projects-list">
             {projects.map(project => (
-                <Checkbox
-                    key={project.id}
-                    id={project.id}
-                    set={() => SetActiveCheckbox(project.id)}
-                    unSet={() => dispatchDeleteMergeRequest(project.id)}
-                    text={project.namespace.path + '/' + project.name}
-                />
+                <div key={project.id} className="projects-list-item">
+                    <li className="projects-list-item__info">
+                        <h2>{project.name}</h2>
+
+                        <p>{project.description}</p>
+                    </li>
+
+                    <Button
+                        onClick={() =>SetActiveCheckbox(project.id)}
+                        title="Add">
+                        ADD
+                    </Button>
+                </div>
             ))}
 
             {projects.length >= 0 && (

@@ -8,9 +8,7 @@ const PaginationControll = ({
     dispatchNextPage,
     dispatchGetProjects,
     perPage,
-    projects,
 }) => {
-    console.log(projects)
     const NextPage = () => {
         let pageNumber = (page += 1)
         dispatchNextPage(pageNumber)
@@ -35,7 +33,6 @@ const PaginationControll = ({
 PaginationControll.propTypes = {
     page: PropTypes.number,
     perPage: PropTypes.number,
-    projects: PropTypes.array,
     dispatchNextPage: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
 }
