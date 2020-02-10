@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
         available_projects: ProjecstReducer,
         status: ProjectsStatusReducer,
     }),
-
     active_projects: ActiveProjectsReducer,
     settings: combineReducers({
         per_page: PerPageReducer,
