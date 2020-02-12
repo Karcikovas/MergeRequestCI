@@ -23,9 +23,8 @@ const Settings = ({
     page,
     dispatchAddProject,
     dispatchNextPage,
-                      status,
+    status,
 }) => {
-
     useEffect(() => {
         dispatchGetProjects(perPage, page)
     }, [])
@@ -35,9 +34,9 @@ const Settings = ({
         dispatchGetProjects(event.target.value, page)
     }
 
-    const SetActiveCheckbox = id => {
-        dispatchAddProject(id)
-        dispatchGetMergeRequest(id)
+    const SetActiveCheckbox = project => {
+        dispatchAddProject(project)
+        dispatchGetMergeRequest(project.id)
     }
 
     return (
@@ -46,10 +45,10 @@ const Settings = ({
                 <PerPageSelect onChange={onChange} perPage={perPage} />
             </div>
 
-
             {status === 'loading' && <Loader />}
 
-            {status !== 'loading' && <ProjectsList
+            {status !== 'loading' && (
+                <ProjectsList
                     onChange={onChange}
                     perPage={perPage}
                     projects={projects}
@@ -57,8 +56,9 @@ const Settings = ({
                     dispatchDeleteMergeRequest={dispatchDeleteMergeRequest}
                     page={page}
                     dispatchNextPage={dispatchNextPage}
-                    dispatchGetProjects={dispatchGetProjects} />
-                }
+                    dispatchGetProjects={dispatchGetProjects}
+                />
+            )}
         </div>
     )
 }

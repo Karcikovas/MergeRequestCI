@@ -10,7 +10,7 @@ import configureStore from '../core/store'
 import '../assets/scss/main.scss'
 import Footer from './Pages/Footer/Footer'
 import Toolbar from './Pages/Header/Header'
-const {store, persistor }= configureStore()
+const { store, persistor } = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>

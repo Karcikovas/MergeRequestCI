@@ -1,8 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import './ProjectsList.scss'
-import Button from '../../../../components/Button/Button'
 import PaginationControll from '../PaginationControl/PaginationControl'
+import SelectButton from './Partials/SelectButton';
 
 const ProjectsList = ({
     perPage,
@@ -11,7 +12,12 @@ const ProjectsList = ({
     page,
     dispatchNextPage,
     dispatchGetProjects,
+    selectedProjects,
 }) => {
+    const handleFilter = (project) => {
+        return !!selectedProjects.find(selected => selected.id === project.id);
+    }
+    
     return (
         <div className="projects-list">
             {projects.map(project => (
@@ -22,11 +28,11 @@ const ProjectsList = ({
                         <p>{project.description}</p>
                     </li>
 
-                    <Button
-                        onClick={() =>SetActiveCheckbox(project.id)}
-                        title="Add">
-                        ADD
-                    </Button>
+                    <SelectButton
+                        onClick={SetActiveCheckbox}
+                        active={handleFilter(project)}
+                        project={project}
+                    />
                 </div>
             ))}
 
@@ -50,11 +56,17 @@ ProjectsList.propTypes = {
     dispatchDeleteMergeRequest: PropTypes.func.isRequired,
     dispatchNextPage: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
+    selectedProjects: PropTypes.array,
 }
 
 ProjectsList.defaultProps = {
     perPage: 0,
     projects: [],
+    selectedProjects: [],
 }
 
-export default ProjectsList
+const mapStateToProps = state => ({
+    selectedProjects: state.active_projects,
+})
+
+export default connect(mapStateToProps, null)(ProjectsList)

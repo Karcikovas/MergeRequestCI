@@ -4,15 +4,20 @@ import PropTypes from 'prop-types'
 import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
 import './Dashboard.scss'
-import {getMergeRequest} from '../../../core/MergeRequest/MergeRequestActions'
+import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
 
-const Main = ({ error, mergeRequests, activeProjects, dispatchGetMergeRequest }) => {
+const Main = ({
+    error,
+    mergeRequests,
+    activeProjects,
+    dispatchGetMergeRequest,
+}) => {
     useEffect(() => {
         // getMergeRequest(perPage, page)
+        console.log(activeProjects.length > 0)
 
-        console.log(activeProjects.length > 0);
-        if(activeProjects.length > 0){
-            activeProjects.map((id) => dispatchGetMergeRequest(id))
+        if (activeProjects.length > 0) {
+            activeProjects.map(id => dispatchGetMergeRequest(id))
         }
     }, [])
 
@@ -65,7 +70,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    dispatchGetMergeRequest: (id) => dispatch(getMergeRequest(id)),
+    dispatchGetMergeRequest: id => dispatch(getMergeRequest(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)
