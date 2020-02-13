@@ -14,19 +14,6 @@
     min-height: 90px;
     padding: 25px 0;
     list-style: none;
-
-    .button {
-      margin: auto;
-      width: 80px;
-      background-color: $color-light-gray;
-      border: $dark-gray-border;
-      color: $color-black;
-
-      &:hover {
-        color: $color-black;
-        border: $black-border;
-      }
-    }
   }
 
   .projects-list-item__info {

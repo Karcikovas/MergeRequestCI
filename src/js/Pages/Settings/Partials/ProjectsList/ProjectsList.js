@@ -3,21 +3,26 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import './ProjectsList.scss'
 import PaginationControll from '../PaginationControl/PaginationControl'
-import SelectButton from './Partials/SelectButton';
+import SelectButton from './Partials/Button/SelectButton'
+import {
+    removeActiveProject,
+    addActiveProject,
+} from '../../../../../core/ActiveProjects/ActiveProjectsActions'
 
 const ProjectsList = ({
     perPage,
     projects,
-    SetActiveCheckbox,
+    addProject,
+    removeProject,
     page,
     dispatchNextPage,
     dispatchGetProjects,
     selectedProjects,
 }) => {
-    const handleFilter = (project) => {
-        return !!selectedProjects.find(selected => selected.id === project.id);
+    const handleFilter = project => {
+        return !!selectedProjects.find(selected => selected.id === project.id)
     }
-    
+
     return (
         <div className="projects-list">
             {projects.map(project => (
@@ -29,7 +34,8 @@ const ProjectsList = ({
                     </li>
 
                     <SelectButton
-                        onClick={SetActiveCheckbox}
+                        add={addProject}
+                        remove={removeProject}
                         active={handleFilter(project)}
                         project={project}
                     />
@@ -52,8 +58,8 @@ const ProjectsList = ({
 ProjectsList.propTypes = {
     perPage: PropTypes.number,
     projects: PropTypes.array,
-    SetActiveCheckbox: PropTypes.func.isRequired,
-    dispatchDeleteMergeRequest: PropTypes.func.isRequired,
+    addProject: PropTypes.func.isRequired,
+    removeProject: PropTypes.func.isRequired,
     dispatchNextPage: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
     selectedProjects: PropTypes.array,
@@ -69,4 +75,9 @@ const mapStateToProps = state => ({
     selectedProjects: state.active_projects,
 })
 
-export default connect(mapStateToProps, null)(ProjectsList)
+const mapDispatchToProps = dispatch => ({
+    addProject: project => dispatch(addActiveProject(project)),
+    removeProject: project => dispatch(removeActiveProject(project)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsList)

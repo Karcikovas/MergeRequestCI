@@ -31,5 +31,6 @@ export const constants = {
     },
     active_projects: {
         ADD: 'active_projects.ADD',
+        REMOVE: 'active_projects.REMOVE',
     },
 }

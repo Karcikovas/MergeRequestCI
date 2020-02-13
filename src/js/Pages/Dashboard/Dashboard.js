@@ -13,12 +13,7 @@ const Main = ({
     dispatchGetMergeRequest,
 }) => {
     useEffect(() => {
-        // getMergeRequest(perPage, page)
-        console.log(activeProjects.length > 0)
-
-        if (activeProjects.length > 0) {
-            activeProjects.map(id => dispatchGetMergeRequest(id))
-        }
+        activeProjects.map((project) => dispatchGetMergeRequest(project.id))
     }, [])
 
     if (mergeRequests) {

@@ -5,23 +5,20 @@ import './Settings.scss'
 import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
 import { getProjectsPerPage } from '../../../core/SettingsForm/PerPage/PerPageActions'
 import { getProjects } from '../../../core/Project/Projects/ProjectsActions'
-import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
 import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
-import { addActiveProject } from '../../../core/ActiveProjects/ActiveProjectsActions'
 import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberActions'
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
 import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
 import Loader from '../../components/Loader/Loader'
+import SelectStatus from './Partials/ProjectsList/Partials/SelectStatus/SelectStatus'
 
 const Settings = ({
     dispatchGetProjects,
-    dispatchGetMergeRequest,
     projects,
     dispatchDeleteMergeRequest,
     dispatchGetProjectsPerPage,
     perPage,
     page,
-    dispatchAddProject,
     dispatchNextPage,
     status,
 }) => {
@@ -34,14 +31,11 @@ const Settings = ({
         dispatchGetProjects(event.target.value, page)
     }
 
-    const SetActiveCheckbox = project => {
-        dispatchAddProject(project)
-        dispatchGetMergeRequest(project.id)
-    }
-
     return (
         <div className="settings">
             <div className="settings-filter-container">
+                <SelectStatus/>
+
                 <PerPageSelect onChange={onChange} perPage={perPage} />
             </div>
 
@@ -52,7 +46,6 @@ const Settings = ({
                     onChange={onChange}
                     perPage={perPage}
                     projects={projects}
-                    SetActiveCheckbox={SetActiveCheckbox}
                     dispatchDeleteMergeRequest={dispatchDeleteMergeRequest}
                     page={page}
                     dispatchNextPage={dispatchNextPage}
@@ -66,10 +59,8 @@ const Settings = ({
 Settings.propTypes = {
     dispatchFormSave: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
-    dispatchGetMergeRequest: PropTypes.func.isRequired,
     dispatchDeleteMergeRequest: PropTypes.func.isRequired,
     dispatchGetProjectsPerPage: PropTypes.func.isRequired,
-    dispatchAddProject: PropTypes.func.isRequired,
     dispatchNextPage: PropTypes.func.isRequired,
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
@@ -101,10 +92,8 @@ const mapDispatchToProps = dispatch => ({
     dispatchFormSave: data => dispatch(saveSettings(data)),
     dispatchGetProjects: (perPage, page) =>
         dispatch(getProjects(perPage, page)),
-    dispatchGetMergeRequest: id => dispatch(getMergeRequest(id)),
     dispatchDeleteMergeRequest: id => dispatch(deleteMergeRequest(id)),
     dispatchGetProjectsPerPage: number => dispatch(getProjectsPerPage(number)),
-    dispatchAddProject: id => dispatch(addActiveProject(id)),
     dispatchNextPage: pageNumber => dispatch(setPageNumber(pageNumber)),
 })
 

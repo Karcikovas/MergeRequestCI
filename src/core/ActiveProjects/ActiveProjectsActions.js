@@ -6,3 +6,10 @@ export const addActiveProject = project => ({
         project,
     },
 })
+
+export const removeActiveProject = project => ({
+    type: constants.active_projects.REMOVE,
+    payload: {
+        project,
+    },
+})
