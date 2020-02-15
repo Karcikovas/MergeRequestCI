@@ -17,11 +17,12 @@ const Select = ({ options, onChange, value }) => (
 
 Select.propTypes = {
     options: PropTypes.array,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
 }
 
 Select.defaultProps = {
     options: [],
+    onChange: () => null,
 }
 
 export default Select

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './Settings.scss'
 import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
 import { getProjectsPerPage } from '../../../core/SettingsForm/PerPage/PerPageActions'
-import { getProjects } from '../../../core/Project/Projects/ProjectsActions'
+import { getProjects } from '../../../core/Project/ProjectsActions'
 import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
 import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberActions'
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
@@ -17,13 +17,13 @@ const Settings = ({
     projects,
     dispatchDeleteMergeRequest,
     dispatchGetProjectsPerPage,
-    perPage,
+                      amountPerPage,
     page,
     dispatchNextPage,
     status,
 }) => {
     useEffect(() => {
-        dispatchGetProjects(perPage, page)
+        dispatchGetProjects(amountPerPage, page)
     }, [])
 
     const onChange = event => {
@@ -36,15 +36,15 @@ const Settings = ({
             <div className="settings-filter-container">
                 <SelectStatus/>
 
-                <PerPageSelect onChange={onChange} perPage={perPage} />
+                <PerPageSelect onChange={onChange} perPage={amountPerPage} />
             </div>
 
-            {status === 'loading' && <Loader />}
+            {status && <Loader />}
 
-            {status !== 'loading' && (
+            {!status && (
                 <ProjectsList
                     onChange={onChange}
-                    perPage={perPage}
+                    perPage={amountPerPage}
                     projects={projects}
                     dispatchDeleteMergeRequest={dispatchDeleteMergeRequest}
                     page={page}
@@ -65,18 +65,18 @@ Settings.propTypes = {
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
     downvotesToFail: PropTypes.number,
-    perPage: PropTypes.number,
+    amountPerPage: PropTypes.number,
     page: PropTypes.number,
-    status: PropTypes.string,
+    status: PropTypes.bool,
 }
 
 Settings.defaultProps = {
     projects: [],
     upvotesToPass: null,
     downvotesToFail: null,
-    perPage: 0,
+    amountPerPage: 20,
     page: 1,
-    status: '',
+    status: false,
 }
 
 const mapStateToProps = state => ({
@@ -84,8 +84,8 @@ const mapStateToProps = state => ({
     status: state.projects.status,
     upvotesToPass: state.settings.upvotesToPass,
     downvotesToFail: state.settings.downvotesToFail,
-    perPage: state.settings.per_page,
-    page: state.settings.page.pageNumber,
+    amountPerPage: state.settings.per_page,
+    page: state.settings.page,
 })
 
 const mapDispatchToProps = dispatch => ({

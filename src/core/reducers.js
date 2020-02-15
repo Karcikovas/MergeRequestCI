@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux'
 import { RequestReducer } from './Request/RequestReducer'
-import ProjecstReducer from './Project/Projects/ProjecstReducer'
+import ProjecstReducer from './Project/ProjecstReducer'
 import SettingsFormReducer from './SettingsForm/SettingsFormReducer'
 import MergeRequestReducer from './MergeRequest/MergeRequestReducer'
 import PerPageReducer from './SettingsForm/PerPage/PerPageReducer'
 import ActiveProjectsReducer from './ActiveProjects/ActiveProjectsReducer'
 import PageNumberReducer from './SettingsForm/PageNumber/PageNumberReducer'
-import ProjectsStatusReducer from './Project/Projects/ProjectsStatusReducer'
+import ProjectsStatusReducer from './Project/status/ProjectsStatusReducer'
+import ProjectErrorsReducer from './Project/error/ProjectErrorsReducer'
 
 const rootReducer = combineReducers({
     request: RequestReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     projects: combineReducers({
         available_projects: ProjecstReducer,
         status: ProjectsStatusReducer,
+        error:  ProjectErrorsReducer,
     }),
     active_projects: ActiveProjectsReducer,
     settings: combineReducers({

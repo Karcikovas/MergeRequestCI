@@ -22,7 +22,6 @@ export function* getMergeRequest(action) {
     }
 
     if (error) {
-        console.log(error)
         yield all([put(setMergeRequestStatus())])
     }
 }
