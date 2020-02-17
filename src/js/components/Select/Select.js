@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Select.scss'
 
-const Select = ({ options, onChange, value }) => (
+const Select = ({ options, onChange }) => (
     <>
         {/* eslint-disable-next-line jsx-a11y/no-onchange */}
-        <select onChange={onChange} value={value}>
+        <select onChange={onChange}>
             {options.map(option => (
                 <option key={option.value} value={option.value}>
                     {option.label}
@@ -17,12 +17,11 @@ const Select = ({ options, onChange, value }) => (
 
 Select.propTypes = {
     options: PropTypes.array,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
 }
 
 Select.defaultProps = {
     options: [],
-    onChange: () => null,
 }
 
 export default Select

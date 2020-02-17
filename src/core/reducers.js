@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
     projects: combineReducers({
         available_projects: ProjecstReducer,
         status: ProjectsStatusReducer,
-        error:  ProjectErrorsReducer,
+        error: ProjectErrorsReducer,
     }),
     active_projects: ActiveProjectsReducer,
     settings: combineReducers({

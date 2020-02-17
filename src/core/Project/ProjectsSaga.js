@@ -15,17 +15,11 @@ export function* getProject(action) {
     )
 
     if (response) {
-        yield all([
-            put(setProjects(response.data)),
-            put(setStatus(false)),
-        ])
+        yield all([put(setProjects(response.data)), put(setStatus(false))])
     }
 
     if (error) {
-        yield all([
-            put(setError(error)),
-            put(setStatus(false)),
-        ])
+        yield all([put(setError(error)), put(setStatus(false))])
     }
 }
 

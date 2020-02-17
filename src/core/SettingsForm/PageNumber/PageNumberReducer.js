@@ -1,5 +1,5 @@
 import { constants } from '../../constants'
-import {initialValues} from '../../config/constant/api'
+import { initialValues } from '../../config/constant/api'
 
 const initialState = initialValues.pageNumber
 

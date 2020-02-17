@@ -8,7 +8,9 @@ const ActiveProjectsReducer = (state = initialState, action) => {
             return state.concat(action.payload.project)
 
         case constants.active_projects.REMOVE:
-            return state.filter(project => project.id !== action.payload.project.id)
+            return state.filter(
+                project => project.id !== action.payload.project.id
+            )
 
         default:
             return state

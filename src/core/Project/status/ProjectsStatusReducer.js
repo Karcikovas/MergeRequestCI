@@ -1,6 +1,6 @@
 import { constants } from '../../constants'
 
-const initialState = false;
+const initialState = false
 
 const ProjectsStatusReducer = (state = initialState, action) => {
     switch (action.type) {

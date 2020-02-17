@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import './Settings.scss'
+import './List.scss'
 import { saveSettings } from '../../../core/SettingsForm/SettingsFormActions'
 import { getProjectsPerPage } from '../../../core/SettingsForm/PerPage/PerPageActions'
 import { getProjects } from '../../../core/Project/ProjectsActions'
@@ -10,9 +10,10 @@ import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberA
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
 import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
 import Loader from '../../components/Loader/Loader'
-import SelectStatus from './Partials/ProjectsList/Partials/SelectStatus/SelectStatus'
+import Button from '../../components/Button/Button'
+import {routes} from '../../../core/config/routes'
 
-const Settings = ({
+const List = ({
     dispatchGetProjects,
     projects,
     dispatchDeleteMergeRequest,
@@ -34,9 +35,9 @@ const Settings = ({
     return (
         <div className="settings">
             <div className="settings-filter-container">
-                <SelectStatus/>
+                <PerPageSelect onChange={onChange} />
 
-                <PerPageSelect onChange={onChange} perPage={amountPerPage} />
+                <Button to={routes.projects.settings}>Settings</Button>
             </div>
 
             {status && <Loader />}
@@ -56,7 +57,7 @@ const Settings = ({
     )
 }
 
-Settings.propTypes = {
+List.propTypes = {
     dispatchFormSave: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
     dispatchDeleteMergeRequest: PropTypes.func.isRequired,
@@ -65,16 +66,16 @@ Settings.propTypes = {
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
     downvotesToFail: PropTypes.number,
-    amountPerPage: PropTypes.number,
+    amountPerPage: PropTypes.string,
     page: PropTypes.number,
     status: PropTypes.bool,
 }
 
-Settings.defaultProps = {
+List.defaultProps = {
     projects: [],
     upvotesToPass: null,
     downvotesToFail: null,
-    amountPerPage: 20,
+    amountPerPage: '10',
     page: 1,
     status: false,
 }
@@ -97,4 +98,4 @@ const mapDispatchToProps = dispatch => ({
     dispatchNextPage: pageNumber => dispatch(setPageNumber(pageNumber)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(List)

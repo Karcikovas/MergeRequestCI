@@ -10,7 +10,9 @@ const Button = ({ value, onClick, title, children, to, className }) => {
     if (to) {
         return (
             <Link
-                className={`button  ${pathname === to ? 'is-active' : ''} ${className}`}
+                className={`button  ${
+                    pathname === to ? 'is-active' : ''
+                } ${className}`}
                 type={value}
                 title={title}
                 onClick={onClick}
