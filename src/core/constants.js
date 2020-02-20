@@ -16,6 +16,7 @@ export const constants = {
         SET: 'projects.SET',
         STATUS: 'projects.STATUS',
         ERROR: 'projects.ERROR',
+        SEARCH: 'projects.SEARCH',
     },
     project: {
         GET: 'project.GET',

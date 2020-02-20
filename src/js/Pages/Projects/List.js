@@ -12,6 +12,7 @@ import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
 import Loader from '../../components/Loader/Loader'
 import Button from '../../components/Button/Button'
 import {routes} from '../../../core/config/routes'
+import Search from './Partials/Search/Search'
 
 const List = ({
     dispatchGetProjects,
@@ -36,6 +37,8 @@ const List = ({
     return (
         <div className="settings">
             <div className="settings-filter-container">
+                <Search />
+
                 <PerPageSelect onChange={onChange} />
 
                 <Button to={routes.projects.settings}>Settings</Button>

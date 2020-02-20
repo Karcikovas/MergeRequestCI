@@ -14,6 +14,10 @@
     justify-content: center;
     border-top: $gray-border;
     border-bottom: $gray-border;
+
+    input {
+      margin-right: 15px;
+    }
   }
 
   .has-flex {

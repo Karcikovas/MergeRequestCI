@@ -28,3 +28,10 @@ export const setError = error => ({
         error,
     },
 })
+
+export const searchProject = name => ({
+    type: constants.projects.SEARCH,
+    payload: {
+        name,
+    }
+})
