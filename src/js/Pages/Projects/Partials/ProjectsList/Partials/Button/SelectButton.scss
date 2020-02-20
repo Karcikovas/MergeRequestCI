@@ -1,0 +1,12 @@
+@import "../../../../../../../assets/scss/main";
+
+.select-button {
+  border: $dark-gray-border;
+  color: $color-blue;
+  width: 80px;
+
+  &.is-active {
+    background-color: #4AD964;
+    color: $color-white;
+  }
+}

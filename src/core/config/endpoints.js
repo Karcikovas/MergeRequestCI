@@ -1,5 +1,5 @@
 import { mergeRequestsEndpoint } from './endpoints/mergeRequest'
-import { projectsEndpoint } from './endpoints/projects'
+import { projectsEndpoint, projectSearchEndpoint } from './endpoints/projects'
 
 export const baseURL = 'https://gitlab.nfq.lt/api/v4/projects/'
 export const GITLABtoken = 'rp2Yzj4hu38kyvnyoSCW'
@@ -13,4 +13,5 @@ export const formHeaders = { 'Content-Type': 'multipart/form-data' }
 export const endpoints = {
     ...mergeRequestsEndpoint,
     ...projectsEndpoint,
+    ...projectSearchEndpoint,
 }

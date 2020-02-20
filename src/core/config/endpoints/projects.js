@@ -7,3 +7,14 @@ export const projectsEndpoint = {
         },
     },
 }
+
+
+export const projectSearchEndpoint = {
+    SEARCH_PROJECT: {
+        name: 'SEARCH_PROJECT',
+        url: {
+            method: 'GET',
+            path: (name) => `?search=${name}`,
+        },
+    },
+}

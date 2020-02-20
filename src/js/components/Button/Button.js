@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import './Button.scss'
 
-const Button = ({ value, onClick, title, children, to }) => {
+const Button = ({ value, onClick, title, children, to, className, disabled }) => {
     const { pathname } = useLocation()
 
     if (to) {
         return (
             <Link
-                className={`button  ${pathname === to ? 'is-active' : ''}`}
+                className={`button  ${
+                    pathname === to ? 'is-active' : ''
+                } ${className}`}
                 type={value}
                 title={title}
                 onClick={onClick}
@@ -22,7 +24,11 @@ const Button = ({ value, onClick, title, children, to }) => {
     }
 
     return (
-        <button className="button" onClick={onClick}>
+        <button
+            disabled={disabled}
+            className={`${className} button ${disabled ? 'is-disabled' : ''}`}
+            onClick={onClick}
+        >
             {children}
         </button>
     )
@@ -34,6 +40,8 @@ Button.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
     to: PropTypes.string,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -41,6 +49,8 @@ Button.defaultProps = {
     title: '',
     text: '',
     to: '',
+    className: '',
+    disabled: false,
 }
 
 export default Button

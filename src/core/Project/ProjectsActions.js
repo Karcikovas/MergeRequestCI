@@ -1,4 +1,4 @@
-import { constants } from '../../constants'
+import { constants } from '../constants'
 
 export const getProjects = (perPage, page) => ({
     type: constants.projects.GET,
@@ -27,4 +27,11 @@ export const setError = error => ({
     payload: {
         error,
     },
+})
+
+export const searchProject = name => ({
+    type: constants.projects.SEARCH,
+    payload: {
+        name,
+    }
 })

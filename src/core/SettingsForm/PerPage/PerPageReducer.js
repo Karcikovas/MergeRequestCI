@@ -1,6 +1,7 @@
 import { constants } from '../../constants'
+import { initialValues } from '../../config/constant/api'
 
-const initialState = ''
+const initialState = initialValues.perPage
 
 const PerPageReducer = (state = initialState, action) => {
     switch (action.type) {

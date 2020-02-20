@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './PerPageSelect.scss'
 import Select from '../../../../components/Select/Select'
 
-const PerPageSelect = ({ onChange, perPage }) => {
+const PerPageSelect = ({ onChange }) => {
     const options = [
         { label: '10 Project', value: 10 },
         { label: '20 Project', value: 20 },
@@ -13,7 +13,7 @@ const PerPageSelect = ({ onChange, perPage }) => {
 
     return (
         <div className="per-page-container">
-            <Select options={options} onChange={onChange} value={perPage} />
+            <Select options={options} onChange={onChange} />
         </div>
     )
 }
@@ -24,7 +24,7 @@ PerPageSelect.propTypes = {
 }
 
 PerPageSelect.defaultProps = {
-    perPage: 0,
+    amount: 1,
 }
 
 export default PerPageSelect

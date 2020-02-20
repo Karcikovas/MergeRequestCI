@@ -1,5 +1,6 @@
 @import "../../../assets/scss/variables";
 
+//TODO: Remove !important;
 .button {
   max-height: 36px;
   cursor: pointer;
@@ -9,16 +10,12 @@
   border-radius: 5px;
   margin: 5px;
   line-height: normal;
-  color: $nfq-main-color;
   background-color: transparent;
-  border:1px solid $nfq-main-color;
   text-decoration: none;
   font-style: normal;
+  outline:0;
 
-  &:hover,
-  &.is-active {
-    color: $color-white;
-    border-color: $nfq-main-color;
-    background-color: $nfq-main-color;
+  &.is-disabled {
+    opacity: 0.5;
   }
 }
