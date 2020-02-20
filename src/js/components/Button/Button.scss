@@ -1,5 +1,6 @@
 @import "../../../assets/scss/variables";
 
+//TODO: Remove !important;
 .button {
   max-height: 36px;
   cursor: pointer;
@@ -13,4 +14,8 @@
   text-decoration: none;
   font-style: normal;
   outline:0;
+
+  &.is-disabled {
+    opacity: 0.5;
+  }
 }

@@ -28,8 +28,9 @@ const List = ({
     }, [])
 
     const onChange = event => {
-        dispatchGetProjectsPerPage(event.target.value)
-        dispatchGetProjects(event.target.value, page)
+        const perPage = parseInt(event.target.value);
+        dispatchGetProjectsPerPage(perPage)
+        dispatchGetProjects(perPage, page)
     }
 
     return (
@@ -66,7 +67,7 @@ List.propTypes = {
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
     downvotesToFail: PropTypes.number,
-    amountPerPage: PropTypes.string,
+    amountPerPage: PropTypes.number,
     page: PropTypes.number,
     status: PropTypes.bool,
 }
@@ -75,7 +76,7 @@ List.defaultProps = {
     projects: [],
     upvotesToPass: null,
     downvotesToFail: null,
-    amountPerPage: '10',
+    amountPerPage: 10,
     page: 1,
     status: false,
 }

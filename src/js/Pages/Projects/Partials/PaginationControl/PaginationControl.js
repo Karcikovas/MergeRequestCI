@@ -8,7 +8,11 @@ const PaginationControll = ({
     dispatchNextPage,
     dispatchGetProjects,
     perPage,
+    projects,
 }) => {
+    const handleNextButton = page === 1;
+    const handlePrevButton = projects.length !== perPage;
+
     const NextPage = () => {
         let pageNumber = (page += 1)
         dispatchNextPage(pageNumber)
@@ -23,9 +27,9 @@ const PaginationControll = ({
 
     return (
         <div className="pagination-control-container">
-            <Button onClick={() => PrevPage()}>Previous Page</Button>
-            <div className="pagination-indicator">{page}</div>
-            <Button onClick={() => NextPage()}>Next Page</Button>
+            <Button disabled={handleNextButton} onClick={() => PrevPage()}>Previous Page</Button>
+                <div className="pagination-indicator">{page}</div>
+            <Button disabled={handlePrevButton} onClick={() => NextPage()}>Next Page</Button>
         </div>
     )
 }
@@ -35,11 +39,13 @@ PaginationControll.propTypes = {
     perPage: PropTypes.number,
     dispatchNextPage: PropTypes.func.isRequired,
     dispatchGetProjects: PropTypes.func.isRequired,
+    projects: PropTypes.arrayOf(PropTypes.shape()),
 }
 
 PaginationControll.defaultProps = {
     page: 1,
     perPage: 0,
+    projects: [],
 }
 
 export default PaginationControll

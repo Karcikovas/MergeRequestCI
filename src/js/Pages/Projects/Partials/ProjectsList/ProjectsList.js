@@ -24,14 +24,14 @@ const ProjectsList = ({
     }
 
     return (
-        <div className="projects-list">
+        <ul className="projects-list">
             {projects.map(project => (
-                <div key={project.id} className="projects-list-item">
-                    <li className="projects-list-item__info">
+                <li key={project.id}>
+                    <div className="projects-list-item-info">
                         <h2>{project.name}</h2>
 
                         <p>{project.description}</p>
-                    </li>
+                    </div>
 
                     <SelectButton
                         add={addProject}
@@ -39,7 +39,7 @@ const ProjectsList = ({
                         active={handleFilter(project)}
                         project={project}
                     />
-                </div>
+                </li>
             ))}
 
             {projects.length >= 0 && (
@@ -51,7 +51,7 @@ const ProjectsList = ({
                     dispatchGetProjects={dispatchGetProjects}
                 />
             )}
-        </div>
+        </ul>
     )
 }
 
