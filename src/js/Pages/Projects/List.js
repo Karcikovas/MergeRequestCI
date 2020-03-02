@@ -8,11 +8,7 @@ import { getProjects } from '../../../core/Project/ProjectsActions'
 import { deleteMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
 import { setPageNumber } from '../../../core/SettingsForm/PageNumber/PageNumberActions'
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
-import PerPageSelect from './Partials/PerPageSelect/PerPageSelect'
 import Loader from '../../components/Loader/Loader'
-import Button from '../../components/Button/Button'
-import {routes} from '../../../core/config/routes'
-import Search from './Partials/Search/Search'
 
 const List = ({
     dispatchGetProjects,
@@ -36,14 +32,6 @@ const List = ({
 
     return (
         <div className="settings">
-            <div className="settings-filter-container">
-                <Search />
-
-                <PerPageSelect onChange={onChange} />
-
-                <Button to={routes.projects.settings}>Settings</Button>
-            </div>
-
             {status && <Loader />}
 
             {!status && (
@@ -70,7 +58,7 @@ List.propTypes = {
     projects: PropTypes.array,
     upvotesToPass: PropTypes.number,
     downvotesToFail: PropTypes.number,
-    amountPerPage: PropTypes.number,
+    amountPerPage: PropTypes.number.isRequired,
     page: PropTypes.number,
     status: PropTypes.bool,
 }
@@ -79,7 +67,6 @@ List.defaultProps = {
     projects: [],
     upvotesToPass: null,
     downvotesToFail: null,
-    amountPerPage: 10,
     page: 1,
     status: false,
 }

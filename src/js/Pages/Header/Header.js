@@ -1,48 +1,50 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Search from '../Projects/Partials/Search/Search'
+import PerPageSelect from '../Projects/Partials/PerPageSelect/PerPageSelect'
 import './Header.scss'
 import Button from '../../components/Button/Button'
-import DefaultLogo from '../../../assets/images/ksi.png'
 import { useLocation } from 'react-router-dom'
-import { routes } from '../../../core/config/routes'
+import { routes } from '../../../core/config/routes';
+import { getProjects } from '../../../core/Project/ProjectsActions'
 
-const Header = () => {
-    const location = useLocation()
+const Header = ({ getProjectsList, page }) => {
+    const location = useLocation();
+
+    const onChange = (event) => {
+        const perPage = parseInt(event.target.value);
+        getProjectsList(perPage, page)
+    }
 
     return (
         <div className="header">
-            <div className="has-margin">
-                <img className="header-logo" alt="/" src={DefaultLogo} />
-                {location.pathname !== routes.homepage ? (
-                    <div className="header-page-name">{location.pathname}</div>
-                ) : null}
 
-                <div className="toolbar">
-                    <Button title="Refresh" to={routes.homepage}>
-                        Merge Request
-                    </Button>
+            <div className='header-toolset'>
+                <Search />
 
-                    <Button
-                        type="button"
-                        title="Settings"
-                        to={routes.projects.index}
-                    >
-                        Projects
-                    </Button>
-                </div>
+                <PerPageSelect onChange={onChange}/>
+                {
+                    location.pathname === routes.homepage
+                        ? <Button to={routes.projects.index}>Projects</Button>
+                        : <Button to={routes.homepage}>Merge Requests</Button>
+                }
             </div>
         </div>
     )
 }
 
 Header.propTypes = {
-    refresh: PropTypes.func,
-    Logo: PropTypes.string,
-    error: PropTypes.string,
+    getProjectsList: PropTypes.func.isRequired,
+    page: PropTypes.number,
 }
 
-Header.defaultProps = {
-    logo: DefaultLogo,
-}
+const mapStateToProps = (state) => ({
+    page: state.settings.page,
+});
 
-export default Header
+const mapDispatchToProps = (dispatch) => ({
+    getProjectsList: (perPage, page) => dispatch(getProjects(perPage, page)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

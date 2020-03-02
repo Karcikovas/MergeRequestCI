@@ -26,8 +26,8 @@ const Search = ({ searchForProject, returnDefaultList, amount, page }) => {
 Search.propTypes = {
     searchForProject: PropTypes.func.isRequired,
     returnDefaultList: PropTypes.func.isRequired,
-    amount: 10,
-    page: 1,
+    amount: PropTypes.number,
+    page: PropTypes.number,
 }
 
 const mapStateToProps = state => ({

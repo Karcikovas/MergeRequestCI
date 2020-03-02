@@ -8,6 +8,8 @@ import {
     removeActiveProject,
     addActiveProject,
 } from '../../../../../core/ActiveProjects/ActiveProjectsActions'
+import Message from '../../../../components/Message/Message'
+import Button from '../../../../components/Button/Button'
 
 const ProjectsList = ({
     perPage,
@@ -23,7 +25,11 @@ const ProjectsList = ({
         return !!selectedProjects.find(selected => selected.id === project.id)
     }
 
-    return (
+    const handleClick = () => {
+        console.log('error')
+    }
+
+    if (projects.length !== 0) return (
         <ul className="projects-list">
             {projects.map(project => (
                 <li key={project.id}>
@@ -53,10 +59,19 @@ const ProjectsList = ({
             )}
         </ul>
     )
+
+    return (
+        <div className="projects-list">
+            <Message variant="error">
+                <h2>No Results Found</h2>
+                <Button onClick={handleClick}>Clear Search</Button>
+            </Message>
+        </div>
+    )
 }
 
 ProjectsList.propTypes = {
-    perPage: PropTypes.number,
+    perPage: PropTypes.number.isRequired,
     projects: PropTypes.array,
     addProject: PropTypes.func.isRequired,
     removeProject: PropTypes.func.isRequired,
@@ -66,7 +81,6 @@ ProjectsList.propTypes = {
 }
 
 ProjectsList.defaultProps = {
-    perPage: 0,
     projects: [],
     selectedProjects: [],
 }

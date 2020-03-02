@@ -8,27 +8,21 @@ import Dashboard from './Pages/Dashboard/Dashboard'
 import configureStore from '../core/store'
 import '../assets/scss/main.scss'
 import Footer from './Pages/Footer/Footer'
-import Toolbar from './Pages/Header/Header'
 const { store, persistor } = configureStore()
 import { routes } from '../core/config/routes'
 import Projects from './Pages/Projects/List'
-import Form from './Pages/Settings/Form/Form'
+import Header from './Pages/Header/Header';
 
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <Router>
-                <Toolbar />
+                <Header />
                 <Route exact path={routes.homepage} component={Dashboard} />
                 <Route
                     exact
                     path={routes.projects.index}
                     component={Projects}
-                />
-                <Route
-                    exact
-                    path={routes.projects.settings}
-                    component={Form}
                 />
             </Router>
 

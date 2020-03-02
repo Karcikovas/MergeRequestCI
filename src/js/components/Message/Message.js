@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Messages.scss'
 
-const Message = ({ title, variant, text }) => {
+const Message = ({ title, variant, children }) => {
     return (
         <div className={`messages is-${variant}`}>
             {title ? <h2>{title}</h2> : null}
-            {text}
+            {children}
         </div>
     )
 }
@@ -14,13 +14,12 @@ const Message = ({ title, variant, text }) => {
 Message.propTypes = {
     title: PropTypes.string,
     variant: PropTypes.string,
-    text: PropTypes.string,
+    children: PropTypes.node,
 }
 
 Message.defaultProps = {
     title: '',
     variant: '',
-    text: '',
 }
 
 export default Message
