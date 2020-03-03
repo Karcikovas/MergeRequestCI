@@ -39,4 +39,24 @@
     color: $color-dark-gray;
   }
 
+  .messages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    h2 {
+      text-align: center;
+      color: $color-black;
+    }
+
+    &:hover {
+      color:unset;
+      text-decoration: unset;
+    }
+
+    .button {
+      width: 35%;
+      margin: 10px auto;
+    }
+  }
 }

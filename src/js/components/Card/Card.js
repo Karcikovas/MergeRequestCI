@@ -51,13 +51,13 @@ const Card = ({ mergeRequest, successUpVotes, failureDownVotes }) => {
 Card.propTypes = {
     successUpVotes: PropTypes.number,
     failureDownVotes: PropTypes.number,
-    mergeRequest: PropTypes.objectOf(PropTypes.number, PropTypes.string),
+    mergeRequest: PropTypes.shape(),
 }
 
 Card.defaultProps = {
     successUpVotes: 0,
     failureDownVotes: 0,
-    mergeRequest: {},
+    mergeRequest: null,
 }
 
 const mapStateToProps = state => ({
