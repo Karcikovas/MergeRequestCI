@@ -1,0 +1,21 @@
+@import "../../assets/scss/variables";
+
+//TODO: Remove !important;
+.button {
+  max-height: 36px;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: $box-shadow-button;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  line-height: normal;
+  background-color: transparent;
+  text-decoration: none;
+  font-style: normal;
+  outline:0;
+
+  &.is-disabled {
+    opacity: 0.5;
+  }
+}
