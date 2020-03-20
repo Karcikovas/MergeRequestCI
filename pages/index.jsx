@@ -1,6 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { getProjects } from '../core/Project/ProjectsActions';
+import { StaticRouter as Router, Route } from 'react-router-dom';
+import { routes } from '../core/config/routes';
+import Dashboard from './Dashboard/Dashboard';
+// import Header from './Header/Header';
 
 class App extends React.Component {
 
@@ -15,11 +19,16 @@ class App extends React.Component {
         this.props.getProjectsList();
 
         return (
-            <div>
-                {/*<button onClick={this.props.incrementCounter}>Increment</button>*/}
-                {/*<button onClick={this.props.decrementCounter}>Decrement</button>*/}
-                {/*<h1>{this.props.counter}</h1>*/}
-            </div>
+            <Router>
+                {/*<Header />*/}
+
+                <Route exact path={routes.homepage} component={Dashboard} />
+                {/*<Route*/}
+                {/*    exact*/}
+                {/*    path={routes.projects.index}*/}
+                {/*    component={Projects}*/}
+                {/*/>*/}
+            </Router>
         );
     }
 }

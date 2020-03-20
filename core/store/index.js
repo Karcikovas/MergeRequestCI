@@ -19,9 +19,7 @@ const config = () => {
 
     sagaMiddleware.run(rootSaga)
 
-    // let persistor = persistStore(store)
-
-    // return { store, persistor }
+    // let persistor = persistStore(storeConfig)
 
     return storeConfig
 };

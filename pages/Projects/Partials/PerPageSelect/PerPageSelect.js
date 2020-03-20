@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './PerPageSelect.scss'
-import Select from '../../../../components/Select/Select'
+import Select from '../../../../../../components/Select/Select'
 
 const PerPageSelect = ({ onChange }) => {
     const options = [

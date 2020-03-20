@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { searchProject, getProjects} from '../../../../../../core/Project/ProjectsActions'
+import { searchProject, getProjects} from '../../../../core/Project/ProjectsActions'
 import './Search.scss'
 
 const Search = ({ searchForProject, returnDefaultList, amount, page }) => {

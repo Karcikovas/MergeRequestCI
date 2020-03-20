@@ -8,7 +8,7 @@ import { getProjects } from '../../../../core/Project/ProjectsActions'
 import { deleteMergeRequest } from '../../../../core/MergeRequest/MergeRequestActions'
 import { setPageNumber } from '../../../../core/SettingsForm/PageNumber/PageNumberActions'
 import ProjectsList from './Partials/ProjectsList/ProjectsList'
-import Loader from '../../components/Loader/Loader'
+import Loader from '../../../../components/Loader/Loader'
 
 const List = ({
     dispatchGetProjects,

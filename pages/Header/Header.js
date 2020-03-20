@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Search from '../Projects/Partials/Search/Search'
 import PerPageSelect from '../Projects/Partials/PerPageSelect/PerPageSelect'
 import './Header.scss'
-import Button from '../../components/Button/Button'
+import Button from '../../../../components/Button/Button'
 import { useLocation } from 'react-router-dom'
 import { routes } from '../../../../core/config/routes';
 import { getProjects } from '../../../../core/Project/ProjectsActions'

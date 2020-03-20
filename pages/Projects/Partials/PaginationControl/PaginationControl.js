@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './PaginationControl.scss'
-import Button from '../../../../components/Button/Button'
+import Button from '../../../../../../components/Button/Button'
 
 const PaginationControll = ({
     page,

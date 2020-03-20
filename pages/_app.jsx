@@ -2,7 +2,6 @@ import App from 'next/app';
 import {Provider} from 'react-redux';
 import React from 'react';
 import withRedux from "next-redux-wrapper";
-// import store from '../redux/store';
 import store from '../core/store/index';
 
 class MyApp extends App {

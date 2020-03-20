@@ -8,8 +8,8 @@ import {
     removeActiveProject,
     addActiveProject,
 } from '../../../../../../core/ActiveProjects/ActiveProjectsActions'
-import Message from '../../../../components/Message/Message'
-import Button from '../../../../components/Button/Button'
+import Message from '../../../../../../components/Message/Message'
+import Button from '../../../../../../components/Button/Button'
 
 const ProjectsList = ({
     perPage,
