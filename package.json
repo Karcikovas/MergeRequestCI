@@ -3,17 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node_modules/.bin/next dev",
-    "build": "node_modules/.bin/next build",
-    "start": "node_modules/.bin/next start"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "next": "9.2.2",
     "next-redux-wrapper": "^5.0.0",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.1.3"
   }
 }

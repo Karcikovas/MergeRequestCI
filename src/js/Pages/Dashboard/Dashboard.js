@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Message from '../../components/Message/Message'
 import Card from '../../components/Card/Card'
 import './Dashboard.scss'
-import { getMergeRequest } from '../../../core/MergeRequest/MergeRequestActions'
+import { getMergeRequest } from '../../../../core/MergeRequest/MergeRequestActions'
 
 const Main = ({
     error,

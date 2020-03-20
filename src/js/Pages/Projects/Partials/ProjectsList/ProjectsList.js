@@ -7,7 +7,7 @@ import SelectButton from './Partials/Button/SelectButton'
 import {
     removeActiveProject,
     addActiveProject,
-} from '../../../../../core/ActiveProjects/ActiveProjectsActions'
+} from '../../../../../../core/ActiveProjects/ActiveProjectsActions'
 import Message from '../../../../components/Message/Message'
 import Button from '../../../../components/Button/Button'
 

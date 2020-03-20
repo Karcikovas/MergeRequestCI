@@ -6,8 +6,8 @@ import PerPageSelect from '../Projects/Partials/PerPageSelect/PerPageSelect'
 import './Header.scss'
 import Button from '../../components/Button/Button'
 import { useLocation } from 'react-router-dom'
-import { routes } from '../../../core/config/routes';
-import { getProjects } from '../../../core/Project/ProjectsActions'
+import { routes } from '../../../../core/config/routes';
+import { getProjects } from '../../../../core/Project/ProjectsActions'
 
 const Header = ({ getProjectsList, page }) => {
     const location = useLocation();
